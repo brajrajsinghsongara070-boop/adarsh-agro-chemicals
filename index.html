@@ -1,10 +1,12 @@
+
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Adarsh Agro Chemicals – Premium Fertilizers & Pesticides</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Adarsh Agro Chemicals – Premium Fertilizers &amp; Pesticides</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
 <style>
   :root {
     --deep-forest: #1B4332;
@@ -1387,393 +1389,6 @@
     body { background: white; }
   }
 
-  /* ─── PRODUCT IMAGE SLIDESHOW ─── */
-  .prod-img-wrap {
-    position: relative;
-    width: 100%;
-    height: 160px;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 10px;
-    background: var(--sand);
-  }
-
-  .prod-img-wrap img {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    transition: opacity 0.6s ease;
-    border-radius: 10px;
-  }
-
-  .prod-img-wrap img.slide-hidden { opacity: 0; }
-  .prod-img-wrap img.slide-visible { opacity: 1; }
-
-  .prod-img-dots {
-    position: absolute;
-    bottom: 7px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 5px;
-    z-index: 5;
-  }
-
-  .prod-img-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.5);
-    cursor: pointer;
-    transition: background 0.2s;
-    border: none;
-    padding: 0;
-  }
-
-  .prod-img-dot.active { background: var(--gold); }
-
-  .prod-img-arrow {
-    position: absolute;
-    top: 50%; transform: translateY(-50%);
-    background: rgba(27,67,50,0.55);
-    color: white;
-    border: none;
-    width: 26px; height: 26px;
-    border-radius: 50%;
-    font-size: 13px;
-    cursor: pointer;
-    z-index: 5;
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s;
-    opacity: 0;
-  }
-
-  .prod-img-wrap:hover .prod-img-arrow { opacity: 1; }
-  .prod-img-arrow:hover { background: rgba(27,67,50,0.85); }
-  .prod-img-arrow.prev { left: 6px; }
-  .prod-img-arrow.next { right: 6px; }
-
-  /* ─── CHATBOT ─── */
-  #chatbot-toggle {
-    position: fixed;
-    bottom: 28px; right: 28px;
-    width: 60px; height: 60px;
-    background: linear-gradient(135deg, var(--farm-green), var(--leaf-green));
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    z-index: 999;
-    box-shadow: 0 6px 28px rgba(45,106,79,0.45);
-    font-size: 26px;
-    display: flex; align-items: center; justify-content: center;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-
-  #chatbot-toggle:hover { transform: scale(1.1); box-shadow: 0 10px 36px rgba(45,106,79,0.55); }
-
-  #chatbot-badge {
-    position: absolute;
-    top: -4px; right: -4px;
-    width: 18px; height: 18px;
-    background: var(--gold);
-    color: var(--deep-forest);
-    border-radius: 50%;
-    font-size: 10px;
-    font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    border: 2px solid var(--cream);
-  }
-
-  #chatbot-box {
-    position: fixed;
-    bottom: 100px; right: 28px;
-    width: 370px;
-    max-height: 560px;
-    background: var(--white);
-    border-radius: 20px;
-    box-shadow: 0 20px 70px rgba(0,0,0,0.2);
-    z-index: 998;
-    display: flex; flex-direction: column;
-    overflow: hidden;
-    transform: scale(0.85) translateY(20px);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 0.25s ease, opacity 0.25s ease;
-    border: 1px solid var(--sand);
-  }
-
-  #chatbot-box.open {
-    transform: scale(1) translateY(0);
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  .cb-header {
-    background: linear-gradient(135deg, var(--deep-forest), var(--farm-green));
-    padding: 16px 18px;
-    display: flex; align-items: center; gap: 12px;
-    flex-shrink: 0;
-  }
-
-  .cb-avatar {
-    width: 40px; height: 40px;
-    background: var(--gold);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-
-  .cb-header-info .cb-name {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 15px;
-    color: var(--white);
-  }
-
-  .cb-header-info .cb-status {
-    font-size: 11px;
-    color: var(--leaf-green);
-    display: flex; align-items: center; gap: 4px;
-    margin-top: 2px;
-  }
-
-  .cb-status-dot {
-    width: 7px; height: 7px;
-    background: var(--leaf-green);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-
-  .cb-close {
-    margin-left: auto;
-    background: none; border: none;
-    color: rgba(255,255,255,0.6);
-    font-size: 20px;
-    cursor: pointer;
-    padding: 4px;
-    transition: color 0.2s;
-  }
-
-  .cb-close:hover { color: white; }
-
-  .cb-messages {
-    flex: 1;
-    overflow-y: auto;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    scroll-behavior: smooth;
-    max-height: 360px;
-  }
-
-  .cb-messages::-webkit-scrollbar { width: 4px; }
-  .cb-messages::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 4px; }
-
-  .cb-msg {
-    display: flex;
-    gap: 8px;
-    align-items: flex-end;
-    animation: fadeUp 0.3s ease;
-  }
-
-  .cb-msg.user { flex-direction: row-reverse; }
-
-  .cb-msg-bubble {
-    max-width: 82%;
-    padding: 10px 14px;
-    border-radius: 16px;
-    font-size: 13.5px;
-    line-height: 1.6;
-    word-break: break-word;
-  }
-
-  .cb-msg.bot .cb-msg-bubble {
-    background: var(--cream);
-    border: 1px solid var(--sand);
-    color: var(--text-dark);
-    border-bottom-left-radius: 4px;
-  }
-
-  .cb-msg.user .cb-msg-bubble {
-    background: var(--farm-green);
-    color: white;
-    border-bottom-right-radius: 4px;
-  }
-
-  .cb-msg-avatar {
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px;
-    flex-shrink: 0;
-    background: var(--gold);
-  }
-
-  .cb-msg.user .cb-msg-avatar { background: var(--leaf-green); }
-
-  .cb-typing {
-    display: flex; gap: 4px;
-    align-items: center;
-    padding: 10px 14px;
-    background: var(--cream);
-    border: 1px solid var(--sand);
-    border-radius: 16px;
-    border-bottom-left-radius: 4px;
-    width: fit-content;
-  }
-
-  .cb-typing span {
-    width: 7px; height: 7px;
-    background: var(--farm-green);
-    border-radius: 50%;
-    animation: bounce 1.2s infinite;
-  }
-
-  .cb-typing span:nth-child(2) { animation-delay: 0.2s; }
-  .cb-typing span:nth-child(3) { animation-delay: 0.4s; }
-
-  @keyframes bounce {
-    0%,60%,100%{transform:translateY(0)}
-    30%{transform:translateY(-6px)}
-  }
-
-  .cb-quick-btns {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    padding: 0 16px 12px;
-    flex-shrink: 0;
-  }
-
-  .cb-quick-btn {
-    background: var(--cream);
-    border: 1px solid var(--sand);
-    color: var(--farm-green);
-    font-size: 12px;
-    font-weight: 500;
-    padding: 6px 12px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    transition: background 0.2s, color 0.2s;
-  }
-
-  .cb-quick-btn:hover { background: var(--farm-green); color: white; border-color: var(--farm-green); }
-
-  .cb-input-row {
-    display: flex;
-    gap: 8px;
-    padding: 12px 14px;
-    border-top: 1px solid var(--sand);
-    flex-shrink: 0;
-    align-items: center;
-  }
-
-  #cb-input {
-    flex: 1;
-    padding: 10px 14px;
-    border: 1.5px solid var(--sand);
-    border-radius: 24px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13.5px;
-    outline: none;
-    color: var(--text-dark);
-    background: var(--cream);
-    transition: border-color 0.2s;
-  }
-
-  #cb-input:focus { border-color: var(--leaf-green); background: white; }
-
-  #cb-send {
-    width: 38px; height: 38px;
-    background: var(--farm-green);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    font-size: 16px;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s, transform 0.15s;
-    flex-shrink: 0;
-  }
-
-  #cb-send:hover { background: var(--deep-forest); transform: scale(1.08); }
-
-  .cb-order-form {
-    background: var(--cream);
-    border: 1px solid var(--sand);
-    border-radius: 12px;
-    padding: 12px;
-    margin-top: 4px;
-    font-size: 13px;
-  }
-
-  .cb-order-form input {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid var(--sand);
-    border-radius: 8px;
-    margin-bottom: 7px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    background: white;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-
-  .cb-order-form input:focus { border-color: var(--leaf-green); }
-
-  .cb-order-submit {
-    width: 100%;
-    background: var(--gold);
-    color: var(--deep-forest);
-    border: none;
-    border-radius: 8px;
-    padding: 10px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    cursor: pointer;
-    transition: opacity 0.2s;
-  }
-
-  .cb-order-submit:hover { opacity: 0.88; }
-
-  @media (max-width: 500px) {
-    #chatbot-box { width: calc(100vw - 20px); right: 10px; bottom: 85px; }
-    #chatbot-toggle { bottom: 18px; right: 18px; }
-  }
-
-  /* ─── CLICK TO CALL BUTTON ─── */
-  #cb-call-btn {
-    background: rgba(82,183,136,0.18);
-    border: 1.5px solid rgba(82,183,136,0.45);
-    color: var(--leaf-green);
-    border-radius: 8px;
-    padding: 5px 11px;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex; align-items: center; gap: 5px;
-    transition: background 0.2s, color 0.2s;
-    white-space: nowrap;
-    font-family: 'DM Sans', sans-serif;
-  }
-  #cb-call-btn:hover { background: var(--leaf-green); color: white; }
-  #cb-call-btn .cb-call-pulse {
-    width: 8px; height: 8px;
-    background: #4ade80;
-    border-radius: 50%;
-    animation: pulse 1.4s infinite;
-    flex-shrink: 0;
-  }
-
-  /* ─── MIC BUTTON ─── */
-
   /* ─── RESPONSIVE ─── */
   @media (max-width: 900px) {
     .hero-inner { grid-template-columns: 1fr; }
@@ -1800,766 +1415,599 @@
 </style>
 </head>
 <body>
-
 <!-- ─── NAV ─── -->
 <nav>
-  <a href="#" class="nav-logo">
-    <div class="nav-logo-icon">🌿</div>
-    <div class="nav-logo-text">
+<a class="nav-logo" href="#">
+<div class="nav-logo-icon">🌿</div>
+<div class="nav-logo-text">
       Adarsh Agro
       <span>Chemicals</span>
-    </div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#benefits">Benefits</a></li>
-    <li><a href="#how-it-works">How It Works</a></li>
-    <li><a href="#products">Products & Prices</a></li>
-    <li><a href="#order-list">🛒 Order List</a></li>
-    <li><a href="#contact" class="nav-cta">Order Now →</a></li>
-  </ul>
-  <div class="nav-hamburger" onclick="this.classList.toggle('open')">
-    <span></span><span></span><span></span>
-  </div>
+</div>
+</a>
+<ul class="nav-links">
+<li><a href="#benefits">Benefits</a></li>
+<li><a href="#how-it-works">How It Works</a></li>
+<li><a href="#products">Products &amp; Prices</a></li>
+<li><a href="#order-list">🛒 Order List</a></li>
+<li><a class="nav-cta" href="#contact">Order Now →</a></li>
+</ul>
+<div class="nav-hamburger" onclick="this.classList.toggle('open')">
+<span></span><span></span><span></span>
+</div>
 </nav>
-
 <!-- ─── HERO ─── -->
 <section class="hero">
-  <div class="hero-inner">
-    <div class="hero-content">
-      <div class="hero-badge">Trusted by 2,000+ Farmers</div>
-      <h1>Better Soil.<br/>Bigger <em>Harvest.</em><br/>Every Season.</h1>
-      <p class="hero-sub">Adarsh Agro Chemicals delivers premium organic & inorganic fertilizers and effective pesticides — straight to your farm. Grow more, protect more, earn more.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn-primary">🛒 Buy Now</a>
-        <a href="#how-it-works" class="btn-outline">📞 Book a Call</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat-item">
-          <div class="stat-num">2000+</div>
-          <div class="stat-label">Happy Farmers</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">50+</div>
-          <div class="stat-label">Products</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">15+</div>
-          <div class="stat-label">Years Serving</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-visual">
-      <div class="hero-card-stack">
-        <div class="hcard hcard-main">
-          <div class="hcard-emoji">🌾</div>
-          <h3>Organic Fertilizer</h3>
-          <p>100% natural nutrients that enrich your soil for long-term productivity</p>
-          <div class="hcard-tag">✓ Certified Organic</div>
-        </div>
-        <div class="hcard hcard-float1">
-          <div class="fl-num">40%</div>
-          <div class="fl-label">Higher yield reported by farmers</div>
-        </div>
-        <div class="hcard hcard-float2">
-          <div class="fl-icon">🛡️</div>
-          <div class="fl-text">
-            <div class="fn">Crop Protection</div>
-            <div class="fd">Safe Pesticides</div>
-          </div>
-        </div>
-        <div class="green-ring"></div>
-      </div>
-    </div>
-  </div>
+<div class="hero-inner">
+<div class="hero-content">
+<div class="hero-badge">Trusted by 2,000+ Farmers</div>
+<h1>Better Soil.<br/>Bigger <em>Harvest.</em><br/>Every Season.</h1>
+<p class="hero-sub">Adarsh Agro Chemicals delivers premium organic &amp; inorganic fertilizers and effective pesticides — straight to your farm. Grow more, protect more, earn more.</p>
+<div class="hero-actions">
+<a class="btn-primary" href="#contact">🛒 Buy Now</a>
+<a class="btn-outline" href="#how-it-works">📞 Book a Call</a>
+</div>
+<div class="hero-stats">
+<div class="stat-item">
+<div class="stat-num">2000+</div>
+<div class="stat-label">Happy Farmers</div>
+</div>
+<div class="stat-item">
+<div class="stat-num">50+</div>
+<div class="stat-label">Products</div>
+</div>
+<div class="stat-item">
+<div class="stat-num">15+</div>
+<div class="stat-label">Years Serving</div>
+</div>
+</div>
+</div>
+<div class="hero-visual">
+<div class="hero-card-stack">
+<div class="hcard hcard-main">
+<div class="hcard-emoji">🌾</div>
+<h3>Organic Fertilizer</h3>
+<p>100% natural nutrients that enrich your soil for long-term productivity</p>
+<div class="hcard-tag">✓ Certified Organic</div>
+</div>
+<div class="hcard hcard-float1">
+<div class="fl-num">40%</div>
+<div class="fl-label">Higher yield reported by farmers</div>
+</div>
+<div class="hcard hcard-float2">
+<div class="fl-icon">🛡️</div>
+<div class="fl-text">
+<div class="fn">Crop Protection</div>
+<div class="fd">Safe Pesticides</div>
+</div>
+</div>
+<div class="green-ring"></div>
+</div>
+</div>
+</div>
 </section>
-
 <!-- ─── BENEFITS ─── -->
 <section class="benefits" id="benefits">
-  <div class="section-wrap">
-    <div class="section-eyebrow">Why Choose Us</div>
-    <h2 class="section-title">Everything Your Farm Needs to Thrive</h2>
-    <p class="section-sub">From soil prep to harvest, our products support every stage of crop growth with trusted, tested formulas.</p>
-
-    <div class="benefits-grid">
-      <div class="benefit-card">
-        <div class="benefit-num">01</div>
-        <div class="benefit-icon">🌱</div>
-        <h3>Proven Organic Range</h3>
-        <p>Our organic fertilizers are made from natural sources — enriching soil health, improving water retention, and boosting beneficial microbes for season after season of strong yields.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-num">02</div>
-        <div class="benefit-icon">⚗️</div>
-        <h3>High-Yield Inorganic Formulas</h3>
-        <p>Precision-blended NPK and micronutrient fertilizers that deliver fast, measurable results. Designed for maximum absorption and minimum waste.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-num">03</div>
-        <div class="benefit-icon">🛡️</div>
-        <h3>Effective Crop Protection</h3>
-        <p>Our pesticide range tackles fungal, insect, and weed threats without harming your soil ecosystem. Safe, approved, and easy to apply for any farm size.</p>
-      </div>
-    </div>
-  </div>
+<div class="section-wrap">
+<div class="section-eyebrow">Why Choose Us</div>
+<h2 class="section-title">Everything Your Farm Needs to Thrive</h2>
+<p class="section-sub">From soil prep to harvest, our products support every stage of crop growth with trusted, tested formulas.</p>
+<div class="benefits-grid">
+<div class="benefit-card">
+<div class="benefit-num">01</div>
+<div class="benefit-icon">🌱</div>
+<h3>Proven Organic Range</h3>
+<p>Our organic fertilizers are made from natural sources — enriching soil health, improving water retention, and boosting beneficial microbes for season after season of strong yields.</p>
+</div>
+<div class="benefit-card">
+<div class="benefit-num">02</div>
+<div class="benefit-icon">⚗️</div>
+<h3>High-Yield Inorganic Formulas</h3>
+<p>Precision-blended NPK and micronutrient fertilizers that deliver fast, measurable results. Designed for maximum absorption and minimum waste.</p>
+</div>
+<div class="benefit-card">
+<div class="benefit-num">03</div>
+<div class="benefit-icon">🛡️</div>
+<h3>Effective Crop Protection</h3>
+<p>Our pesticide range tackles fungal, insect, and weed threats without harming your soil ecosystem. Safe, approved, and easy to apply for any farm size.</p>
+</div>
+</div>
+</div>
 </section>
-
 <!-- ─── HOW IT WORKS ─── -->
 <section class="how-it-works" id="how-it-works">
-  <div class="section-wrap">
-    <div class="section-eyebrow">Simple Process</div>
-    <h2 class="section-title">From Order to Field in 3 Easy Steps</h2>
-    <p class="section-sub">Getting the right products to your farm has never been easier. Here's how it works.</p>
-
-    <div class="steps-grid">
-      <div class="step">
-        <div class="step-num">
-          <div class="step-num-inner">1</div>
-          <div class="step-emoji">📋</div>
-        </div>
-        <h3>Tell Us Your Needs</h3>
-        <p>Share your crop type, soil condition, and area size. Our agri experts will recommend the best products for your specific farm.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">
-          <div class="step-num-inner">2</div>
-          <div class="step-emoji">📦</div>
-        </div>
-        <h3>Place Your Order</h3>
-        <p>Order online or visit our store. We offer flexible quantities, bulk discounts, and fast delivery to your doorstep or nearest pickup point.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">
-          <div class="step-num-inner">3</div>
-          <div class="step-emoji">🌾</div>
-        </div>
-        <h3>Apply & See Results</h3>
-        <p>Follow our simple application guide and watch your crops respond. Our support team is always available if you have questions during the season.</p>
-      </div>
-    </div>
-  </div>
+<div class="section-wrap">
+<div class="section-eyebrow">Simple Process</div>
+<h2 class="section-title">From Order to Field in 3 Easy Steps</h2>
+<p class="section-sub">Getting the right products to your farm has never been easier. Here's how it works.</p>
+<div class="steps-grid">
+<div class="step">
+<div class="step-num">
+<div class="step-num-inner">1</div>
+<div class="step-emoji">📋</div>
+</div>
+<h3>Tell Us Your Needs</h3>
+<p>Share your crop type, soil condition, and area size. Our agri experts will recommend the best products for your specific farm.</p>
+</div>
+<div class="step">
+<div class="step-num">
+<div class="step-num-inner">2</div>
+<div class="step-emoji">📦</div>
+</div>
+<h3>Place Your Order</h3>
+<p>Order online or visit our store. We offer flexible quantities, bulk discounts, and fast delivery to your doorstep or nearest pickup point.</p>
+</div>
+<div class="step">
+<div class="step-num">
+<div class="step-num-inner">3</div>
+<div class="step-emoji">🌾</div>
+</div>
+<h3>Apply &amp; See Results</h3>
+<p>Follow our simple application guide and watch your crops respond. Our support team is always available if you have questions during the season.</p>
+</div>
+</div>
+</div>
 </section>
-
 <!-- ─── PRODUCT CATALOGUE ─── -->
 <section id="products" style="background:var(--white);">
-  <div class="section-wrap" style="padding-bottom:100px;">
-    <div class="section-eyebrow">Our Products</div>
-    <h2 class="section-title">Fertilizers & Pesticides Catalogue</h2>
-    <p class="section-sub">Quality-tested products with transparent pricing. Bulk discounts available — call us for quotes above 10 bags.</p>
-
-    <!-- TABS -->
-    <div class="prod-tabs">
-      <button class="prod-tab active" onclick="filterProducts('all',this)">🌾 All Products</button>
-      <button class="prod-tab" onclick="filterProducts('organic',this)">🌿 Organic Fertilizers</button>
-      <button class="prod-tab" onclick="filterProducts('inorganic',this)">⚗️ Inorganic Fertilizers</button>
-      <button class="prod-tab" onclick="filterProducts('pesticide',this)">🛡️ Pesticides</button>
-    </div>
-
-    <!-- PRODUCT GRID -->
-    <div class="prod-grid" id="prodGrid">
-
-      <!-- ORGANIC FERTILIZERS -->
-      <div class="prod-card" data-cat="organic">
-        <div class="prod-badge organic">Organic</div>
-        <div class="prod-img-wrap" id="img-vermicompost">
-          <img src="https://images.unsplash.com/photo-1591280063444-d3c514eb6e13?w=500&q=85" alt="Vermicompost bag product" class="slide-visible"/>
-          <img src="https://images.unsplash.com/photo-1592419044706-39796d40f98c?w=500&q=85" alt="Vermicompost worms soil" class="slide-hidden"/>
-          <button class="prod-img-arrow prev" onclick="slideImg('img-vermicompost',-1)">‹</button>
-          <button class="prod-img-arrow next" onclick="slideImg('img-vermicompost',1)">›</button>
-          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-vermicompost',0)"></button><button class="prod-img-dot" onclick="goSlide('img-vermicompost',1)"></button></div>
-        </div>
-        <div class="prod-icon" style="display:none;">🌿</div>
-        <div class="prod-info">
-          <h4>Organic Compost (Vermicompost)</h4>
-          <p>Enriches soil with natural humus, improves water retention and microbial activity. Best for all crops.</p>
-          <div class="prod-meta"><span>📦 50 kg bag</span><span>🌱 All Crops</span></div>
-        </div>
-        <div class="prod-footer">
-          <div class="prod-price">₹ 450 <span>/bag</span></div>
-          <div style="display:flex;gap:6px;">
-            <button class="prod-btn" onclick="addToEnquiry('Organic Compost – ₹450/bag')">+ Enquire</button>
-            <button class="prod-btn prod-buy" onclick="quickBuy('Organic Compost (Vermicompost)','₹450/bag')">📧 Buy</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="prod-card" data-cat="organic">
-        <div class="prod-badge organic">Organic</div>
-        <div class="prod-img-wrap" id="img-neem">
-          <img src="https://images.unsplash.com/photo-1611735341450-74d61e660ad2?w=500&q=85" alt="Neem cake fertilizer bag" class="slide-visible"/>
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=85" alt="Neem leaves close-up" class="slide-hidden"/>
-          <button class="prod-img-arrow prev" onclick="slideImg('img-neem',-1)">‹</button>
-          <button class="prod-img-arrow next" onclick="slideImg('img-neem',1)">›</button>
-          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-neem',0)"></button><button class="prod-img-dot" onclick="goSlide('img-neem',1)"></button></div>
-        </div>
-        <div class="prod-icon" style="display:none;">🐄</div>
-        <div class="prod-info">
-          <h4>Neem Cake Fertilizer</h4>
-          <p>Dual-action — feeds soil nitrogen while repelling soil-borne pests. Ideal for vegetables & fruits.</p>
-          <div class="prod-meta"><span>📦 25 kg bag</span><span>🌱 Vegetables, Fruits</span></div>
-        </div>
-        <div class="prod-footer">
-          <div class="prod-price">₹ 320 <span>/bag</span></div>
-          <div style="display:flex;gap:6px;">
-            <button class="prod-btn" onclick="addToEnquiry('Neem Cake Fertilizer – ₹320/bag')">+ Enquire</button>
-            <button class="prod-btn prod-buy" onclick="quickBuy('Neem Cake Fertilizer','₹320/bag')">📧 Buy</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="prod-card" data-cat="organic">
-        <div class="prod-badge organic">Organic</div>
-        <div class="prod-img-wrap" id="img-biofert">
-          <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=500&q=85" alt="Rhizobium bio fertilizer pack" class="slide-visible"/>
-          <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=500&q=85" alt="Soybean legume crop roots" class="slide-hidden"/>
-          <button class="prod-img-arrow prev" onclick="slideImg('img-biofert',-1)">‹</button>
-          <button class="prod-img-arrow next" onclick="slideImg('img-biofert',1)">›</button>
-          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-biofert',0)"></button><button class="prod-img-dot" onclick="goSlide('img-biofert',1)"></button></div>
-        </div>
-        <div class="prod-icon" style="display:none;">🦠</div>
-        <div class="prod-info">
-          <h4>Bio-Fertilizer (Rhizobium)</h4>
-          <p>Live bacterial culture that fixes atmospheric nitrogen directly in legume roots. Reduces chemical usage by 30%.</p>
-          <div class="prod-meta"><span>📦 1 kg pack</span><span>🌱 Soybean, Pulses</span></div>
-        </div>
-        <div class="prod-footer">
-          <div class="prod-price">₹ 120 <span>/pack</span></div>
-          <div style="display:flex;gap:6px;">
-            <button class="prod-btn" onclick="addToEnquiry('Bio-Fertilizer Rhizobium – ₹120/pack')">+ Enquire</button>
-            <button class="prod-btn prod-buy" onclick="quickBuy('Bio-Fertilizer (Rhizobium)','₹120/pack')">📧 Buy</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="prod-card" data-cat="organic">
-        <div class="prod-badge organic">Organic</div>
-        <div class="prod-img-wrap" id="img-seaweed">
-          <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=500&q=85" alt="Seaweed liquid extract bottle" class="slide-visible"/>
-          <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&q=85" alt="Crop foliar spray seaweed" class="slide-hidden"/>
-          <button class="prod-img-arrow prev" onclick="slideImg('img-seaweed',-1)">‹</button>
-          <button class="prod-img-arrow next" onclick="slideImg('img-seaweed',1)">›</button>
-          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-seaweed',0)"></button><button class="prod-img-dot" onclick="goSlide('img-seaweed',1)"></button></div>
-        </div>
-        <div class="prod-icon" style="display:none;">🌊</div>
-        <div class="prod-info">
-          <h4>Seaweed Extract (Liquid)</h4>
-          <p>Rich in natural growth hormones and micronutrients. Improves seed germination and stress tolerance.</p>
-          <div class="prod-meta"><span>📦 1 litre bottle</span><span>🌱 All Crops</span></div>
-        </div>
-        <div class="prod-footer">
-          <div class="prod-price">₹ 280 <span>/litre</span></div>
-          <div style="display:flex;gap:6px;">
-            <button class="prod-btn" onclick="addToEnquiry('Seaweed Extract – ₹280/litre')">+ Enquire</button>
-            <button class="prod-btn prod-buy" onclick="quickBuy('Seaweed Extract (Liquid)','₹280/litre')">📧 Buy</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- INORGANIC FERTILIZERS -->
-      <div class="prod-card" data-cat="inorganic">
-        <div class="prod-badge inorganic">Inorganic</div>
-        <div class="prod-img-wrap" id="img-urea">
-          <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=500&q=85" alt="Urea 46% fertilizer white granules bag" class="slide-visible"/>
-          <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=500&q=85" alt="Urea applied wheat field green" class="slide-hidden"/>
-          <button class="prod-img-arrow prev" onclick="slideImg('img-urea',-1)">‹</button>
-          <button class="prod-img-arrow next" onclick="slideImg('img-urea',1)">›</button>
-          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-urea',0)"></button><button class="prod-img-dot" onclick="goSlide('img-urea',1)"></button></div>
-        </div>
-        <div class="prod-icon" style="display:none;">🧪</div>
-        <div class="prod-info">
-          <h4>Urea (46% Nitrogen)</h4>
-          <p>India's most widely used nitrogen fertilizer. Fast-acting, high-concentration formula for rapid green growth.</p>
-          <div class="prod-meta"><span>📦 50 kg bag</span><span>🌱 Wheat, Rice, Maize</span></div>
-        </div>
-        <div class="prod-footer">
-          <div class="prod-price">₹ 266 <span>/bag</span></div>
-          <div style="display:flex;gap:6px;">
-            <button class="prod-btn" onclick="addToEnquiry('Urea 46% – ₹266/bag')">+ Enquire</button>
-            <button class="prod-btn prod-buy" onclick="quickBuy('Urea (46% Nitrogen)','₹266/bag')">📧 Buy</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="prod-card" data-cat="inorganic">
-        <div class="prod-badge inorganic">Inorganic</div>
-        <div class="prod-img-wrap" id="img-dap">
-          <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=500&q=85" alt="DAP di-ammonium phosphate blue granules" class="slide-visible"/>
-          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&q=85" alt="DAP basal application field crop" class="slide-hidden"/>
-          <button class="prod-img-arrow prev" onclick="slideImg('img-dap',-1)">‹</button>
-          <button class="prod-img-arrow next" onclick="slideImg('img-dap',1)">›</button>
-          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-dap',0)"></button><button class="prod-img-dot" onclick="goSlide('img-dap',1)"></button></div>
-        </div>
-        <div class="prod-icon" style="display:none;">🔬</div>
-        <div class="prod-info">
-          <h4>DAP (Di-Ammonium Phosphate)</h4>
-          <p>18% Nitrogen + 46% Phosphorus. Excellent basal dose for strong root development and early plant establishment.</p>
-          <div class="prod-meta"><span>📦 50 kg bag</span><span>🌱 All Field Crops</span></div>
-        </div>
-        <div class="prod-footer">
-          <div class="prod-price">₹ 1,350 <span>/bag</span></div>
-          <div style="display:flex;gap:6px;">
-            <button class="prod-btn" onclick="addToEnquiry('DAP Fertilizer – ₹1350/bag')">+ Enquire</button>
-            <button class="prod-btn prod-buy" onclick="quickBuy('DAP (Di-Ammonium Phosphate)','₹1,350/bag')">📧 Buy</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="prod-card" data-cat="inorganic">
-        <div class="prod-badge inorganic">Inorganic</div>
-        <div class="prod-img-wrap" id="img-npk">
-          <img src="https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?w=500&q=85" alt="NPK 20-20-20 water soluble fertilizer pack" class="slide-visible"/>
-          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=85" alt="Fertigation drip NPK vegetable crop" class="slide-hidden"/>
-          <button class="prod-img-arrow prev" onclick="slideImg('img-npk',-1)">‹</button>
-          <button class="prod-img-arrow next" onclick="slideImg('img-npk',1)">›</button>
-          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-npk',0)"></button><button class="prod-img-dot" onclick="goSlide('img-npk',1)"></button></div>
-        </div>
-        <div class="prod-icon" style="display:none;">⚗️</div>
-        <div class="prod-info">
-          <h4>NPK 20-20-20 (Water Soluble)</h4>
-          <p>Balanced equal-ratio NPK for fertigation and foliar spray. Ideal for high-value crops requiring precise nutrition.</p>
-          <div class="prod-meta"><span>📦 25 kg bag</span><span>🌱 Vegetables, Cotton</span></div>
-        </div>
-        <div class="prod-footer">
-          <div class="prod-price">₹ 1,100 <span>/bag</span></div>
-          <div style="display:flex;gap:6px;">
-            <button class="prod-btn" onclick="addToEnquiry('NPK 20-20-20 – ₹1100/bag')">+ Enquire</button>
-            <button class="prod-btn prod-buy" onclick="quickBuy('NPK 20-20-20 Water Soluble','₹1,100/bag')">📧 Buy</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="prod-card" data-cat="inorganic">
-        <div class="prod-badge inorganic">Inorganic</div>
-        <div class="prod-img-wrap" id="img-micro">
-          <img src="https://images.unsplash.com/photo-1615811361523-6bd03d7748e7?w=500&q=85" alt="Micronutrient mix zinc iron manganese pack" class="slide-visible"/>
-          <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=500&q=85" alt="Healthy golden wheat micronutrient treated" class="slide-hidden"/>
-          <button class="prod-img-arrow prev" onclick="slideImg('img-micro',-1)">‹</button>
-          <button class="prod-img-arrow next" onclick="slideImg('img-micro',1)">›</button>
-          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-micro',0)"></button><button class="prod-img-dot" onclick="goSlide('img-micro',1)"></button></div>
-        </div>
-        <div class="prod-icon" style="display:none;">✨</div>
-        <div class="prod-info">
-          <h4>Micronutrient Mix (Zn, Fe, Mn, B)</h4>
-          <p>Complete micronutrient blend that corrects hidden deficiencies in soil. Prevents yellowing, improves grain fill.</p>
-          <div class="prod-meta"><span>📦 5 kg pack</span><span>🌱 All Crops</span></div>
-        </div>
-        <div class="prod-footer">
-          <div class="prod-price">₹ 650 <span>/pack</span></div>
-          <div style="display:flex;gap:6px;">
-            <button class="prod-btn" onclick="addToEnquiry('Micronutrient Mix – ₹650/pack')">+ Enquire</button>
-            <button class="prod-btn prod-buy" onclick="quickBuy('Micronutrient Mix (Zn, Fe, Mn, B)','₹650/pack')">📧 Buy</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="prod-card" data-cat="inorganic">
-        <div class="prod-badge inorganic">Inorganic</div>
-        <div class="prod-img-wrap" id="img-mop">
-          <img src="https://images.unsplash.com/photo-1628352081506-83c43123a6b9?w=500&q=85" alt="MOP muriate of potash red granules bag" class="slide-visible"/>
-          <img src="https://images.unsplash.com/photo-1518977956812-cd3dbadaaf31?w=500&q=85" alt="Sugarcane potato MOP treated field" class="slide-hidden"/>
-          <button class="prod-img-arrow prev" onclick="slideImg('img-mop',-1)">‹</button>
-          <button class="prod-img-arrow next" onclick="slideImg('img-mop',1)">›</button>
-          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-mop',0)"></button><button class="prod-img-dot" onclick="goSlide('img-mop',1)"></button></div>
-        </div>
-        <div class="prod-icon" style="display:none;">🪨</div>
-        <div class="prod-info">
-          <h4>MOP (Muriate of Potash)</h4>
-          <p>60% Potassium Oxide. Strengthens cell walls, improves drought resistance and quality of grains and fruits.</p>
-          <div class="prod-meta"><span>📦 50 kg bag</span><span>🌱 Sugarcane, Potato</span></div>
-        </div>
-        <div class="prod-footer">
-          <div class="prod-price">₹ 1,700 <span>/bag</span></div>
-          <div style="display:flex;gap:6px;">
-            <button class="prod-btn" onclick="addToEnquiry('MOP Potash – ₹1700/bag')">+ Enquire</button>
-            <button class="prod-btn prod-buy" onclick="quickBuy('MOP (Muriate of Potash)','₹1,700/bag')">📧 Buy</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- PESTICIDES -->
-      <div class="prod-card" data-cat="pesticide">
-        <div class="prod-badge pesticide">Pesticide</div>
-        <div class="prod-img-wrap" id="img-chlor">
-          <img src="https://images.unsplash.com/photo-1631193816258-28b44b21e78f?w=500&q=85" alt="Chlorpyrifos 20% EC insecticide bottle amber" class="slide-visible"/>
-          <img src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?w=500&q=85" alt="Insecticide sprayer field application" class="slide-hidden"/>
-          <button class="prod-img-arrow prev" onclick="slideImg('img-chlor',-1)">‹</button>
-          <button class="prod-img-arrow next" onclick="slideImg('img-chlor',1)">›</button>
-          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-chlor',0)"></button><button class="prod-img-dot" onclick="goSlide('img-chlor',1)"></button></div>
-        </div>
-        <div class="prod-icon" style="display:none;">🐛</div>
-        <div class="prod-info">
-          <h4>Chlorpyrifos 20% EC (Insecticide)</h4>
-          <p>Broad-spectrum insecticide effective against stem borers, white grubs, and termites in major field crops.</p>
-          <div class="prod-meta"><span>📦 1 litre bottle</span><span>🌱 Rice, Wheat, Cotton</span></div>
-        </div>
-        <div class="prod-footer">
-          <div class="prod-price">₹ 480 <span>/litre</span></div>
-          <div style="display:flex;gap:6px;">
-            <button class="prod-btn" onclick="addToEnquiry('Chlorpyrifos 20% EC – ₹480/litre')">+ Enquire</button>
-            <button class="prod-btn prod-buy" onclick="quickBuy('Chlorpyrifos 20% EC Insecticide','₹480/litre')">📧 Buy</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="prod-card" data-cat="pesticide">
-        <div class="prod-badge pesticide">Pesticide</div>
-        <div class="prod-img-wrap" id="img-mancozeb">
-          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&q=85" alt="Mancozeb 75% WP fungicide powder pack" class="slide-visible"/>
-          <img src="https://images.unsplash.com/photo-1518977956812-cd3dbadaaf31?w=500&q=85" alt="Potato tomato late blight fungicide protection" class="slide-hidden"/>
-          <button class="prod-img-arrow prev" onclick="slideImg('img-mancozeb',-1)">‹</button>
-          <button class="prod-img-arrow next" onclick="slideImg('img-mancozeb',1)">›</button>
-          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-mancozeb',0)"></button><button class="prod-img-dot" onclick="goSlide('img-mancozeb',1)"></button></div>
-        </div>
-        <div class="prod-icon" style="display:none;">🍄</div>
-        <div class="prod-info">
-          <h4>Mancozeb 75% WP (Fungicide)</h4>
-          <p>Contact fungicide with protective action against late blight, leaf spot, and downy mildew diseases.</p>
-          <div class="prod-meta"><span>📦 500 g pack</span><span>🌱 Potato, Tomato, Grapes</span></div>
-        </div>
-        <div class="prod-footer">
-          <div class="prod-price">₹ 220 <span>/pack</span></div>
-          <div style="display:flex;gap:6px;">
-            <button class="prod-btn" onclick="addToEnquiry('Mancozeb 75% WP – ₹220/pack')">+ Enquire</button>
-            <button class="prod-btn prod-buy" onclick="quickBuy('Mancozeb 75% WP Fungicide','₹220/pack')">📧 Buy</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="prod-card" data-cat="pesticide">
-        <div class="prod-badge pesticide">Pesticide</div>
-        <div class="prod-img-wrap" id="img-glyph">
-          <img src="https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?w=500&q=85" alt="Glyphosate 41% herbicide liquid bottle" class="slide-visible"/>
-          <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=500&q=85" alt="Weed control orchard non-crop area" class="slide-hidden"/>
-          <button class="prod-img-arrow prev" onclick="slideImg('img-glyph',-1)">‹</button>
-          <button class="prod-img-arrow next" onclick="slideImg('img-glyph',1)">›</button>
-          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-glyph',0)"></button><button class="prod-img-dot" onclick="goSlide('img-glyph',1)"></button></div>
-        </div>
-        <div class="prod-icon" style="display:none;">🪲</div>
-        <div class="prod-info">
-          <h4>Glyphosate 41% SL (Herbicide)</h4>
-          <p>Non-selective post-emergent herbicide for total weed control in non-crop areas and plantation crops.</p>
-          <div class="prod-meta"><span>📦 1 litre bottle</span><span>🌱 Orchards, Wastelands</span></div>
-        </div>
-        <div class="prod-footer">
-          <div class="prod-price">₹ 360 <span>/litre</span></div>
-          <div style="display:flex;gap:6px;">
-            <button class="prod-btn" onclick="addToEnquiry('Glyphosate 41% SL – ₹360/litre')">+ Enquire</button>
-            <button class="prod-btn prod-buy" onclick="quickBuy('Glyphosate 41% SL Herbicide','₹360/litre')">📧 Buy</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="prod-card" data-cat="pesticide">
-        <div class="prod-badge pesticide">Pesticide</div>
-        <div class="prod-img-wrap" id="img-imida">
-          <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=500&q=85" alt="Imidacloprid 17.8% SL systemic insecticide bottle" class="slide-visible"/>
-          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=85" alt="Cotton vegetable sucking pest control spray" class="slide-hidden"/>
-          <button class="prod-img-arrow prev" onclick="slideImg('img-imida',-1)">‹</button>
-          <button class="prod-img-arrow next" onclick="slideImg('img-imida',1)">›</button>
-          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-imida',0)"></button><button class="prod-img-dot" onclick="goSlide('img-imida',1)"></button></div>
-        </div>
-        <div class="prod-icon" style="display:none;">🦟</div>
-        <div class="prod-info">
-          <h4>Imidacloprid 17.8% SL</h4>
-          <p>Systemic insecticide with excellent soil and foliar activity against sucking pests like aphids, whitefly, thrips.</p>
-          <div class="prod-meta"><span>📦 250 ml bottle</span><span>🌱 Cotton, Vegetables, Rice</span></div>
-        </div>
-        <div class="prod-footer">
-          <div class="prod-price">₹ 390 <span>/bottle</span></div>
-          <div style="display:flex;gap:6px;">
-            <button class="prod-btn" onclick="addToEnquiry('Imidacloprid 17.8% – ₹390/bottle')">+ Enquire</button>
-            <button class="prod-btn prod-buy" onclick="quickBuy('Imidacloprid 17.8% SL','₹390/bottle')">📧 Buy</button>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /prod-grid -->
-
-    <!-- ENQUIRY BASKET -->
-    <div class="enquiry-basket" id="enquiryBasket" style="display:none;">
-      <div class="basket-header">
-        <span>🛒 Enquiry List</span>
-        <button onclick="clearBasket()" style="background:none;border:none;color:var(--text-mid);cursor:pointer;font-size:12px;">Clear all</button>
-      </div>
-      <ul class="basket-list" id="basketList"></ul>
-      <a href="#contact" class="btn-primary" style="width:100%;justify-content:center;margin-top:14px;font-size:14px;" onclick="sendBasketToGmail()">📧 Send All to Gmail & Order Now</a>
-    </div>
-
-  </div>
+<div class="section-wrap" style="padding-bottom:100px;">
+<div class="section-eyebrow">Our Products</div>
+<h2 class="section-title">Fertilizers &amp; Pesticides Catalogue</h2>
+<p class="section-sub">Quality-tested products with transparent pricing. Bulk discounts available — call us for quotes above 10 bags.</p>
+<!-- TABS -->
+<div class="prod-tabs">
+<button class="prod-tab active" onclick="filterProducts('all',this)">🌾 All Products</button>
+<button class="prod-tab" onclick="filterProducts('organic',this)">🌿 Organic Fertilizers</button>
+<button class="prod-tab" onclick="filterProducts('inorganic',this)">⚗️ Inorganic Fertilizers</button>
+<button class="prod-tab" onclick="filterProducts('pesticide',this)">🛡️ Pesticides</button>
+</div>
+<!-- PRODUCT GRID -->
+<div class="prod-grid" id="prodGrid">
+<!-- ORGANIC FERTILIZERS -->
+<div class="prod-card" data-cat="organic">
+<div class="prod-badge organic">Organic</div>
+<div class="prod-icon">🌿</div>
+<div class="prod-info">
+<h4>Organic Compost (Vermicompost)</h4>
+<p>Enriches soil with natural humus, improves water retention and microbial activity. Best for all crops.</p>
+<div class="prod-meta"><span>📦 50 kg bag</span><span>🌱 All Crops</span></div>
+</div>
+<div class="prod-footer">
+<div class="prod-price">₹ 450 <span>/bag</span></div>
+<div style="display:flex;gap:6px;">
+<button class="prod-btn" onclick="addToEnquiry('Organic Compost – ₹450/bag')">+ Enquire</button>
+<button class="prod-btn prod-buy" onclick="quickBuy('Organic Compost (Vermicompost)','₹450/bag')">📧 Buy</button>
+</div>
+</div>
+</div>
+<div class="prod-card" data-cat="organic">
+<div class="prod-badge organic">Organic</div>
+<div class="prod-icon">🐄</div>
+<div class="prod-info">
+<h4>Neem Cake Fertilizer</h4>
+<p>Dual-action — feeds soil nitrogen while repelling soil-borne pests. Ideal for vegetables &amp; fruits.</p>
+<div class="prod-meta"><span>📦 25 kg bag</span><span>🌱 Vegetables, Fruits</span></div>
+</div>
+<div class="prod-footer">
+<div class="prod-price">₹ 320 <span>/bag</span></div>
+<div style="display:flex;gap:6px;">
+<button class="prod-btn" onclick="addToEnquiry('Neem Cake Fertilizer – ₹320/bag')">+ Enquire</button>
+<button class="prod-btn prod-buy" onclick="quickBuy('Neem Cake Fertilizer','₹320/bag')">📧 Buy</button>
+</div>
+</div>
+</div>
+<div class="prod-card" data-cat="organic">
+<div class="prod-badge organic">Organic</div>
+<div class="prod-icon">🦠</div>
+<div class="prod-info">
+<h4>Bio-Fertilizer (Rhizobium)</h4>
+<p>Live bacterial culture that fixes atmospheric nitrogen directly in legume roots. Reduces chemical usage by 30%.</p>
+<div class="prod-meta"><span>📦 1 kg pack</span><span>🌱 Soybean, Pulses</span></div>
+</div>
+<div class="prod-footer">
+<div class="prod-price">₹ 120 <span>/pack</span></div>
+<div style="display:flex;gap:6px;">
+<button class="prod-btn" onclick="addToEnquiry('Bio-Fertilizer Rhizobium – ₹120/pack')">+ Enquire</button>
+<button class="prod-btn prod-buy" onclick="quickBuy('Bio-Fertilizer (Rhizobium)','₹120/pack')">📧 Buy</button>
+</div>
+</div>
+</div>
+<div class="prod-card" data-cat="organic">
+<div class="prod-badge organic">Organic</div>
+<div class="prod-icon">🌊</div>
+<div class="prod-info">
+<h4>Seaweed Extract (Liquid)</h4>
+<p>Rich in natural growth hormones and micronutrients. Improves seed germination and stress tolerance.</p>
+<div class="prod-meta"><span>📦 1 litre bottle</span><span>🌱 All Crops</span></div>
+</div>
+<div class="prod-footer">
+<div class="prod-price">₹ 280 <span>/litre</span></div>
+<div style="display:flex;gap:6px;">
+<button class="prod-btn" onclick="addToEnquiry('Seaweed Extract – ₹280/litre')">+ Enquire</button>
+<button class="prod-btn prod-buy" onclick="quickBuy('Seaweed Extract (Liquid)','₹280/litre')">📧 Buy</button>
+</div>
+</div>
+</div>
+<!-- INORGANIC FERTILIZERS -->
+<div class="prod-card" data-cat="inorganic">
+<div class="prod-badge inorganic">Inorganic</div>
+<div class="prod-icon">🧪</div>
+<div class="prod-info">
+<h4>Urea (46% Nitrogen)</h4>
+<p>India's most widely used nitrogen fertilizer. Fast-acting, high-concentration formula for rapid green growth.</p>
+<div class="prod-meta"><span>📦 50 kg bag</span><span>🌱 Wheat, Rice, Maize</span></div>
+</div>
+<div class="prod-footer">
+<div class="prod-price">₹ 266 <span>/bag</span></div>
+<div style="display:flex;gap:6px;">
+<button class="prod-btn" onclick="addToEnquiry('Urea 46% – ₹266/bag')">+ Enquire</button>
+<button class="prod-btn prod-buy" onclick="quickBuy('Urea (46% Nitrogen)','₹266/bag')">📧 Buy</button>
+</div>
+</div>
+</div>
+<div class="prod-card" data-cat="inorganic">
+<div class="prod-badge inorganic">Inorganic</div>
+<div class="prod-icon">🔬</div>
+<div class="prod-info">
+<h4>DAP (Di-Ammonium Phosphate)</h4>
+<p>18% Nitrogen + 46% Phosphorus. Excellent basal dose for strong root development and early plant establishment.</p>
+<div class="prod-meta"><span>📦 50 kg bag</span><span>🌱 All Field Crops</span></div>
+</div>
+<div class="prod-footer">
+<div class="prod-price">₹ 1,350 <span>/bag</span></div>
+<div style="display:flex;gap:6px;">
+<button class="prod-btn" onclick="addToEnquiry('DAP Fertilizer – ₹1350/bag')">+ Enquire</button>
+<button class="prod-btn prod-buy" onclick="quickBuy('DAP (Di-Ammonium Phosphate)','₹1,350/bag')">📧 Buy</button>
+</div>
+</div>
+</div>
+<div class="prod-card" data-cat="inorganic">
+<div class="prod-badge inorganic">Inorganic</div>
+<div class="prod-icon">⚗️</div>
+<div class="prod-info">
+<h4>NPK 20-20-20 (Water Soluble)</h4>
+<p>Balanced equal-ratio NPK for fertigation and foliar spray. Ideal for high-value crops requiring precise nutrition.</p>
+<div class="prod-meta"><span>📦 25 kg bag</span><span>🌱 Vegetables, Cotton</span></div>
+</div>
+<div class="prod-footer">
+<div class="prod-price">₹ 1,100 <span>/bag</span></div>
+<div style="display:flex;gap:6px;">
+<button class="prod-btn" onclick="addToEnquiry('NPK 20-20-20 – ₹1100/bag')">+ Enquire</button>
+<button class="prod-btn prod-buy" onclick="quickBuy('NPK 20-20-20 Water Soluble','₹1,100/bag')">📧 Buy</button>
+</div>
+</div>
+</div>
+<div class="prod-card" data-cat="inorganic">
+<div class="prod-badge inorganic">Inorganic</div>
+<div class="prod-icon">✨</div>
+<div class="prod-info">
+<h4>Micronutrient Mix (Zn, Fe, Mn, B)</h4>
+<p>Complete micronutrient blend that corrects hidden deficiencies in soil. Prevents yellowing, improves grain fill.</p>
+<div class="prod-meta"><span>📦 5 kg pack</span><span>🌱 All Crops</span></div>
+</div>
+<div class="prod-footer">
+<div class="prod-price">₹ 650 <span>/pack</span></div>
+<div style="display:flex;gap:6px;">
+<button class="prod-btn" onclick="addToEnquiry('Micronutrient Mix – ₹650/pack')">+ Enquire</button>
+<button class="prod-btn prod-buy" onclick="quickBuy('Micronutrient Mix (Zn, Fe, Mn, B)','₹650/pack')">📧 Buy</button>
+</div>
+</div>
+</div>
+<div class="prod-card" data-cat="inorganic">
+<div class="prod-badge inorganic">Inorganic</div>
+<div class="prod-icon">🪨</div>
+<div class="prod-info">
+<h4>MOP (Muriate of Potash)</h4>
+<p>60% Potassium Oxide. Strengthens cell walls, improves drought resistance and quality of grains and fruits.</p>
+<div class="prod-meta"><span>📦 50 kg bag</span><span>🌱 Sugarcane, Potato</span></div>
+</div>
+<div class="prod-footer">
+<div class="prod-price">₹ 1,700 <span>/bag</span></div>
+<div style="display:flex;gap:6px;">
+<button class="prod-btn" onclick="addToEnquiry('MOP Potash – ₹1700/bag')">+ Enquire</button>
+<button class="prod-btn prod-buy" onclick="quickBuy('MOP (Muriate of Potash)','₹1,700/bag')">📧 Buy</button>
+</div>
+</div>
+</div>
+<!-- PESTICIDES -->
+<div class="prod-card" data-cat="pesticide">
+<div class="prod-badge pesticide">Pesticide</div>
+<div class="prod-icon">🐛</div>
+<div class="prod-info">
+<h4>Chlorpyrifos 20% EC (Insecticide)</h4>
+<p>Broad-spectrum insecticide effective against stem borers, white grubs, and termites in major field crops.</p>
+<div class="prod-meta"><span>📦 1 litre bottle</span><span>🌱 Rice, Wheat, Cotton</span></div>
+</div>
+<div class="prod-footer">
+<div class="prod-price">₹ 480 <span>/litre</span></div>
+<div style="display:flex;gap:6px;">
+<button class="prod-btn" onclick="addToEnquiry('Chlorpyrifos 20% EC – ₹480/litre')">+ Enquire</button>
+<button class="prod-btn prod-buy" onclick="quickBuy('Chlorpyrifos 20% EC Insecticide','₹480/litre')">📧 Buy</button>
+</div>
+</div>
+</div>
+<div class="prod-card" data-cat="pesticide">
+<div class="prod-badge pesticide">Pesticide</div>
+<div class="prod-icon">🍄</div>
+<div class="prod-info">
+<h4>Mancozeb 75% WP (Fungicide)</h4>
+<p>Contact fungicide with protective action against late blight, leaf spot, and downy mildew diseases.</p>
+<div class="prod-meta"><span>📦 500 g pack</span><span>🌱 Potato, Tomato, Grapes</span></div>
+</div>
+<div class="prod-footer">
+<div class="prod-price">₹ 220 <span>/pack</span></div>
+<div style="display:flex;gap:6px;">
+<button class="prod-btn" onclick="addToEnquiry('Mancozeb 75% WP – ₹220/pack')">+ Enquire</button>
+<button class="prod-btn prod-buy" onclick="quickBuy('Mancozeb 75% WP Fungicide','₹220/pack')">📧 Buy</button>
+</div>
+</div>
+</div>
+<div class="prod-card" data-cat="pesticide">
+<div class="prod-badge pesticide">Pesticide</div>
+<div class="prod-icon">🪲</div>
+<div class="prod-info">
+<h4>Glyphosate 41% SL (Herbicide)</h4>
+<p>Non-selective post-emergent herbicide for total weed control in non-crop areas and plantation crops.</p>
+<div class="prod-meta"><span>📦 1 litre bottle</span><span>🌱 Orchards, Wastelands</span></div>
+</div>
+<div class="prod-footer">
+<div class="prod-price">₹ 360 <span>/litre</span></div>
+<div style="display:flex;gap:6px;">
+<button class="prod-btn" onclick="addToEnquiry('Glyphosate 41% SL – ₹360/litre')">+ Enquire</button>
+<button class="prod-btn prod-buy" onclick="quickBuy('Glyphosate 41% SL Herbicide','₹360/litre')">📧 Buy</button>
+</div>
+</div>
+</div>
+<div class="prod-card" data-cat="pesticide">
+<div class="prod-badge pesticide">Pesticide</div>
+<div class="prod-icon">🦟</div>
+<div class="prod-info">
+<h4>Imidacloprid 17.8% SL</h4>
+<p>Systemic insecticide with excellent soil and foliar activity against sucking pests like aphids, whitefly, thrips.</p>
+<div class="prod-meta"><span>📦 250 ml bottle</span><span>🌱 Cotton, Vegetables, Rice</span></div>
+</div>
+<div class="prod-footer">
+<div class="prod-price">₹ 390 <span>/bottle</span></div>
+<div style="display:flex;gap:6px;">
+<button class="prod-btn" onclick="addToEnquiry('Imidacloprid 17.8% – ₹390/bottle')">+ Enquire</button>
+<button class="prod-btn prod-buy" onclick="quickBuy('Imidacloprid 17.8% SL','₹390/bottle')">📧 Buy</button>
+</div>
+</div>
+</div>
+</div><!-- /prod-grid -->
+<!-- ENQUIRY BASKET -->
+<div class="enquiry-basket" id="enquiryBasket" style="display:none;">
+<div class="basket-header">
+<span>🛒 Enquiry List</span>
+<button onclick="clearBasket()" style="background:none;border:none;color:var(--text-mid);cursor:pointer;font-size:12px;">Clear all</button>
+</div>
+<ul class="basket-list" id="basketList"></ul>
+<a class="btn-primary" href="#contact" onclick="sendBasketToGmail()" style="width:100%;justify-content:center;margin-top:14px;font-size:14px;">📧 Send All to Gmail &amp; Order Now</a>
+</div>
+</div>
 </section>
-
 <!-- ─── TESTIMONIAL ─── -->
 <section class="testimonial">
-  <div class="section-wrap">
-    <div class="testimonial-inner">
-      <div class="section-eyebrow">Farmer Stories</div>
-      <div class="stars">★★★★★</div>
-      <blockquote class="testimonial-quote">
+<div class="section-wrap">
+<div class="testimonial-inner">
+<div class="section-eyebrow">Farmer Stories</div>
+<div class="stars">★★★★★</div>
+<blockquote class="testimonial-quote">
         "I switched to Adarsh Agro's organic fertilizer two seasons ago. My wheat yield went up by nearly 35% and the soil is healthier than it's ever been. Their team helped me choose exactly what my land needed."
       </blockquote>
-      <div class="testimonial-author">
-        <div class="author-avatar">👨‍🌾</div>
-        <div class="author-info">
-          <div class="name">Ramesh Kumar Patel</div>
-          <div class="location">📍 Madhya Pradesh — Wheat & Soybean Farmer, 12 acres</div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="testimonial-author">
+<div class="author-avatar">👨‍🌾</div>
+<div class="author-info">
+<div class="name">Ramesh Kumar Patel</div>
+<div class="location">📍 Madhya Pradesh — Wheat &amp; Soybean Farmer, 12 acres</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
 <!-- ─── CONTACT / CTA ─── -->
 <section class="contact" id="contact">
-  <div class="contact-grid">
-    <div class="contact-left">
-      <div class="section-eyebrow" style="color:var(--leaf-green)">Get In Touch</div>
-      <h2 class="section-title">Ready to Grow Your Best Season Yet?</h2>
-      <p class="section-sub">Fill in the form and our agri specialist will reach out within 24 hours with the right products for your farm.</p>
-      <div class="contact-details">
-        <div class="contact-item">
-          <div class="contact-item-icon">📞</div>
-          <div>+91 98765 43210 &nbsp;|&nbsp; +91 87654 32109</div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">✉️</div>
-          <div><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c4a6b6a5aeb6a5aeb7adaaa3acb7abaaa3a5b6a5f7f484a3a9a5ada8eaa7aba9">[email&#160;protected]</a></div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">📍</div>
-          <div>Main Market Road, Kisan Nagar, Rajasthan</div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">🕒</div>
-          <div>Mon – Sat: 8 AM – 7 PM &nbsp;|&nbsp; Sun: 9 AM – 2 PM</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="contact-form">
-      <h3>Order / Enquiry Form</h3>
-      <p class="form-sub">Fill the form — your order will be sent directly to our Gmail inbox instantly. 📧</p>
-      <form id="orderForm" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <div class="form-group">
-            <label>Your Name *</label>
-            <input type="text" id="f-name" placeholder="Ramesh Kumar" required/>
-          </div>
-          <div class="form-group">
-            <label>Phone Number *</label>
-            <input type="tel" id="f-phone" placeholder="+91 98765 43210" required/>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Village / Town *</label>
-          <input type="text" id="f-village" placeholder="e.g. Kisan Nagar, Rajasthan" required/>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Crop Type</label>
-            <select id="f-crop">
-              <option value="">Select your crop...</option>
-              <option>Wheat</option>
-              <option>Rice / Paddy</option>
-              <option>Cotton</option>
-              <option>Sugarcane</option>
-              <option>Vegetables</option>
-              <option>Maize / Corn</option>
-              <option>Soybean</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Farm Size (Acres)</label>
-            <input type="text" id="f-farm" placeholder="e.g. 5 acres"/>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Products Required *</label>
-          <textarea id="f-products" rows="3" placeholder="e.g. 2 bags Urea, 1 bag DAP, 1 bottle Chlorpyrifos..." required></textarea>
-        </div>
-        <div class="form-group">
-          <label>Additional Message</label>
-          <textarea id="f-msg" placeholder="Any questions about soil type, dosage, or delivery..."></textarea>
-        </div>
-        <button type="submit" class="form-submit" id="submit-btn">
+<div class="contact-grid">
+<div class="contact-left">
+<div class="section-eyebrow" style="color:var(--leaf-green)">Get In Touch</div>
+<h2 class="section-title">Ready to Grow Your Best Season Yet?</h2>
+<p class="section-sub">Fill in the form and our agri specialist will reach out within 24 hours with the right products for your farm.</p>
+<div class="contact-details">
+<div class="contact-item">
+<div class="contact-item-icon">📞</div>
+<div>+91 98765 43210  |  +91 87654 32109</div>
+</div>
+<div class="contact-item">
+<div class="contact-item-icon">✉️</div>
+<div><a class="__cf_email__" data-cfemail="c4a6b6a5aeb6a5aeb7adaaa3acb7abaaa3a5b6a5f7f484a3a9a5ada8eaa7aba9" href="/cdn-cgi/l/email-protection">[email protected]</a></div>
+</div>
+<div class="contact-item">
+<div class="contact-item-icon">📍</div>
+<div>Main Market Road, Kisan Nagar, Rajasthan</div>
+</div>
+<div class="contact-item">
+<div class="contact-item-icon">🕒</div>
+<div>Mon – Sat: 8 AM – 7 PM  |  Sun: 9 AM – 2 PM</div>
+</div>
+</div>
+</div>
+<div class="contact-form">
+<h3>Order / Enquiry Form</h3>
+<p class="form-sub">Fill the form — your order will be sent directly to our Gmail inbox instantly. 📧</p>
+<form id="orderForm" onsubmit="handleSubmit(event)">
+<div class="form-row">
+<div class="form-group">
+<label>Your Name *</label>
+<input id="f-name" placeholder="Ramesh Kumar" required="" type="text"/>
+</div>
+<div class="form-group">
+<label>Phone Number *</label>
+<input id="f-phone" placeholder="+91 98765 43210" required="" type="tel"/>
+</div>
+</div>
+<div class="form-group">
+<label>Village / Town *</label>
+<input id="f-village" placeholder="e.g. Kisan Nagar, Rajasthan" required="" type="text"/>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label>Crop Type</label>
+<select id="f-crop">
+<option value="">Select your crop...</option>
+<option>Wheat</option>
+<option>Rice / Paddy</option>
+<option>Cotton</option>
+<option>Sugarcane</option>
+<option>Vegetables</option>
+<option>Maize / Corn</option>
+<option>Soybean</option>
+<option>Other</option>
+</select>
+</div>
+<div class="form-group">
+<label>Farm Size (Acres)</label>
+<input id="f-farm" placeholder="e.g. 5 acres" type="text"/>
+</div>
+</div>
+<div class="form-group">
+<label>Products Required *</label>
+<textarea id="f-products" placeholder="e.g. 2 bags Urea, 1 bag DAP, 1 bottle Chlorpyrifos..." required="" rows="3"></textarea>
+</div>
+<div class="form-group">
+<label>Additional Message</label>
+<textarea id="f-msg" placeholder="Any questions about soil type, dosage, or delivery..."></textarea>
+</div>
+<button class="form-submit" id="submit-btn" type="submit">
           📧 Send Order to Gmail Now
         </button>
-        <p style="font-size:11px;color:var(--text-mid);text-align:center;margin-top:10px;">
+<p style="font-size:11px;color:var(--text-mid);text-align:center;margin-top:10px;">
           ✅ Your order opens Gmail compose — just click Send. We reply within 2 hours.
         </p>
-      </form>
-    </div>
-  </div>
+</form>
+</div>
+</div>
 </section>
-
 <!-- ─── ORDER LIST ─── -->
 <section id="order-list" style="background:var(--cream);">
-  <div class="section-wrap" style="padding-bottom:100px;">
-    <div class="section-eyebrow">Order Tracker</div>
-    <h2 class="section-title">My Order List</h2>
-    <p class="section-sub">Add products to your cart below, review your order, then send it directly to our Gmail in one click.</p>
-
-    <!-- CART BUILDER -->
-    <div class="ol-builder">
-      <div class="ol-builder-row">
-        <div class="ol-select-wrap">
-          <label class="ol-label">Select Product</label>
-          <select id="ol-product">
-            <option value="">-- Choose a product --</option>
-            <optgroup label="🌿 Organic Fertilizers">
-              <option data-price="450" data-unit="bag">Organic Compost (Vermicompost) – ₹450/bag</option>
-              <option data-price="320" data-unit="bag">Neem Cake Fertilizer – ₹320/bag</option>
-              <option data-price="120" data-unit="pack">Bio-Fertilizer Rhizobium – ₹120/pack</option>
-              <option data-price="280" data-unit="litre">Seaweed Extract – ₹280/litre</option>
-            </optgroup>
-            <optgroup label="⚗️ Inorganic Fertilizers">
-              <option data-price="266" data-unit="bag">Urea 46% Nitrogen – ₹266/bag</option>
-              <option data-price="1350" data-unit="bag">DAP Di-Ammonium Phosphate – ₹1,350/bag</option>
-              <option data-price="1100" data-unit="bag">NPK 20-20-20 Water Soluble – ₹1,100/bag</option>
-              <option data-price="650" data-unit="pack">Micronutrient Mix (Zn,Fe,Mn,B) – ₹650/pack</option>
-              <option data-price="1700" data-unit="bag">MOP Muriate of Potash – ₹1,700/bag</option>
-            </optgroup>
-            <optgroup label="🛡️ Pesticides">
-              <option data-price="480" data-unit="litre">Chlorpyrifos 20% EC Insecticide – ₹480/litre</option>
-              <option data-price="220" data-unit="pack">Mancozeb 75% WP Fungicide – ₹220/pack</option>
-              <option data-price="360" data-unit="litre">Glyphosate 41% SL Herbicide – ₹360/litre</option>
-              <option data-price="390" data-unit="bottle">Imidacloprid 17.8% SL – ₹390/bottle</option>
-            </optgroup>
-          </select>
-        </div>
-        <div class="ol-qty-wrap">
-          <label class="ol-label">Quantity</label>
-          <div class="ol-qty-row">
-            <button type="button" onclick="changeQty(-1)">−</button>
-            <input type="number" id="ol-qty" value="1" min="1" max="999"/>
-            <button type="button" onclick="changeQty(1)">+</button>
-          </div>
-        </div>
-        <button class="ol-add-btn" onclick="addOrderItem()">＋ Add to Order</button>
-      </div>
-    </div>
-
-    <!-- ORDER TABLE -->
-    <div class="ol-table-wrap" id="ol-empty" style="display:block;">
-      <div class="ol-empty-state">
-        <div class="ol-empty-icon">🛒</div>
-        <p>Your order list is empty.<br/>Select a product above and click <strong>Add to Order</strong>.</p>
-      </div>
-    </div>
-
-    <div class="ol-table-wrap" id="ol-filled" style="display:none;">
-      <table class="ol-table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Product</th>
-            <th>Unit Price</th>
-            <th>Qty</th>
-            <th>Subtotal</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody id="ol-tbody"></tbody>
-        <tfoot>
-          <tr class="ol-total-row">
-            <td colspan="4" style="text-align:right;font-weight:600;">Total Amount</td>
-            <td id="ol-total" style="font-weight:700;color:var(--deep-forest);font-family:'Playfair Display',serif;font-size:18px;">₹0</td>
-            <td></td>
-          </tr>
-        </tfoot>
-      </table>
-
-      <!-- Farmer info mini form -->
-      <div class="ol-farmer-info">
-        <h4>Your Details <span style="font-size:12px;font-weight:400;color:var(--text-mid);">(required to send order)</span></h4>
-        <div class="ol-info-row">
-          <div class="form-group">
-            <label>Your Name *</label>
-            <input type="text" id="ol-name" placeholder="Ramesh Kumar" required/>
-          </div>
-          <div class="form-group">
-            <label>Phone Number *</label>
-            <input type="tel" id="ol-phone" placeholder="+91 98765 43210" required/>
-          </div>
-          <div class="form-group">
-            <label>Village / Town</label>
-            <input type="text" id="ol-village" placeholder="e.g. Kisan Nagar, Rajasthan"/>
-          </div>
-        </div>
-      </div>
-
-      <!-- Action buttons -->
-      <div class="ol-actions">
-        <button class="ol-clear-btn" onclick="clearOrder()">🗑 Clear All</button>
-        <button class="ol-send-btn" onclick="sendOrderToGmail()">📧 Send Order to Gmail</button>
-        <button class="ol-print-btn" onclick="printOrder()">🖨 Print Order</button>
-      </div>
-    </div>
-
-  </div>
+<div class="section-wrap" style="padding-bottom:100px;">
+<div class="section-eyebrow">Order Tracker</div>
+<h2 class="section-title">My Order List</h2>
+<p class="section-sub">Add products to your cart below, review your order, then send it directly to our Gmail in one click.</p>
+<!-- CART BUILDER -->
+<div class="ol-builder">
+<div class="ol-builder-row">
+<div class="ol-select-wrap">
+<label class="ol-label">Select Product</label>
+<select id="ol-product">
+<option value="">-- Choose a product --</option>
+<optgroup label="🌿 Organic Fertilizers">
+<option data-price="450" data-unit="bag">Organic Compost (Vermicompost) – ₹450/bag</option>
+<option data-price="320" data-unit="bag">Neem Cake Fertilizer – ₹320/bag</option>
+<option data-price="120" data-unit="pack">Bio-Fertilizer Rhizobium – ₹120/pack</option>
+<option data-price="280" data-unit="litre">Seaweed Extract – ₹280/litre</option>
+</optgroup>
+<optgroup label="⚗️ Inorganic Fertilizers">
+<option data-price="266" data-unit="bag">Urea 46% Nitrogen – ₹266/bag</option>
+<option data-price="1350" data-unit="bag">DAP Di-Ammonium Phosphate – ₹1,350/bag</option>
+<option data-price="1100" data-unit="bag">NPK 20-20-20 Water Soluble – ₹1,100/bag</option>
+<option data-price="650" data-unit="pack">Micronutrient Mix (Zn,Fe,Mn,B) – ₹650/pack</option>
+<option data-price="1700" data-unit="bag">MOP Muriate of Potash – ₹1,700/bag</option>
+</optgroup>
+<optgroup label="🛡️ Pesticides">
+<option data-price="480" data-unit="litre">Chlorpyrifos 20% EC Insecticide – ₹480/litre</option>
+<option data-price="220" data-unit="pack">Mancozeb 75% WP Fungicide – ₹220/pack</option>
+<option data-price="360" data-unit="litre">Glyphosate 41% SL Herbicide – ₹360/litre</option>
+<option data-price="390" data-unit="bottle">Imidacloprid 17.8% SL – ₹390/bottle</option>
+</optgroup>
+</select>
+</div>
+<div class="ol-qty-wrap">
+<label class="ol-label">Quantity</label>
+<div class="ol-qty-row">
+<button onclick="changeQty(-1)" type="button">−</button>
+<input id="ol-qty" max="999" min="1" type="number" value="1"/>
+<button onclick="changeQty(1)" type="button">+</button>
+</div>
+</div>
+<button class="ol-add-btn" onclick="addOrderItem()">＋ Add to Order</button>
+</div>
+</div>
+<!-- ORDER TABLE -->
+<div class="ol-table-wrap" id="ol-empty" style="display:block;">
+<div class="ol-empty-state">
+<div class="ol-empty-icon">🛒</div>
+<p>Your order list is empty.<br/>Select a product above and click <strong>Add to Order</strong>.</p>
+</div>
+</div>
+<div class="ol-table-wrap" id="ol-filled" style="display:none;">
+<table class="ol-table">
+<thead>
+<tr>
+<th>#</th>
+<th>Product</th>
+<th>Unit Price</th>
+<th>Qty</th>
+<th>Subtotal</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody id="ol-tbody"></tbody>
+<tfoot>
+<tr class="ol-total-row">
+<td colspan="4" style="text-align:right;font-weight:600;">Total Amount</td>
+<td id="ol-total" style="font-weight:700;color:var(--deep-forest);font-family:'Playfair Display',serif;font-size:18px;">₹0</td>
+<td></td>
+</tr>
+</tfoot>
+</table>
+<!-- Farmer info mini form -->
+<div class="ol-farmer-info">
+<h4>Your Details <span style="font-size:12px;font-weight:400;color:var(--text-mid);">(required to send order)</span></h4>
+<div class="ol-info-row">
+<div class="form-group">
+<label>Your Name *</label>
+<input id="ol-name" placeholder="Ramesh Kumar" required="" type="text"/>
+</div>
+<div class="form-group">
+<label>Phone Number *</label>
+<input id="ol-phone" placeholder="+91 98765 43210" required="" type="tel"/>
+</div>
+<div class="form-group">
+<label>Village / Town</label>
+<input id="ol-village" placeholder="e.g. Kisan Nagar, Rajasthan" type="text"/>
+</div>
+</div>
+</div>
+<!-- Action buttons -->
+<div class="ol-actions">
+<button class="ol-clear-btn" onclick="clearOrder()">🗑 Clear All</button>
+<button class="ol-send-btn" onclick="sendOrderToGmail()">📧 Send Order to Gmail</button>
+<button class="ol-print-btn" onclick="printOrder()">🖨 Print Order</button>
+</div>
+</div>
+</div>
 </section>
-
 <!-- ─── FOOTER ─── -->
 <footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-logo">Adarsh <span>Agro</span> Chemicals</div>
-      <div class="footer-tagline">Growing India, one farm at a time 🌱</div>
-    </div>
-    <ul class="footer-links">
-      <li><a href="#benefits">Benefits</a></li>
-      <li><a href="#how-it-works">How It Works</a></li>
-      <li><a href="#products">Products</a></li>
-      <li><a href="#order-list">Order List</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="footer-copy">
+<div class="footer-inner">
+<div>
+<div class="footer-logo">Adarsh <span>Agro</span> Chemicals</div>
+<div class="footer-tagline">Growing India, one farm at a time 🌱</div>
+</div>
+<ul class="footer-links">
+<li><a href="#benefits">Benefits</a></li>
+<li><a href="#how-it-works">How It Works</a></li>
+<li><a href="#products">Products</a></li>
+<li><a href="#order-list">Order List</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<div class="footer-copy">
       © 2025 Adarsh Agro Chemicals<br/>
       All rights reserved.
     </div>
-  </div>
-</footer>
-
-<!-- ─── CHATBOT TOGGLE BUTTON ─── -->
-<button id="chatbot-toggle" onclick="toggleChatbot()" title="Chat with us">
-  🌿
-  <div id="chatbot-badge">1</div>
-</button>
-
-<!-- ─── CHATBOT BOX ─── -->
-<div id="chatbot-box">
-  <div class="cb-header">
-    <div class="cb-avatar">🌾</div>
-    <div class="cb-header-info">
-      <div class="cb-name">Adarsh Agro Assistant</div>
-      <div class="cb-status"><div class="cb-status-dot"></div> Online – Ready to help</div>
-    </div>
-    <!-- Click-to-Call button -->
-    <button id="cb-call-btn" onclick="callShop()" title="Shop pe call karein">
-      <div class="cb-call-pulse"></div>
-      📞 Call Now
-    </button>
-    <button class="cb-close" onclick="toggleChatbot()">✕</button>
-  </div>
-
-  <div class="cb-messages" id="cb-messages"></div>
-
-  <div class="cb-quick-btns" id="cb-quick-btns">
-    <button class="cb-quick-btn" onclick="sendQuick('Products ki list batao')">📋 Products List</button>
-    <button class="cb-quick-btn" onclick="sendQuick('Urea ke baare mein batao')">🧪 Urea Info</button>
-    <button class="cb-quick-btn" onclick="sendQuick('Order karna hai')">🛒 Order Karna Hai</button>
-    <button class="cb-quick-btn" onclick="sendQuick('Kaunsa fertilizer best hai wheat ke liye?')">🌾 Wheat Tips</button>
-  </div>
-
-  <div class="cb-input-row">
-    <input type="text" id="cb-input" placeholder="Koi bhi sawaal poochhen..." onkeydown="if(event.key==='Enter')sendChatMsg()"/>
-    <button id="cb-send" onclick="sendChatMsg()">➤</button>
-  </div>
 </div>
-
+</footer>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const OWNER_EMAIL = 'brajrajsinghsongara30@gmail.com';
-  const ANTHROPIC_API_KEY = 'YOUR_API_KEY_HERE'; // ← Yahan apni Anthropic API key daalen
 
   // ── Product filter tabs ──
   function filterProducts(cat, btn) {
@@ -2853,385 +2301,79 @@
     el.style.transition = 'opacity .6s ease, transform .6s ease';
     observer.observe(el);
   });
+</script>
 
-  // ── IMAGE SLIDER ──
-  function slideImg(wrapId, dir) {
-    const wrap = document.getElementById(wrapId);
-    const imgs = wrap.querySelectorAll('img');
-    const dots = wrap.querySelectorAll('.prod-img-dot');
-    let cur = Array.from(imgs).findIndex(i => i.classList.contains('slide-visible'));
-    imgs[cur].classList.replace('slide-visible','slide-hidden');
-    dots[cur].classList.remove('active');
-    cur = (cur + dir + imgs.length) % imgs.length;
-    imgs[cur].classList.replace('slide-hidden','slide-visible');
-    dots[cur].classList.add('active');
+<!-- CHATBOT -->
+<div id="chatbot" style="position:fixed;bottom:20px;right:20px;z-index:9999;">
+<button onclick="toggleChat()" style="background:#2D6A4F;color:#fff;border:none;padding:12px;border-radius:50%;">💬</button>
+<div id="chatBox" style="display:none;width:300px;background:#fff;border-radius:10px;padding:15px;margin-top:10px;box-shadow:0 10px 30px rgba(0,0,0,0.2);">
+<h4>🤖 Order Assistant</h4>
+<div id="chatMessages" style="height:150px;overflow:auto;font-size:13px;margin-bottom:10px;">
+<p>👋 Hello! What product do you want?</p>
+</div>
+<input id="userInput" placeholder="Type here..." style="width:100%;padding:8px;border:1px solid #ccc;border-radius:6px;"/>
+<button onclick="sendMessage()" style="margin-top:8px;width:100%;background:#C9A84C;border:none;padding:8px;border-radius:6px;">
+      Send
+    </button>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+(function(){
+  emailjs.init("YOUR_PUBLIC_KEY");
+})();
+
+let step = 0;
+let order = {};
+
+function toggleChat(){
+  let box=document.getElementById("chatBox");
+  box.style.display = box.style.display==="none"?"block":"none";
+}
+
+function sendMessage(){
+  let input = document.getElementById("userInput");
+  let msg = input.value;
+  let chat = document.getElementById("chatMessages");
+
+  chat.innerHTML += "<p>👨‍🌾: "+msg+"</p>";
+
+  if(step === 0){
+    order.product = msg;
+    chat.innerHTML += "<p>🤖: Quantity?</p>";
+    step++;
+  }
+  else if(step === 1){
+    order.qty = msg;
+    chat.innerHTML += "<p>🤖: Your Name?</p>";
+    step++;
+  }
+  else if(step === 2){
+    order.name = msg;
+    chat.innerHTML += "<p>🤖: Phone Number?</p>";
+    step++;
+  }
+  else if(step === 3){
+    order.phone = msg;
+    sendOrder();
+    chat.innerHTML += "<p>✅ Order placed! Check your email.</p>";
+    step = 0;
   }
 
-  function goSlide(wrapId, idx) {
-    const wrap = document.getElementById(wrapId);
-    const imgs = wrap.querySelectorAll('img');
-    const dots = wrap.querySelectorAll('.prod-img-dot');
-    imgs.forEach((img,i) => {
-      img.classList.toggle('slide-visible', i===idx);
-      img.classList.toggle('slide-hidden', i!==idx);
-    });
-    dots.forEach((d,i) => d.classList.toggle('active', i===idx));
-  }
+  input.value="";
+}
 
-  // Auto-slide every 4 seconds
-  const sliderIds = ['img-vermicompost','img-neem','img-biofert','img-seaweed','img-urea','img-dap','img-npk','img-micro','img-mop','img-chlor','img-mancozeb','img-glyph','img-imida'];
-  sliderIds.forEach(id => {
-    setInterval(() => { if(document.getElementById(id)) slideImg(id, 1); }, 4000 + Math.random()*2000);
+function sendOrder(){
+  emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",{
+    product: order.product,
+    quantity: order.qty,
+    name: order.name,
+    phone: order.phone
+  }).then(function(){
+    alert("Order sent!");
   });
-
-  // ── CHATBOT ──
-  let chatOpen = false;
-  let cbHistory = [];
-  let awaitingOrderDetails = false;
-  let pendingOrderProduct = '';
-
-  const PRODUCT_CATALOG = `
-Adarsh Agro Chemicals – Product Catalog:
-
-ORGANIC FERTILIZERS:
-1. Organic Compost (Vermicompost) – ₹450/50kg bag – Enriches soil, improves water retention. Best for all crops.
-2. Neem Cake Fertilizer – ₹320/25kg bag – Dual-action: feeds nitrogen + repels soil pests. Best for vegetables & fruits.
-3. Bio-Fertilizer (Rhizobium) – ₹120/1kg pack – Fixes atmospheric nitrogen in legume roots. Reduces chemical use by 30%. Best for soybean, pulses.
-4. Seaweed Extract (Liquid) – ₹280/1 litre – Rich in growth hormones & micronutrients. Improves germination & stress tolerance. All crops.
-
-INORGANIC FERTILIZERS:
-5. Urea (46% Nitrogen) – ₹266/50kg bag – India's most-used N fertilizer. Fast-acting, rapid green growth. Wheat, rice, maize.
-6. DAP (Di-Ammonium Phosphate) – ₹1,350/50kg bag – 18%N + 46%P. Strong root development. All field crops.
-7. NPK 20-20-20 Water Soluble – ₹1,100/25kg bag – Balanced NPK for fertigation/foliar spray. Vegetables, cotton.
-8. Micronutrient Mix (Zn, Fe, Mn, B) – ₹650/5kg pack – Corrects deficiencies, prevents yellowing, improves grain fill. All crops.
-9. MOP (Muriate of Potash) – ₹1,700/50kg bag – 60% K₂O. Strengthens cell walls, drought resistance. Sugarcane, potato.
-
-PESTICIDES:
-10. Chlorpyrifos 20% EC (Insecticide) – ₹480/litre – Broad-spectrum against stem borers, white grubs, termites. Rice, wheat, cotton.
-11. Mancozeb 75% WP (Fungicide) – ₹220/500g pack – Contact fungicide against late blight, leaf spot, downy mildew. Potato, tomato, grapes.
-12. Glyphosate 41% SL (Herbicide) – ₹360/litre – Non-selective weed killer for non-crop areas, orchards.
-13. Imidacloprid 17.8% SL – ₹390/250ml – Systemic insecticide against aphids, whitefly, thrips. Cotton, vegetables, rice.
-
-Shop email: brajrajsinghsongara30@gmail.com
-Phone: +91 98765 43210
-Location: Main Market Road, Kisan Nagar, Rajasthan
-Hours: Mon–Sat 8AM–7PM, Sun 9AM–2PM
-  `;
-
-  function toggleChatbot() {
-    chatOpen = !chatOpen;
-    document.getElementById('chatbot-box').classList.toggle('open', chatOpen);
-    document.getElementById('chatbot-badge').style.display = chatOpen ? 'none' : 'flex';
-    if (chatOpen && cbHistory.length === 0) {
-      setTimeout(() => addBotMsg('🙏 Namaste! Main Adarsh Agro Chemicals ka AI assistant hun.\n\nMain aapki help kar sakta hun:\n• 🌿 Products ki jankari\n• 💰 Prices check karna\n• 🌾 Fasal ke liye best product suggest karna\n• 📧 Order email karna\n\nAap Hindi ya English mein poochh sakte hain! Kya chahiye aapko?'), 300);
-    }
-  }
-
-  // ── Click-to-Call ──
-  function callShop() {
-    window.location.href = 'tel:+919876543210';
-  }
-
-
-  function addBotMsg(text, html) {
-    const msgs = document.getElementById('cb-messages');
-    const div = document.createElement('div');
-    div.className = 'cb-msg bot';
-    let content;
-    if (html) {
-      content = html;
-    } else {
-      // If text contains HTML tags (from localFallbackReply), render as-is
-      // Otherwise escape and convert newlines
-      const hasHtml = /<[a-z][\s\S]*>/i.test(text);
-      if (hasHtml) {
-        content = text.trim();
-      } else {
-        content = escHtml(text).replace(/\n{3,}/g, '\n\n').replace(/\n/g, '<br>');
-      }
-    }
-    // Remove leading/trailing <br> tags
-    content = content.replace(/^(<br\s*\/?>)+|(<br\s*\/?>)+$/gi, '').trim();
-    div.innerHTML = `<div class="cb-msg-avatar">🌾</div><div class="cb-msg-bubble">${content}</div>`;
-    msgs.appendChild(div);
-    msgs.scrollTop = msgs.scrollHeight;
-  }
-
-  function addUserMsg(text) {
-    const msgs = document.getElementById('cb-messages');
-    const div = document.createElement('div');
-    div.className = 'cb-msg user';
-    div.innerHTML = `<div class="cb-msg-bubble">${escHtml(text)}</div><div class="cb-msg-avatar" style="background:var(--leaf-green);">👤</div>`;
-    msgs.appendChild(div);
-    msgs.scrollTop = msgs.scrollHeight;
-  }
-
-  function showTyping() {
-    const msgs = document.getElementById('cb-messages');
-    const div = document.createElement('div');
-    div.className = 'cb-msg bot'; div.id = 'cb-typing-row';
-    div.innerHTML = `<div class="cb-msg-avatar">🌾</div><div class="cb-typing"><span></span><span></span><span></span></div>`;
-    msgs.appendChild(div);
-    msgs.scrollTop = msgs.scrollHeight;
-  }
-
-  function removeTyping() {
-    const el = document.getElementById('cb-typing-row');
-    if (el) el.remove();
-  }
-
-  function escHtml(t) { return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-  function sendQuick(text) {
-    document.getElementById('cb-input').value = text;
-    sendChatMsg();
-  }
-
-  function sendChatMsg() {
-    const inp = document.getElementById('cb-input');
-    const text = inp.value.trim();
-    if (!text) return;
-    inp.value = '';
-    addUserMsg(text);
-
-    const orderKeywords = ['order','khareedna','khareed','buy','book','lena','chahiye','order karna','purchase','mangwana'];
-    const isOrder = orderKeywords.some(k => text.toLowerCase().includes(k));
-
-    if (awaitingOrderDetails) { handleOrderDetails(text); return; }
-
-    if (isOrder) {
-      awaitingOrderDetails = true;
-      pendingOrderProduct = text;
-      showTyping();
-      setTimeout(() => { removeTyping(); showOrderForm(); }, 800);
-      return;
-    }
-
-    cbHistory.push({ role: 'user', content: text });
-    showTyping();
-
-    if (!ANTHROPIC_API_KEY || ANTHROPIC_API_KEY === 'YOUR_API_KEY_HERE') {
-      removeTyping();
-      // Fallback: keyword-based local responses when no API key
-      const reply = localFallbackReply(text);
-      cbHistory.push({ role: 'assistant', content: reply });
-      addBotMsg(reply);
-      return;
-    }
-
-    fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true'
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        system: `Tum Adarsh Agro Chemicals ke friendly AI assistant ho. Sirf agri products ke baare mein baat karo. Niche product catalog hai, usi se jawab do. Hindi-Hinglish mein jawab do (mix kar sakte ho). Short aur helpful raho. Emojis use karo. Agar user order karna chahta hai to unhe bolo "order karna hai" likhne ko.\n\n${PRODUCT_CATALOG}`,
-        messages: cbHistory.slice(-10)
-      })
-    })
-    .then(r => r.json())
-    .then(data => {
-      removeTyping();
-      const reply = (data.content && data.content[0] && data.content[0].text) ? data.content[0].text.trim() : localFallbackReply(text);
-      cbHistory.push({ role: 'assistant', content: reply });
-      addBotMsg(reply);
-    })
-    .catch(() => {
-      removeTyping();
-      addBotMsg(localFallbackReply(text));
-    });
-  }
-
-  function showOrderForm() {
-    const msgs = document.getElementById('cb-messages');
-    const div = document.createElement('div');
-    div.className = 'cb-msg bot';
-    // Clear any previous product text from input box
-    const cleanProduct = pendingOrderProduct.replace(/order|khareed|buy|book|lena|chahiye|karna|purchase|mangwana/gi,'').trim();
-    div.innerHTML = `
-      <div class="cb-msg-avatar">🌾</div>
-      <div class="cb-msg-bubble" style="max-width:95%;padding:0;background:none;border:none;">
-        <div style="margin-bottom:8px;font-size:13.5px;">📝 <strong>Order Details bharein:</strong></div>
-        <div class="cb-order-form" id="cb-order-form-wrap">
-          <input type="text"  id="cb-o-name"    placeholder="Aapka naam *" />
-          <input type="tel"   id="cb-o-phone"   placeholder="Phone number * (e.g. 9876543210)" />
-          <input type="text"  id="cb-o-village" placeholder="Gaon / Shahar (optional)" />
-          <input type="text"  id="cb-o-product" placeholder="Product aur quantity *" value="${cleanProduct}" />
-          <input type="email" id="cb-o-email"   placeholder="Aapka Gmail (confirmation ke liye)" />
-          <button class="cb-order-submit" onclick="submitChatbotOrder()">📧 Order Gmail pe Bhejo</button>
-        </div>
-      </div>`;
-    msgs.appendChild(div);
-    msgs.scrollTop = msgs.scrollHeight;
-    // Focus on name field
-    setTimeout(() => { const el = document.getElementById('cb-o-name'); if(el) el.focus(); }, 100);
-  }
-
-  function handleOrderDetails(text) {
-    // User typed something while awaiting order — just nudge them to use the form
-    awaitingOrderDetails = false;
-    addBotMsg('Upar diye form mein details bharein aur <strong>"Order Gmail pe Bhejo"</strong> button dabayein! 👆');
-  }
-
-  // ── Local fallback replies when no API key ──
-  function localFallbackReply(text) {
-    const t = text.toLowerCase();
-    if (t.includes('urea'))       return '🧪 <strong>Urea (46% Nitrogen)</strong><br>💰 Price: ₹266/50kg bag<br>🌾 Crops: Wheat, Rice, Maize<br>✅ Fast-acting nitrogen fertilizer for rapid green growth.<br><br>Order ke liye "order karna hai" likhein!';
-    if (t.includes('dap'))        return '🔬 <strong>DAP (Di-Ammonium Phosphate)</strong><br>💰 Price: ₹1,350/50kg bag<br>🌾 Crops: All field crops<br>✅ 18%N + 46%P – best root development ke liye.<br><br>Order ke liye "order karna hai" likhein!';
-    if (t.includes('neem'))       return '🌿 <strong>Neem Cake Fertilizer</strong><br>💰 Price: ₹320/25kg bag<br>🌾 Crops: Vegetables, Fruits<br>✅ Dual-action: soil nitrogen + pest repellent.';
-    if (t.includes('npk'))        return '⚗️ <strong>NPK 20-20-20 Water Soluble</strong><br>💰 Price: ₹1,100/25kg bag<br>🌾 Crops: Vegetables, Cotton<br>✅ Balanced formula for fertigation/foliar spray.';
-    if (t.includes('chlor'))      return '🐛 <strong>Chlorpyrifos 20% EC</strong><br>💰 Price: ₹480/litre<br>🌾 Crops: Rice, Wheat, Cotton<br>✅ Kills stem borers, white grubs & termites.';
-    if (t.includes('mancozeb'))   return '🍄 <strong>Mancozeb 75% WP Fungicide</strong><br>💰 Price: ₹220/500g pack<br>🌾 Crops: Potato, Tomato, Grapes<br>✅ Blight aur leaf spot se protection.';
-    if (t.includes('glypho'))     return '🪲 <strong>Glyphosate 41% SL</strong><br>💰 Price: ₹360/litre<br>✅ Sabse effective weed killer – orchard & non-crop areas.';
-    if (t.includes('imida'))      return '🦟 <strong>Imidacloprid 17.8% SL</strong><br>💰 Price: ₹390/250ml<br>🌾 Crops: Cotton, Vegetables, Rice<br>✅ Aphids, whitefly, thrips ke liye best.';
-    if (t.includes('seaweed'))    return '🌊 <strong>Seaweed Extract (Liquid)</strong><br>💰 Price: ₹280/litre<br>✅ Growth hormones + micronutrients – germination improve karta hai.';
-    if (t.includes('vermi') || t.includes('compost')) return '🌿 <strong>Organic Compost (Vermicompost)</strong><br>💰 Price: ₹450/50kg bag<br>✅ Soil health, water retention & microbial activity badhata hai.';
-    if (t.includes('wheat') || t.includes('gehu'))    return '🌾 <strong>Wheat ke liye best products:</strong><br>1️⃣ Urea 46% – ₹266/bag (nitrogen)<br>2️⃣ DAP – ₹1,350/bag (root growth)<br>3️⃣ Chlorpyrifos – ₹480/L (pest control)<br><br>Order ke liye "order karna hai" likhein!';
-    if (t.includes('rice') || t.includes('paddy') || t.includes('dhan')) return '🌾 <strong>Rice/Paddy ke liye:</strong><br>1️⃣ Urea 46% – ₹266/bag<br>2️⃣ Imidacloprid – ₹390/bottle (brown planthopper)<br>3️⃣ Mancozeb – ₹220/pack (blast disease)';
-    if (t.includes('price') || t.includes('rate') || t.includes('kitna')) return '💰 <strong>Hamare prices:</strong><br>🌿 Vermicompost – ₹450/bag<br>🌿 Neem Cake – ₹320/bag<br>⚗️ Urea – ₹266/bag<br>⚗️ DAP – ₹1,350/bag<br>⚗️ NPK – ₹1,100/bag<br>🛡️ Chlorpyrifos – ₹480/L<br>🛡️ Imidacloprid – ₹390/bottle<br><br>Bulk discount bhi available hai! 📞 +91 98765 43210';
-    if (t.includes('list') || t.includes('products') || t.includes('sab')) return '📋 <strong>Hamare Products:</strong><br><br>🌿 <u>Organic:</u> Vermicompost, Neem Cake, Bio-Fertilizer, Seaweed Extract<br><br>⚗️ <u>Inorganic:</u> Urea, DAP, NPK 20-20-20, Micronutrient Mix, MOP<br><br>🛡️ <u>Pesticides:</u> Chlorpyrifos, Mancozeb, Glyphosate, Imidacloprid<br><br>Kisi bhi product ka naam likhein detail ke liye!';
-    if (t.includes('phone') || t.includes('call') || t.includes('contact')) return '📞 <strong>Hamare Contact:</strong><br>Phone: +91 98765 43210<br>📍 Main Market Road, Kisan Nagar, Rajasthan<br>🕒 Mon–Sat: 8AM–7PM | Sun: 9AM–2PM';
-    return '🙏 Namaste! Aap poochhein:<br>• Kisi product ki jankari<br>• Price check<br>• Fasal ke liye suggestion<br>• Ya "order karna hai" likhein<br><br>Main aapki help karunga! 🌾';
-  }
-
-  // ── Fake Order Detection ──
-  function detectFakeOrder(name, phone, product) {
-    const issues = [];
-
-    // 1. Name check – too short, all same chars, gibberish
-    const cleanName = name.trim();
-    if (cleanName.length < 3) issues.push('naam bahut chhota hai');
-    if (/^(.)\1+$/.test(cleanName)) issues.push('naam invalid lag raha hai (ek hi character repeat)');
-    if (/^[^a-zA-Z\u0900-\u097F\s]+$/.test(cleanName)) issues.push('naam mein sirf numbers/symbols hain');
-    if (/^(test|fake|abc|xyz|asdf|qwerty|admin|null|none|na|n\/a|abcd|aaaa|bbbb)/i.test(cleanName)) issues.push('naam fake lag raha hai');
-
-    // 2. Phone check
-    const digits = phone.replace(/\D/g, '');
-    if (digits.length < 10) issues.push('phone number 10 digits se kam hai');
-    if (digits.length > 13) issues.push('phone number bahut lamba hai');
-    if (/^(.)\1{9,}$/.test(digits)) issues.push('phone number invalid hai (ek hi digit repeat)');
-    if (/^(0{10}|1{10}|9{10}|1234567890|0123456789)/.test(digits)) issues.push('phone number fake pattern mein hai');
-    // Indian mobile: must start with 6,7,8,9
-    const mobileDigits = digits.slice(-10);
-    if (!/^[6-9]/.test(mobileDigits)) issues.push('phone India ka valid mobile number nahi lag raha');
-
-    // 3. Product check
-    if (!product || product.trim().length < 3) issues.push('product name bahut chhota hai');
-    if (/^(test|abc|xyz|asdf|nothing|kuch bhi)/i.test(product.trim())) issues.push('product name invalid hai');
-
-    // 4. Duplicate/spam check (rate limit: max 3 orders per session)
-    orderSubmitCount = (orderSubmitCount || 0) + 1;
-    if (orderSubmitCount > 3) issues.push('bahut zyada orders ek session mein submit ho rahe hain');
-
-    return issues;
-  }
-
-  let orderSubmitCount = 0;
-
-  function submitChatbotOrder() {
-    const name      = (document.getElementById('cb-o-name')?.value || '').trim();
-    const phone     = (document.getElementById('cb-o-phone')?.value || '').trim();
-    const village   = (document.getElementById('cb-o-village')?.value || '').trim() || 'Not provided';
-    const product   = (document.getElementById('cb-o-product')?.value || '').trim();
-    const custEmail = (document.getElementById('cb-o-email')?.value || '').trim();
-
-    if (!name || !phone || !product) {
-      alert('⚠️ Naam, Phone aur Product zaroori hai!'); return;
-    }
-
-    // ── FAKE ORDER DETECTION ──
-    const fakeIssues = detectFakeOrder(name, phone, product);
-    if (fakeIssues.length > 0) {
-      const formWrap = document.getElementById('cb-order-form-wrap');
-      if (formWrap) {
-        formWrap.innerHTML = `
-          <div style="color:#b91c1c;font-weight:600;padding:8px 4px;font-size:13px;">
-            ⚠️ Order submit nahi hua:<br>
-            <ul style="margin:6px 0 6px 16px;font-weight:400;">
-              ${fakeIssues.map(i => `<li>${i}</li>`).join('')}
-            </ul>
-            <span style="color:var(--text-mid);font-weight:400;font-size:12px;">Sahi details bharein aur dobara try karein.</span>
-          </div>`;
-      }
-      awaitingOrderDetails = true;
-      return;
-    }
-
-    const now = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
-
-    // ── EMAIL TO SHOP OWNER ──
-    const ownerSubject = encodeURIComponent('🛒 New Chatbot Order: ' + name + ' | Adarsh Agro Chemicals');
-    const ownerBody = encodeURIComponent(
-      'NEW ORDER — Adarsh Agro Chemicals Website Chatbot\n' +
-      '================================================\n\n' +
-      'CUSTOMER DETAILS\n' +
-      '----------------\n' +
-      'Name      : ' + name + '\n' +
-      'Phone     : ' + phone + '\n' +
-      'Village   : ' + village + '\n' +
-      'Gmail     : ' + (custEmail || 'Not provided') + '\n\n' +
-      'PRODUCT REQUIRED\n' +
-      '----------------\n' +
-      product + '\n\n' +
-      'Order Time : ' + now + '\n' +
-      '================================================\n' +
-      '✅ Order verified – no spam flags detected.\n' +
-      'Please call farmer at: ' + phone
-    );
-    window.open('https://mail.google.com/mail/?view=cm&to=' + OWNER_EMAIL + '&su=' + ownerSubject + '&body=' + ownerBody, '_blank');
-
-    // ── EMAIL TO CUSTOMER ──
-    if (custEmail && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(custEmail)) {
-      setTimeout(() => {
-        const custSubject = encodeURIComponent('✅ Order Confirmed – Adarsh Agro Chemicals');
-        const custBody = encodeURIComponent(
-          'Dear ' + name + ',\n\n' +
-          'Aapka order Adarsh Agro Chemicals ko mil gaya hai! 🌾\n\n' +
-          'ORDER SUMMARY\n' +
-          '================================================\n' +
-          'Product   : ' + product + '\n' +
-          'Name      : ' + name + '\n' +
-          'Phone     : ' + phone + '\n' +
-          'Village   : ' + village + '\n' +
-          'Order Time: ' + now + '\n' +
-          '================================================\n\n' +
-          'Hum aapko jald hi call karenge: ' + phone + '\n\n' +
-          'Koi bhi sawal ho toh contact karein:\n' +
-          '📞 +91 98765 43210\n' +
-          '📍 Main Market Road, Kisan Nagar, Rajasthan\n' +
-          '🕒 Mon–Sat: 8AM–7PM\n\n' +
-          'Dhanyawad! Aapki fasal ke liye shubhkaamnayein 🙏🌱\n' +
-          'Team Adarsh Agro Chemicals'
-        );
-        window.open('https://mail.google.com/mail/?view=cm&to=' + encodeURIComponent(custEmail) + '&su=' + custSubject + '&body=' + custBody, '_blank');
-      }, 1200);
-    }
-
-    // ── SUCCESS UI ──
-    const formWrap = document.getElementById('cb-order-form-wrap');
-    if (formWrap) {
-      formWrap.innerHTML = `
-        <div style="color:var(--farm-green);font-weight:600;padding:8px 0;font-size:13px;">
-          ✅ Gmail windows khul gayi hain!<br>
-          <span style="font-weight:400;color:var(--text-mid);font-size:12px;">
-            Dono Gmail tabs mein <strong>"Send"</strong> dabayein:<br>
-            1️⃣ Shop ko order bhejo<br>
-            ${custEmail ? '2️⃣ Aapke Gmail pe confirmation aayegi' : ''}
-          </span>
-        </div>`;
-    }
-
-    cbHistory.push({ role: 'user', content: 'Order placed: ' + product });
-    setTimeout(() => {
-      addBotMsg('🎉 Shukriya ' + name + ' ji!\n\nAapka order Gmail mein taiyaar hai — bas <strong>"Send"</strong> dabayein.\n\nHum aapko call karenge 📞 ' + phone + '\n\nKoi aur sawaal ho toh zaroor poochhein! 🌾');
-      awaitingOrderDetails = false;
-    }, 600);
-  }
+}
 </script>
 </body>
 </html>
