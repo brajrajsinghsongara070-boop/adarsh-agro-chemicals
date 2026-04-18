@@ -1,0 +1,37 @@
+{
+  "name": "Adarsh Agro Chemicals",
+  "short_name": "Adarsh Agro",
+  "description": "Premium fertilizers & pesticides — Kisan Nagar, Rajasthan",
+  "start_url": "/adarsh-agro-chemicals/index.html",
+  "scope": "/adarsh-agro-chemicals/",
+  "display": "standalone",
+  "background_color": "#1B4332",
+  "theme_color": "#1B4332",
+  "orientation": "portrait-primary",
+  "lang": "hi",
+  "categories": ["shopping", "agriculture"],
+  "icons": [
+    { "src": "https://via.placeholder.com/72x72/1B4332/C9A84C?text=AAC",  "sizes": "72x72",   "type": "image/png", "purpose": "any maskable" },
+    { "src": "https://via.placeholder.com/96x96/1B4332/C9A84C?text=AAC",  "sizes": "96x96",   "type": "image/png", "purpose": "any maskable" },
+    { "src": "https://via.placeholder.com/128x128/1B4332/C9A84C?text=AAC","sizes": "128x128", "type": "image/png", "purpose": "any maskable" },
+    { "src": "https://via.placeholder.com/192x192/1B4332/C9A84C?text=AAC","sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "https://via.placeholder.com/512x512/1B4332/C9A84C?text=AAC","sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Products Dekho", "short_name": "Products",
+      "url": "/adarsh-agro-chemicals/index.html#products",
+      "icons": [{ "src": "https://via.placeholder.com/96x96/2D6A4F/ffffff?text=P", "sizes": "96x96" }]
+    },
+    {
+      "name": "Order Karo", "short_name": "Order",
+      "url": "/adarsh-agro-chemicals/index.html#order-list",
+      "icons": [{ "src": "https://via.placeholder.com/96x96/C9A84C/1B4332?text=O", "sizes": "96x96" }]
+    },
+    {
+      "name": "Track Order", "short_name": "Track",
+      "url": "/adarsh-agro-chemicals/index.html#tracking",
+      "icons": [{ "src": "https://via.placeholder.com/96x96/52B788/ffffff?text=T", "sizes": "96x96" }]
+    }
+  ]
+}

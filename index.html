@@ -1,0 +1,4218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Adarsh Agro Chemicals – Premium Fertilizers & Pesticides</title>
+
+<!-- ─── PWA ─── -->
+<link rel="manifest" href="manifest.json"/>
+<meta name="theme-color" content="#1B4332"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="Adarsh Agro"/>
+<meta name="description" content="Premium fertilizers & pesticides — Adarsh Agro Chemicals, Kisan Nagar, Rajasthan"/>
+<link rel="apple-touch-icon" href="https://via.placeholder.com/192x192/1B4332/C9A84C?text=AAC"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --deep-forest: #1B4332;
+    --farm-green:  #2D6A4F;
+    --leaf-green:  #52B788;
+    --gold:        #C9A84C;
+    --brown:       #8B4513;
+    --cream:       #F8F6F0;
+    --sand:        #E8DDD0;
+    --text-dark:   #1a1a1a;
+    --text-mid:    #4a5568;
+    --white:       #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE TEXTURE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 5%;
+    background: rgba(27, 67, 50, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(82, 183, 136, 0.15);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo-icon {
+    width: 38px; height: 38px;
+    background: var(--gold);
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+  }
+
+  .nav-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+  }
+
+  .nav-logo-text span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--leaf-green);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color .2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--deep-forest) !important;
+    font-weight: 600 !important;
+    padding: 9px 20px;
+    border-radius: 6px;
+    transition: opacity .2s !important;
+  }
+
+  .nav-cta:hover { opacity: .88; }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+    z-index: 200;
+    position: relative;
+  }
+
+  .nav-hamburger span {
+    display: block;
+    width: 24px; height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  /* Animate to X when open */
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ─── MOBILE DROPDOWN MENU ─── */
+  #mobile-menu {
+    display: block;
+    position: fixed;
+    top: 72px; left: 0; right: 0;
+    background: rgba(15, 35, 24, 0.98);
+    backdrop-filter: blur(16px);
+    z-index: 99;
+    padding: 10px 0 20px;
+    border-bottom: 1px solid rgba(82,183,136,0.15);
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+  }
+
+  #mobile-menu.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .mob-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 24px;
+    color: rgba(255,255,255,0.82);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    border-left: 3px solid transparent;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+  }
+
+  .mob-menu-item:hover, .mob-menu-item:active {
+    background: rgba(82,183,136,0.08);
+    border-left-color: var(--leaf-green);
+    color: var(--white);
+  }
+
+  .mob-menu-item .mob-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: rgba(82,183,136,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .mob-menu-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.07);
+    margin: 8px 20px;
+  }
+
+  .mob-menu-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--leaf-green);
+    padding: 10px 24px 4px;
+  }
+
+  /* App download button in mobile menu */
+  .mob-app-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 16px 4px;
+    background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.08));
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 12px;
+    padding: 14px 18px;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .mob-app-btn:hover {
+    background: rgba(201,168,76,0.22);
+    border-color: var(--gold);
+  }
+
+  .mob-app-icon {
+    width: 40px; height: 40px;
+    background: var(--gold);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .mob-app-text .mob-app-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .mob-app-text .mob-app-sub {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 2px;
+  }
+
+  .mob-app-badge {
+    margin-left: auto;
+    background: var(--gold);
+    color: var(--deep-forest);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+
+  /* Call to order highlight row */
+  .mob-order-row {
+    margin: 8px 16px;
+    background: linear-gradient(135deg, var(--farm-green), var(--deep-forest));
+    border-radius: 12px;
+    display: flex;
+    overflow: hidden;
+  }
+
+  .mob-order-row a {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+
+  .mob-order-row a:first-child {
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .mob-order-row a:hover { background: rgba(255,255,255,0.08); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse 70% 60% at 60% 30%, rgba(82,183,136,0.18) 0%, transparent 70%),
+      linear-gradient(160deg, var(--deep-forest) 0%, #0f2d1e 100%);
+    display: flex;
+    align-items: center;
+    padding: 120px 5% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* decorative leaf shapes */
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: -60px; bottom: -80px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(82,183,136,0.12) 0%, transparent 65%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 22px;
+    width: fit-content;
+  }
+
+  .hero-badge::before { content: '🌾'; font-size: 14px; }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 5vw, 64px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 22px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--deep-forest);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 14px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform .15s, box-shadow .15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 20px rgba(201,168,76,0.35);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201,168,76,0.45);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    font-weight: 500;
+    font-size: 15px;
+    padding: 13px 28px;
+    border-radius: 8px;
+    border: 1.5px solid rgba(82,183,136,0.5);
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color .2s, background .2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--leaf-green);
+    background: rgba(82,183,136,0.1);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 30px;
+    margin-top: 46px;
+    padding-top: 36px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .stat-item .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-item .stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+    letter-spacing: .04em;
+  }
+
+  /* hero visual panel */
+  .hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-card-stack {
+    position: relative;
+    width: 360px;
+    height: 420px;
+  }
+
+  .hcard {
+    position: absolute;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  }
+
+  .hcard-main {
+    background: linear-gradient(135deg, #2D6A4F, #1B4332);
+    border: 1px solid rgba(82,183,136,0.3);
+    width: 300px;
+    top: 40px; left: 30px;
+    z-index: 2;
+  }
+
+  .hcard-main .hcard-emoji { font-size: 40px; margin-bottom: 14px; }
+  .hcard-main h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--white); margin-bottom: 8px; }
+  .hcard-main p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+  .hcard-main .hcard-tag {
+    display: inline-block;
+    background: rgba(201,168,76,0.2);
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold);
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    margin-top: 16px;
+    font-weight: 500;
+  }
+
+  .hcard-float1 {
+    background: var(--gold);
+    width: 150px;
+    top: 0; right: 0;
+    z-index: 3;
+    padding: 18px 20px;
+    border-radius: 16px;
+  }
+
+  .hcard-float1 .fl-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--deep-forest);
+    line-height: 1;
+  }
+
+  .hcard-float1 .fl-label {
+    font-size: 11px;
+    color: rgba(27,67,50,0.7);
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  .hcard-float2 {
+    background: var(--cream);
+    width: 170px;
+    bottom: 0; right: 10px;
+    z-index: 3;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 16px;
+  }
+
+  .hcard-float2 .fl-icon { font-size: 28px; }
+  .hcard-float2 .fl-text .fn { font-size: 13px; font-weight: 600; color: var(--deep-forest); }
+  .hcard-float2 .fl-text .fd { font-size: 11px; color: var(--text-mid); margin-top: 2px; }
+
+  .green-ring {
+    position: absolute;
+    width: 200px; height: 200px;
+    border: 2px dashed rgba(82,183,136,0.2);
+    border-radius: 50%;
+    bottom: -30px; left: -20px;
+    pointer-events: none;
+  }
+
+  /* ─── SECTION COMMON ─── */
+  section { position: relative; z-index: 1; }
+
+  .section-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 90px 5%;
+  }
+
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--farm-green);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px; height: 2px;
+    background: var(--gold);
+    border-radius: 2px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 700;
+    color: var(--deep-forest);
+    line-height: 1.2;
+    max-width: 560px;
+    margin-bottom: 14px;
+  }
+
+  .section-sub {
+    font-size: 16px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    max-width: 520px;
+    margin-bottom: 52px;
+    font-weight: 300;
+  }
+
+  /* ─── BENEFITS ─── */
+  .benefits { background: var(--white); }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .benefit-card {
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    border-radius: 18px;
+    padding: 34px 30px;
+    position: relative;
+    overflow: hidden;
+    transition: transform .2s, box-shadow .2s;
+  }
+
+  .benefit-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--farm-green), var(--leaf-green));
+    border-radius: 18px 18px 0 0;
+  }
+
+  .benefit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(27,67,50,0.12);
+  }
+
+  .benefit-icon {
+    width: 56px; height: 56px;
+    background: linear-gradient(135deg, var(--farm-green), var(--leaf-green));
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    font-size: 26px;
+    margin-bottom: 22px;
+    box-shadow: 0 6px 20px rgba(45,106,79,0.3);
+  }
+
+  .benefit-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--deep-forest);
+    margin-bottom: 10px;
+  }
+
+  .benefit-card p {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+
+  .benefit-card .benefit-num {
+    position: absolute;
+    top: 24px; right: 24px;
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: rgba(45,106,79,0.07);
+    line-height: 1;
+  }
+
+  /* ─── HOW IT WORKS ─── */
+  .how-it-works {
+    background: linear-gradient(170deg, var(--deep-forest) 0%, #143326 100%);
+  }
+
+  .how-it-works .section-title { color: var(--white); }
+  .how-it-works .section-sub { color: rgba(255,255,255,0.6); }
+  .how-it-works .section-eyebrow { color: var(--leaf-green); }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 44px;
+    left: calc(16.66% + 30px);
+    right: calc(16.66% + 30px);
+    height: 1px;
+    background: linear-gradient(90deg, rgba(82,183,136,0.4), rgba(201,168,76,0.4));
+  }
+
+  .step {
+    text-align: center;
+    padding: 0 30px;
+    position: relative;
+  }
+
+  .step-num {
+    width: 88px; height: 88px;
+    background: rgba(82,183,136,0.1);
+    border: 2px solid rgba(82,183,136,0.3);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 28px;
+    position: relative;
+    transition: background .3s;
+  }
+
+  .step:hover .step-num {
+    background: rgba(82,183,136,0.2);
+    border-color: var(--leaf-green);
+  }
+
+  .step-num-inner {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 900;
+    color: var(--gold);
+  }
+
+  .step-emoji {
+    position: absolute;
+    top: -8px; right: -8px;
+    font-size: 22px;
+    background: var(--deep-forest);
+    border-radius: 50%;
+    width: 36px; height: 36px;
+    display: grid;
+    place-items: center;
+    border: 2px solid rgba(82,183,136,0.3);
+  }
+
+  .step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .step p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+  }
+
+  /* ─── TESTIMONIAL ─── */
+  .testimonial { background: var(--sand); }
+
+  .testimonial-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .testimonial-inner .section-eyebrow { justify-content: center; }
+  .testimonial-inner .section-eyebrow::before { display: none; }
+
+  .stars {
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin-bottom: 28px;
+  }
+
+  .testimonial-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 700;
+    color: var(--deep-forest);
+    line-height: 1.5;
+    margin-bottom: 36px;
+    position: relative;
+    padding: 0 40px;
+  }
+
+  .testimonial-quote::before, .testimonial-quote::after {
+    content: '"';
+    font-size: 80px;
+    color: var(--leaf-green);
+    opacity: 0.25;
+    font-family: 'Playfair Display', serif;
+    position: absolute;
+    line-height: 1;
+  }
+
+  .testimonial-quote::before { top: -20px; left: 0; }
+  .testimonial-quote::after { content: '"'; bottom: -50px; right: 0; }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .author-avatar {
+    width: 52px; height: 52px;
+    background: linear-gradient(135deg, var(--farm-green), var(--leaf-green));
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 22px;
+    border: 3px solid var(--white);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+
+  .author-info .name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--deep-forest);
+  }
+
+  .author-info .location {
+    font-size: 12px;
+    color: var(--text-mid);
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* ─── PRODUCTS STRIP ─── */
+  .products-strip {
+    background: var(--white);
+    padding: 60px 5%;
+  }
+
+  .products-strip-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--sand) transparent;
+  }
+
+  .product-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    border-radius: 50px;
+    padding: 10px 22px;
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--deep-forest);
+    cursor: pointer;
+    transition: background .2s, border-color .2s;
+  }
+
+  .product-pill:hover {
+    background: var(--farm-green);
+    color: var(--white);
+    border-color: var(--farm-green);
+  }
+
+  .product-pill span { font-size: 18px; }
+
+  /* ─── CTA / CONTACT ─── */
+  .contact {
+    background: linear-gradient(135deg, var(--farm-green) 0%, var(--deep-forest) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 65%);
+    border-radius: 50%;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: start;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 90px 5%;
+  }
+
+  .contact-left .section-title { color: var(--white); max-width: 400px; }
+  .contact-left .section-sub { color: rgba(255,255,255,0.65); }
+
+  .contact-details {
+    margin-top: 34px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: rgba(255,255,255,0.8);
+    font-size: 14px;
+  }
+
+  .contact-item-icon {
+    width: 40px; height: 40px;
+    background: rgba(82,183,136,0.15);
+    border: 1px solid rgba(82,183,136,0.3);
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  /* Form */
+  .contact-form {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 36px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.2);
+  }
+
+  .contact-form h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--deep-forest);
+    margin-bottom: 6px;
+  }
+
+  .form-sub {
+    font-size: 13px;
+    color: var(--text-mid);
+    margin-bottom: 26px;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--farm-green);
+    margin-bottom: 6px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--cream);
+    border: 1.5px solid var(--sand);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color .2s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--leaf-green);
+    background: var(--white);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 90px; }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .form-submit {
+    width: 100%;
+    background: var(--gold);
+    color: var(--deep-forest);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: opacity .2s, transform .15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 6px 20px rgba(201,168,76,0.35);
+  }
+
+  .form-submit:hover {
+    opacity: .9;
+    transform: translateY(-1px);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #0d2218;
+    padding: 40px 5%;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .footer-logo span {
+    color: var(--gold);
+  }
+
+  .footer-tagline {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 4px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color .2s;
+  }
+
+  .footer-links a:hover { color: var(--leaf-green); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    text-align: right;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes floatY {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+  }
+
+  .hero-content > * {
+    opacity: 0;
+    animation: fadeUp .7s ease forwards;
+  }
+
+  .hero-badge   { animation-delay: .1s; }
+  .hero h1      { animation-delay: .25s; }
+  .hero-sub     { animation-delay: .38s; }
+  .hero-actions { animation-delay: .50s; }
+  .hero-stats   { animation-delay: .62s; }
+
+  .hero-visual  { animation: floatY 5s ease-in-out infinite; }
+
+  /* ─── RESPONSIVE ─── */
+  /* ─── PRODUCT CATALOGUE ─── */
+  .prod-tabs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+  }
+
+  .prod-tab {
+    background: var(--cream);
+    border: 1.5px solid var(--sand);
+    color: var(--text-mid);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 9px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all .2s;
+  }
+
+  .prod-tab.active,
+  .prod-tab:hover {
+    background: var(--farm-green);
+    color: var(--white);
+    border-color: var(--farm-green);
+  }
+
+  .prod-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .prod-card {
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    border-radius: 16px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    transition: transform .2s, box-shadow .2s;
+  }
+
+  .prod-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 36px rgba(27,67,50,0.10);
+  }
+
+  .prod-card[style*="display:none"] { display: none !important; }
+
+  .prod-badge {
+    position: absolute;
+    top: 16px; right: 16px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .prod-badge.organic  { background: #d4edda; color: #1B4332; }
+  .prod-badge.inorganic { background: #d0e8f5; color: #0c3d5c; }
+  .prod-badge.pesticide { background: #fde8cc; color: #7a3800; }
+
+  .prod-icon {
+    font-size: 36px;
+    line-height: 1;
+  }
+
+  .prod-info { flex: 1; }
+
+  .prod-info h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--deep-forest);
+    margin-bottom: 6px;
+    padding-right: 60px;
+  }
+
+  .prod-info p {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+
+  .prod-meta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .prod-meta span {
+    font-size: 11px;
+    color: var(--farm-green);
+    background: rgba(45,106,79,0.08);
+    padding: 3px 9px;
+    border-radius: 12px;
+    font-weight: 500;
+  }
+
+  .prod-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    border-top: 1px solid var(--sand);
+  }
+
+  .prod-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--deep-forest);
+    line-height: 1;
+  }
+
+  .prod-price span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-mid);
+  }
+
+  .prod-btn {
+    background: var(--farm-green);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 9px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background .2s, transform .15s;
+  }
+
+  .prod-btn:hover {
+    background: var(--deep-forest);
+    transform: scale(1.03);
+  }
+
+  .prod-btn.added {
+    background: var(--gold);
+    color: var(--deep-forest);
+  }
+
+  .prod-buy {
+    background: transparent;
+    color: var(--farm-green);
+    border: 1.5px solid var(--farm-green);
+    font-size: 12px;
+    padding: 9px 12px;
+  }
+
+  .prod-buy:hover {
+    background: var(--gold);
+    color: var(--deep-forest);
+    border-color: var(--gold);
+  }
+
+  /* Enquiry basket */
+  .enquiry-basket {
+    background: var(--deep-forest);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-top: 40px;
+  }
+
+  .basket-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 14px;
+  }
+
+  .basket-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .basket-list li {
+    background: rgba(82,183,136,0.15);
+    border: 1px solid rgba(82,183,136,0.3);
+    color: var(--leaf-green);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+
+  /* ─── ORDER LIST ─── */
+  .ol-builder {
+    background: var(--white);
+    border: 1px solid var(--sand);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  .ol-builder-row {
+    display: flex;
+    gap: 14px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .ol-select-wrap { flex: 1; min-width: 220px; }
+  .ol-qty-wrap { width: 140px; }
+
+  .ol-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--farm-green);
+    margin-bottom: 6px;
+  }
+
+  .ol-builder select,
+  .ol-farmer-info input {
+    width: 100%;
+    padding: 11px 14px;
+    background: var(--cream);
+    border: 1.5px solid var(--sand);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color .2s;
+  }
+
+  .ol-builder select:focus,
+  .ol-farmer-info input:focus {
+    border-color: var(--leaf-green);
+    background: var(--white);
+  }
+
+  .ol-qty-row {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid var(--sand);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--cream);
+  }
+
+  .ol-qty-row button {
+    width: 36px; height: 42px;
+    background: var(--sand);
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--deep-forest);
+    cursor: pointer;
+    transition: background .15s;
+    flex-shrink: 0;
+  }
+
+  .ol-qty-row button:hover { background: var(--leaf-green); color: white; }
+
+  .ol-qty-row input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--deep-forest);
+    outline: none;
+    width: 50px;
+    padding: 0;
+  }
+
+  .ol-add-btn {
+    background: var(--farm-green);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 11px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background .2s, transform .15s;
+    white-space: nowrap;
+    align-self: flex-end;
+  }
+
+  .ol-add-btn:hover { background: var(--deep-forest); transform: scale(1.03); }
+
+  .ol-empty-state {
+    text-align: center;
+    padding: 48px 20px;
+    border: 2px dashed var(--sand);
+    border-radius: 16px;
+  }
+
+  .ol-empty-icon { font-size: 48px; margin-bottom: 14px; }
+  .ol-empty-state p { font-size: 14px; color: var(--text-mid); line-height: 1.7; }
+
+  .ol-table-wrap { margin-top: 8px; }
+
+  .ol-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--sand);
+    font-size: 14px;
+  }
+
+  .ol-table thead tr {
+    background: var(--deep-forest);
+    color: var(--white);
+  }
+
+  .ol-table th {
+    padding: 13px 16px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+
+  .ol-table td {
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--sand);
+    color: var(--text-dark);
+    vertical-align: middle;
+  }
+
+  .ol-table tbody tr:last-child td { border-bottom: none; }
+  .ol-table tbody tr:hover { background: var(--cream); }
+
+  .ol-total-row td {
+    background: #eef7f2;
+    border-top: 2px solid var(--leaf-green) !important;
+    padding: 16px;
+  }
+
+  .ol-product-name { font-weight: 500; color: var(--deep-forest); }
+
+  .ol-cat-badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 6px;
+    font-weight: 600;
+  }
+
+  .ol-del-btn {
+    background: #fee2e2;
+    color: #b91c1c;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background .2s;
+  }
+
+  .ol-del-btn:hover { background: #fca5a5; }
+
+  .ol-farmer-info {
+    background: var(--white);
+    border: 1px solid var(--sand);
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 20px;
+  }
+
+  .ol-farmer-info h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--deep-forest);
+    margin-bottom: 16px;
+  }
+
+  .ol-info-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .ol-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .ol-send-btn {
+    background: var(--gold);
+    color: var(--deep-forest);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 13px 28px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity .2s, transform .15s;
+    box-shadow: 0 4px 16px rgba(201,168,76,0.35);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ol-send-btn:hover { opacity: .9; transform: translateY(-1px); }
+
+  .ol-clear-btn {
+    background: transparent;
+    color: var(--text-mid);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 20px;
+    border: 1.5px solid var(--sand);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color .2s, color .2s;
+  }
+
+  .ol-clear-btn:hover { border-color: #b91c1c; color: #b91c1c; }
+
+  .ol-print-btn {
+    background: var(--deep-forest);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity .2s;
+  }
+
+  .ol-print-btn:hover { opacity: .85; }
+
+  @media (max-width: 700px) {
+    .ol-builder-row { flex-direction: column; }
+    .ol-qty-wrap, .ol-select-wrap { width: 100%; }
+    .ol-add-btn { width: 100%; }
+    .ol-info-row { grid-template-columns: 1fr; }
+    .ol-table { font-size: 12px; }
+    .ol-table th, .ol-table td { padding: 9px 10px; }
+    .ol-actions { flex-direction: column; }
+  }
+
+  @media print {
+    nav, .hero, .benefits, .how-it-works, .testimonial,
+    .contact, footer, #products, .ol-builder, .ol-actions,
+    .ol-farmer-info, .ol-del-btn { display: none !important; }
+    #order-list { display: block !important; }
+    body { background: white; }
+  }
+
+  /* ─── PRODUCT IMAGE SLIDESHOW ─── */
+  .prod-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background: var(--sand);
+  }
+
+  .prod-img-wrap img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: opacity 0.6s ease;
+    border-radius: 10px;
+  }
+
+  .prod-img-wrap img.slide-hidden { opacity: 0; }
+  .prod-img-wrap img.slide-visible { opacity: 1; }
+
+  .prod-img-dots {
+    position: absolute;
+    bottom: 7px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+    z-index: 5;
+  }
+
+  .prod-img-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: background 0.2s;
+    border: none;
+    padding: 0;
+  }
+
+  .prod-img-dot.active { background: var(--gold); }
+
+  .prod-img-arrow {
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    background: rgba(27,67,50,0.55);
+    color: white;
+    border: none;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    font-size: 13px;
+    cursor: pointer;
+    z-index: 5;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+    opacity: 0;
+  }
+
+  .prod-img-wrap:hover .prod-img-arrow { opacity: 1; }
+  .prod-img-arrow:hover { background: rgba(27,67,50,0.85); }
+  .prod-img-arrow.prev { left: 6px; }
+  .prod-img-arrow.next { right: 6px; }
+
+  /* ─── CHATBOT ─── */
+  #chatbot-toggle {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    width: 60px; height: 60px;
+    background: linear-gradient(135deg, var(--farm-green), var(--leaf-green));
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 6px 28px rgba(45,106,79,0.45);
+    font-size: 26px;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  #chatbot-toggle:hover { transform: scale(1.1); box-shadow: 0 10px 36px rgba(45,106,79,0.55); }
+
+  #chatbot-badge {
+    position: absolute;
+    top: -4px; right: -4px;
+    width: 18px; height: 18px;
+    background: var(--gold);
+    color: var(--deep-forest);
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid var(--cream);
+  }
+
+  #chatbot-box {
+    position: fixed;
+    bottom: 100px; right: 28px;
+    width: 370px;
+    max-height: 560px;
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 20px 70px rgba(0,0,0,0.2);
+    z-index: 998;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.85) translateY(20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    border: 1px solid var(--sand);
+  }
+
+  #chatbot-box.open {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .cb-header {
+    background: linear-gradient(135deg, var(--deep-forest), var(--farm-green));
+    padding: 16px 18px;
+    display: flex; align-items: center; gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .cb-avatar {
+    width: 40px; height: 40px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .cb-header-info .cb-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--white);
+  }
+
+  .cb-header-info .cb-status {
+    font-size: 11px;
+    color: var(--leaf-green);
+    display: flex; align-items: center; gap: 4px;
+    margin-top: 2px;
+  }
+
+  .cb-status-dot {
+    width: 7px; height: 7px;
+    background: var(--leaf-green);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  .cb-close {
+    margin-left: auto;
+    background: none; border: none;
+    color: rgba(255,255,255,0.6);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px;
+    transition: color 0.2s;
+  }
+
+  .cb-close:hover { color: white; }
+
+  .cb-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    scroll-behavior: smooth;
+    max-height: 360px;
+  }
+
+  .cb-messages::-webkit-scrollbar { width: 4px; }
+  .cb-messages::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 4px; }
+
+  .cb-msg {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+    animation: fadeUp 0.3s ease;
+  }
+
+  .cb-msg.user { flex-direction: row-reverse; }
+
+  .cb-msg-bubble {
+    max-width: 82%;
+    padding: 10px 14px;
+    border-radius: 16px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    word-break: break-word;
+  }
+
+  .cb-msg.bot .cb-msg-bubble {
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    color: var(--text-dark);
+    border-bottom-left-radius: 4px;
+  }
+
+  .cb-msg.user .cb-msg-bubble {
+    background: var(--farm-green);
+    color: white;
+    border-bottom-right-radius: 4px;
+  }
+
+  .cb-msg-avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    background: var(--gold);
+  }
+
+  .cb-msg.user .cb-msg-avatar { background: var(--leaf-green); }
+
+  .cb-typing {
+    display: flex; gap: 4px;
+    align-items: center;
+    padding: 10px 14px;
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    border-radius: 16px;
+    border-bottom-left-radius: 4px;
+    width: fit-content;
+  }
+
+  .cb-typing span {
+    width: 7px; height: 7px;
+    background: var(--farm-green);
+    border-radius: 50%;
+    animation: bounce 1.2s infinite;
+  }
+
+  .cb-typing span:nth-child(2) { animation-delay: 0.2s; }
+  .cb-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes bounce {
+    0%,60%,100%{transform:translateY(0)}
+    30%{transform:translateY(-6px)}
+  }
+
+  .cb-quick-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0 16px 12px;
+    flex-shrink: 0;
+  }
+
+  .cb-quick-btn {
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    color: var(--farm-green);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .cb-quick-btn:hover { background: var(--farm-green); color: white; border-color: var(--farm-green); }
+
+  .cb-input-row {
+    display: flex;
+    gap: 8px;
+    padding: 12px 14px;
+    border-top: 1px solid var(--sand);
+    flex-shrink: 0;
+    align-items: center;
+  }
+
+  #cb-input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1.5px solid var(--sand);
+    border-radius: 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+    outline: none;
+    color: var(--text-dark);
+    background: var(--cream);
+    transition: border-color 0.2s;
+  }
+
+  #cb-input:focus { border-color: var(--leaf-green); background: white; }
+
+  #cb-send {
+    width: 38px; height: 38px;
+    background: var(--farm-green);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, transform 0.15s;
+    flex-shrink: 0;
+  }
+
+  #cb-send:hover { background: var(--deep-forest); transform: scale(1.08); }
+
+  .cb-order-form {
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 4px;
+    font-size: 13px;
+  }
+
+  .cb-order-form input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--sand);
+    border-radius: 8px;
+    margin-bottom: 7px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    background: white;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .cb-order-form input:focus { border-color: var(--leaf-green); }
+
+  .cb-order-submit {
+    width: 100%;
+    background: var(--gold);
+    color: var(--deep-forest);
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .cb-order-submit:hover { opacity: 0.88; }
+
+  @media (max-width: 500px) {
+    #chatbot-box { width: calc(100vw - 20px); right: 10px; bottom: 85px; }
+    #chatbot-toggle { bottom: 18px; right: 18px; }
+  }
+
+  /* ─── CLICK TO CALL BUTTON ─── */
+  #cb-call-btn {
+    background: rgba(82,183,136,0.18);
+    border: 1.5px solid rgba(82,183,136,0.45);
+    color: var(--leaf-green);
+    border-radius: 8px;
+    padding: 5px 11px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex; align-items: center; gap: 5px;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+    font-family: 'DM Sans', sans-serif;
+  }
+  #cb-call-btn:hover { background: var(--leaf-green); color: white; }
+  #cb-call-btn .cb-call-pulse {
+    width: 8px; height: 8px;
+    background: #4ade80;
+    border-radius: 50%;
+    animation: pulse 1.4s infinite;
+    flex-shrink: 0;
+  }
+
+  /* ─── MIC BUTTON ─── */
+
+  /* ─── UPI PAYMENT BUTTON ─── */
+  .ol-pay-btn {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 13px 28px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex; align-items: center; gap: 8px;
+    box-shadow: 0 4px 16px rgba(22,163,74,0.35);
+    transition: opacity .2s, transform .15s;
+  }
+  .ol-pay-btn:hover { opacity:.9; transform:translateY(-1px); }
+
+  /* ─── UPI PAYMENT MODAL ─── */
+  #pay-modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 2000;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity .25s;
+  }
+  #pay-modal-overlay.open { opacity: 1; pointer-events: all; }
+  #pay-modal {
+    background: white;
+    border-radius: 24px;
+    padding: 36px 32px;
+    max-width: 440px; width: 92%;
+    text-align: center;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.25);
+    transform: scale(0.88);
+    transition: transform .25s;
+    position: relative;
+  }
+  #pay-modal-overlay.open #pay-modal { transform: scale(1); }
+
+  .pay-modal-close {
+    position: absolute; top: 14px; right: 16px;
+    background: var(--cream); border: none; border-radius: 50%;
+    width: 30px; height: 30px; font-size: 16px;
+    cursor: pointer; color: var(--text-mid);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pay-modal-close:hover { background: var(--sand); }
+
+  .pay-modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--deep-forest); margin-bottom: 4px;
+  }
+  .pay-modal-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; font-weight: 900;
+    color: #16a34a; margin: 8px 0 18px;
+  }
+  .pay-modal-sub { font-size: 13px; color: var(--text-mid); margin-bottom: 16px; line-height: 1.6; }
+
+  /* QR Box */
+  .upi-qr-box {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 16px;
+    margin: 0 auto 18px;
+    display: inline-block;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  .upi-qr-box img { display: block; width: 180px; height: 180px; }
+
+  .upi-id-box {
+    background: var(--cream); border: 1.5px solid var(--sand);
+    border-radius: 10px; padding: 10px 16px;
+    font-size: 15px; font-weight: 700;
+    color: var(--deep-forest); margin-bottom: 16px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .upi-copy-btn {
+    background: none; border: none; cursor: pointer;
+    font-size: 16px; padding: 2px 6px;
+    border-radius: 6px; transition: background .15s;
+  }
+  .upi-copy-btn:hover { background: var(--sand); }
+
+  .upi-apps {
+    display: flex; justify-content: center; gap: 14px;
+    margin-bottom: 18px; flex-wrap: wrap;
+  }
+  .upi-app-badge {
+    background: var(--cream); border: 1px solid var(--sand);
+    border-radius: 10px; padding: 7px 14px;
+    font-size: 12px; font-weight: 600; color: var(--text-dark);
+    display: flex; align-items: center; gap: 5px;
+  }
+
+  /* Paid confirm section */
+  .upi-paid-section { border-top: 1px solid var(--sand); padding-top: 16px; }
+  .upi-paid-label { font-size: 13px; color: var(--text-mid); margin-bottom: 8px; }
+  .upi-paid-row { display: flex; gap: 8px; }
+  .upi-txn-input {
+    flex: 1; padding: 10px 14px;
+    border: 1.5px solid var(--sand); border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px;
+    outline: none; background: var(--cream);
+    transition: border-color .2s;
+  }
+  .upi-txn-input:focus { border-color: #16a34a; background: white; }
+  .upi-confirm-btn {
+    background: var(--gold); color: var(--deep-forest);
+    border: none; border-radius: 8px; padding: 10px 18px;
+    font-family: 'DM Sans', sans-serif; font-weight: 700;
+    font-size: 14px; cursor: pointer; white-space: nowrap;
+    transition: opacity .2s;
+  }
+  .upi-confirm-btn:hover { opacity: .88; }
+
+  /* Success state */
+  #pay-success-state { display: none; }
+  #pay-success-state.show { display: block; }
+  #pay-qr-state.hide { display: none; }
+  .pay-success-icon { font-size: 52px; margin-bottom: 12px; }
+  .pay-modal-order-id {
+    background: var(--cream); border: 1px solid var(--sand);
+    border-radius: 10px; padding: 12px 18px;
+    font-size: 13px; color: var(--text-mid); margin: 14px 0;
+  }
+  .pay-modal-order-id strong {
+    display: block; font-size: 20px;
+    font-family: 'Playfair Display', serif;
+    color: var(--deep-forest); letter-spacing: .06em; margin-top: 4px;
+  }
+  .pay-modal-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .pay-modal-btn {
+    padding: 10px 22px; border-radius: 8px; border: none;
+    font-family: 'DM Sans', sans-serif; font-size: 14px;
+    font-weight: 600; cursor: pointer; transition: opacity .2s;
+  }
+  .pay-modal-btn.primary { background: var(--gold); color: var(--deep-forest); }
+  .pay-modal-btn.secondary { background: var(--cream); color: var(--text-mid); border: 1px solid var(--sand); }
+  .pay-modal-btn:hover { opacity: .85; }
+
+  /* ─── ORDER TRACKING SECTION ─── */
+  #tracking {
+    background: var(--white);
+  }
+  .tracking-search {
+    display: flex; gap: 12px; max-width: 480px;
+    margin-bottom: 36px; flex-wrap: wrap;
+  }
+  .tracking-search input {
+    flex: 1; min-width: 220px;
+    padding: 13px 18px;
+    border: 1.5px solid var(--sand);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; outline: none;
+    background: var(--cream);
+    transition: border-color .2s;
+  }
+  .tracking-search input:focus { border-color: var(--leaf-green); background: white; }
+  .tracking-search button {
+    background: var(--farm-green); color: white;
+    border: none; border-radius: 10px;
+    padding: 13px 24px; font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+    transition: background .2s;
+  }
+  .tracking-search button:hover { background: var(--deep-forest); }
+
+  #tracking-result { max-width: 560px; }
+
+  .track-card {
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    border-radius: 16px; padding: 28px;
+    display: none;
+  }
+  .track-card.visible { display: block; }
+  .track-card-header {
+    display: flex; justify-content: space-between;
+    align-items: flex-start; margin-bottom: 24px;
+    flex-wrap: wrap; gap: 10px;
+  }
+  .track-order-id {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700; color: var(--deep-forest);
+  }
+  .track-status-pill {
+    padding: 5px 14px; border-radius: 20px;
+    font-size: 12px; font-weight: 700; letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .track-status-pill.placed    { background:#dbeafe; color:#1d4ed8; }
+  .track-status-pill.packed    { background:#fef9c3; color:#854d0e; }
+  .track-status-pill.shipped   { background:#ffedd5; color:#c2410c; }
+  .track-status-pill.delivered { background:#dcfce7; color:#166534; }
+
+  .track-steps { position: relative; padding-left: 28px; }
+  .track-steps::before {
+    content: '';
+    position: absolute; left: 10px; top: 12px; bottom: 12px;
+    width: 2px; background: var(--sand);
+  }
+  .track-step {
+    position: relative; margin-bottom: 22px; padding-left: 16px;
+  }
+  .track-step:last-child { margin-bottom: 0; }
+  .track-step-dot {
+    position: absolute; left: -22px; top: 4px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--sand); border: 2px solid var(--sand);
+    transition: background .3s;
+  }
+  .track-step.done .track-step-dot   { background: var(--leaf-green); border-color: var(--leaf-green); }
+  .track-step.active .track-step-dot { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 0 4px rgba(201,168,76,0.2); }
+  .track-step-title {
+    font-size: 14px; font-weight: 600; color: var(--deep-forest);
+  }
+  .track-step.pending .track-step-title { color: var(--text-mid); font-weight: 400; }
+  .track-step-time { font-size: 12px; color: var(--text-mid); margin-top: 2px; }
+
+  .track-info-row {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px; margin-top: 20px; padding-top: 20px;
+    border-top: 1px solid var(--sand);
+  }
+  .track-info-item label {
+    font-size: 11px; font-weight: 600; letter-spacing:.07em;
+    text-transform: uppercase; color: var(--farm-green);
+    display: block; margin-bottom: 3px;
+  }
+  .track-info-item span { font-size: 14px; color: var(--text-dark); }
+
+  .track-not-found {
+    background: #fee2e2; border: 1px solid #fca5a5;
+    border-radius: 12px; padding: 20px 24px;
+    font-size: 14px; color: #b91c1c; display: none;
+  }
+  .track-not-found.visible { display: block; }
+
+  @media (max-width: 600px) {
+    .track-info-row { grid-template-columns: 1fr; }
+    .pay-modal { padding: 28px 20px; }
+  }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .benefits-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr; gap: 36px; }
+    .steps-grid::before { display: none; }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .form-row { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .footer-copy { text-align: left; }
+    .prod-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-stats { flex-wrap: wrap; gap: 20px; }
+    .hero-actions { flex-direction: column; }
+    .btn-primary, .btn-outline { width: 100%; justify-content: center; }
+    .prod-grid { grid-template-columns: 1fr; }
+    .prod-tabs { gap: 8px; }
+    .prod-tab { font-size: 12px; padding: 7px 14px; }
+  }
+  /* ─── PWA INSTALL BANNER ─── */
+  #pwa-banner {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(135deg, var(--deep-forest), #0f2d1e);
+    border-top: 1px solid rgba(82,183,136,0.25);
+    padding: 14px 20px;
+    z-index: 997;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 -8px 32px rgba(0,0,0,0.3);
+  }
+
+  #pwa-banner.show { transform: translateY(0); }
+
+  .pwa-banner-icon {
+    width: 48px; height: 48px;
+    background: var(--gold);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 14px rgba(201,168,76,0.4);
+  }
+
+  .pwa-banner-text { flex: 1; }
+  .pwa-banner-title {
+    font-size: 14px; font-weight: 700;
+    color: var(--white); margin-bottom: 2px;
+  }
+  .pwa-banner-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.4;
+  }
+
+  .pwa-install-btn {
+    background: var(--gold);
+    color: var(--deep-forest);
+    border: none; border-radius: 8px;
+    padding: 9px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity .2s, transform .15s;
+    flex-shrink: 0;
+  }
+  .pwa-install-btn:hover { opacity: .88; transform: scale(1.03); }
+
+  .pwa-dismiss-btn {
+    background: none; border: none;
+    color: rgba(255,255,255,0.4);
+    font-size: 20px; cursor: pointer;
+    padding: 4px; flex-shrink: 0;
+    transition: color .2s;
+  }
+  .pwa-dismiss-btn:hover { color: rgba(255,255,255,0.8); }
+
+  /* iOS install instructions popup */
+  #ios-guide {
+    position: fixed;
+    bottom: 90px; left: 16px; right: 16px;
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 16px 50px rgba(0,0,0,0.25);
+    z-index: 998;
+    display: none;
+    animation: fadeUp .3s ease;
+  }
+  #ios-guide.show { display: block; }
+  .ios-guide-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px; font-weight: 700;
+    color: var(--deep-forest); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .ios-step {
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-bottom: 10px; font-size: 13px; color: var(--text-mid);
+  }
+  .ios-step-num {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--farm-green); color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 1px;
+  }
+  .ios-guide-close {
+    position: absolute; top: 12px; right: 14px;
+    background: var(--cream); border: none; border-radius: 50%;
+    width: 26px; height: 26px; cursor: pointer;
+    font-size: 14px; color: var(--text-mid);
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* Adjust chatbot & mobile menu when banner shows */
+  body.pwa-banner-visible #chatbot-toggle { bottom: 108px; }
+  body.pwa-banner-visible #chatbot-box    { bottom: 178px; }</style>
+</head>
+<body>
+
+<!-- ─── PWA INSTALL BANNER ─── -->
+<div id="pwa-banner">
+  <div class="pwa-banner-icon">🌿</div>
+  <div class="pwa-banner-text">
+    <div class="pwa-banner-title">Adarsh Agro App Install Karein</div>
+    <div class="pwa-banner-sub">Home screen pe add karein — bilkul app jaisa!</div>
+  </div>
+  <button class="pwa-install-btn" id="pwa-install-btn" onclick="installPWA()">📲 Install</button>
+  <button class="pwa-dismiss-btn" onclick="dismissPWA()">✕</button>
+</div>
+
+<!-- ─── iOS INSTALL GUIDE ─── -->
+<div id="ios-guide">
+  <button class="ios-guide-close" onclick="document.getElementById('ios-guide').classList.remove('show')">✕</button>
+  <div class="ios-guide-title">📱 iPhone mein Install Karein</div>
+  <div class="ios-step">
+    <div class="ios-step-num">1</div>
+    <div>Niche Safari ke <strong>Share button</strong> par tap karein (box with arrow ↑)</div>
+  </div>
+  <div class="ios-step">
+    <div class="ios-step-num">2</div>
+    <div><strong>"Add to Home Screen"</strong> option choose karein</div>
+  </div>
+  <div class="ios-step">
+    <div class="ios-step-num">3</div>
+    <div>Name confirm karke <strong>"Add"</strong> dabayein — Done! 🎉</div>
+  </div>
+</div>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">🌿</div>
+    <div class="nav-logo-text">
+      Adarsh Agro
+      <span>Chemicals</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#benefits">Benefits</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#products">Products & Prices</a></li>
+    <li><a href="#order-list">🛒 Order List</a></li>
+    <li><a href="#tracking">📦 Track Order</a></li>
+    <li><a href="#contact" class="nav-cta">Order Now →</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ─── MOBILE MENU ─── -->
+<div id="mobile-menu">
+
+  <div class="mob-menu-label">Navigation</div>
+  <a href="#benefits"    class="mob-menu-item" onclick="closeMobileMenu()"><div class="mob-icon">🌱</div> Benefits</a>
+  <a href="#how-it-works" class="mob-menu-item" onclick="closeMobileMenu()"><div class="mob-icon">📋</div> How It Works</a>
+  <a href="#products"    class="mob-menu-item" onclick="closeMobileMenu()"><div class="mob-icon">🌾</div> Products & Prices</a>
+  <a href="#order-list"  class="mob-menu-item" onclick="closeMobileMenu()"><div class="mob-icon">🛒</div> My Order List</a>
+  <a href="#tracking"    class="mob-menu-item" onclick="closeMobileMenu()"><div class="mob-icon">📦</div> Track My Order</a>
+
+  <div class="mob-menu-divider"></div>
+
+  <div class="mob-menu-label">Quick Actions</div>
+  <div class="mob-order-row">
+    <a href="tel:+919876543210" onclick="closeMobileMenu()">📞 Call Now</a>
+    <a href="#contact" onclick="closeMobileMenu()">✉️ Order Now</a>
+  </div>
+
+  <div class="mob-menu-divider"></div>
+
+  <div class="mob-menu-label">📲 App Install Karein</div>
+  <a href="javascript:void(0)" class="mob-app-btn" id="mob-install-btn" onclick="installPWA(); closeMobileMenu();">
+    <div class="mob-app-icon">🌿</div>
+    <div class="mob-app-text">
+      <div class="mob-app-title">Adarsh Agro App</div>
+      <div class="mob-app-sub">Phone mein install karein — free!</div>
+    </div>
+    <div class="mob-app-badge">Install</div>
+  </a>
+
+  <div class="mob-menu-divider"></div>
+  <div class="mob-menu-label">Follow Us</div>
+  <a href="https://wa.me/919876543210" target="_blank" class="mob-menu-item" onclick="closeMobileMenu()">
+    <div class="mob-icon">💬</div> WhatsApp pe Order Karein
+  </a>
+  <a href="#contact" class="mob-menu-item" onclick="closeMobileMenu()">
+    <div class="mob-icon">📍</div> Hamare Paas Aayein
+  </a>
+
+</div>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">Trusted by 2,000+ Farmers</div>
+      <h1>Better Soil.<br/>Bigger <em>Harvest.</em><br/>Every Season.</h1>
+      <p class="hero-sub">Adarsh Agro Chemicals delivers premium organic & inorganic fertilizers and effective pesticides — straight to your farm. Grow more, protect more, earn more.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">🛒 Buy Now</a>
+        <a href="#how-it-works" class="btn-outline">📞 Book a Call</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">2000+</div>
+          <div class="stat-label">Happy Farmers</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">50+</div>
+          <div class="stat-label">Products</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">15+</div>
+          <div class="stat-label">Years Serving</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-card-stack">
+        <div class="hcard hcard-main">
+          <div class="hcard-emoji">🌾</div>
+          <h3>Organic Fertilizer</h3>
+          <p>100% natural nutrients that enrich your soil for long-term productivity</p>
+          <div class="hcard-tag">✓ Certified Organic</div>
+        </div>
+        <div class="hcard hcard-float1">
+          <div class="fl-num">40%</div>
+          <div class="fl-label">Higher yield reported by farmers</div>
+        </div>
+        <div class="hcard hcard-float2">
+          <div class="fl-icon">🛡️</div>
+          <div class="fl-text">
+            <div class="fn">Crop Protection</div>
+            <div class="fd">Safe Pesticides</div>
+          </div>
+        </div>
+        <div class="green-ring"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BENEFITS ─── -->
+<section class="benefits" id="benefits">
+  <div class="section-wrap">
+    <div class="section-eyebrow">Why Choose Us</div>
+    <h2 class="section-title">Everything Your Farm Needs to Thrive</h2>
+    <p class="section-sub">From soil prep to harvest, our products support every stage of crop growth with trusted, tested formulas.</p>
+
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-num">01</div>
+        <div class="benefit-icon">🌱</div>
+        <h3>Proven Organic Range</h3>
+        <p>Our organic fertilizers are made from natural sources — enriching soil health, improving water retention, and boosting beneficial microbes for season after season of strong yields.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num">02</div>
+        <div class="benefit-icon">⚗️</div>
+        <h3>High-Yield Inorganic Formulas</h3>
+        <p>Precision-blended NPK and micronutrient fertilizers that deliver fast, measurable results. Designed for maximum absorption and minimum waste.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num">03</div>
+        <div class="benefit-icon">🛡️</div>
+        <h3>Effective Crop Protection</h3>
+        <p>Our pesticide range tackles fungal, insect, and weed threats without harming your soil ecosystem. Safe, approved, and easy to apply for any farm size.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ─── -->
+<section class="how-it-works" id="how-it-works">
+  <div class="section-wrap">
+    <div class="section-eyebrow">Simple Process</div>
+    <h2 class="section-title">From Order to Field in 3 Easy Steps</h2>
+    <p class="section-sub">Getting the right products to your farm has never been easier. Here's how it works.</p>
+
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">
+          <div class="step-num-inner">1</div>
+          <div class="step-emoji">📋</div>
+        </div>
+        <h3>Tell Us Your Needs</h3>
+        <p>Share your crop type, soil condition, and area size. Our agri experts will recommend the best products for your specific farm.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">
+          <div class="step-num-inner">2</div>
+          <div class="step-emoji">📦</div>
+        </div>
+        <h3>Place Your Order</h3>
+        <p>Order online or visit our store. We offer flexible quantities, bulk discounts, and fast delivery to your doorstep or nearest pickup point.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">
+          <div class="step-num-inner">3</div>
+          <div class="step-emoji">🌾</div>
+        </div>
+        <h3>Apply & See Results</h3>
+        <p>Follow our simple application guide and watch your crops respond. Our support team is always available if you have questions during the season.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRODUCT CATALOGUE ─── -->
+<section id="products" style="background:var(--white);">
+  <div class="section-wrap" style="padding-bottom:100px;">
+    <div class="section-eyebrow">Our Products</div>
+    <h2 class="section-title">Fertilizers & Pesticides Catalogue</h2>
+    <p class="section-sub">Quality-tested products with transparent pricing. Bulk discounts available — call us for quotes above 10 bags.</p>
+
+    <!-- TABS -->
+    <div class="prod-tabs">
+      <button class="prod-tab active" onclick="filterProducts('all',this)">🌾 All Products</button>
+      <button class="prod-tab" onclick="filterProducts('organic',this)">🌿 Organic Fertilizers</button>
+      <button class="prod-tab" onclick="filterProducts('inorganic',this)">⚗️ Inorganic Fertilizers</button>
+      <button class="prod-tab" onclick="filterProducts('pesticide',this)">🛡️ Pesticides</button>
+    </div>
+
+    <!-- PRODUCT GRID -->
+    <div class="prod-grid" id="prodGrid">
+
+      <!-- ORGANIC FERTILIZERS -->
+      <div class="prod-card" data-cat="organic">
+        <div class="prod-badge organic">Organic</div>
+        <div class="prod-img-wrap" id="img-vermicompost">
+          <img src="https://images.unsplash.com/photo-1591280063444-d3c514eb6e13?w=500&q=85" alt="Vermicompost bag product" class="slide-visible"/>
+          <img src="https://images.unsplash.com/photo-1592419044706-39796d40f98c?w=500&q=85" alt="Vermicompost worms soil" class="slide-hidden"/>
+          <button class="prod-img-arrow prev" onclick="slideImg('img-vermicompost',-1)">‹</button>
+          <button class="prod-img-arrow next" onclick="slideImg('img-vermicompost',1)">›</button>
+          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-vermicompost',0)"></button><button class="prod-img-dot" onclick="goSlide('img-vermicompost',1)"></button></div>
+        </div>
+        <div class="prod-icon" style="display:none;">🌿</div>
+        <div class="prod-info">
+          <h4>Organic Compost (Vermicompost)</h4>
+          <p>Enriches soil with natural humus, improves water retention and microbial activity. Best for all crops.</p>
+          <div class="prod-meta"><span>📦 50 kg bag</span><span>🌱 All Crops</span></div>
+        </div>
+        <div class="prod-footer">
+          <div class="prod-price">₹ 450 <span>/bag</span></div>
+          <div style="display:flex;gap:6px;">
+            <button class="prod-btn" onclick="addToEnquiry('Organic Compost – ₹450/bag')">+ Enquire</button>
+            <button class="prod-btn prod-buy" onclick="quickBuy('Organic Compost (Vermicompost)','₹450/bag')">📧 Buy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-cat="organic">
+        <div class="prod-badge organic">Organic</div>
+        <div class="prod-img-wrap" id="img-neem">
+          <img src="https://images.unsplash.com/photo-1611735341450-74d61e660ad2?w=500&q=85" alt="Neem cake fertilizer bag" class="slide-visible"/>
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=85" alt="Neem leaves close-up" class="slide-hidden"/>
+          <button class="prod-img-arrow prev" onclick="slideImg('img-neem',-1)">‹</button>
+          <button class="prod-img-arrow next" onclick="slideImg('img-neem',1)">›</button>
+          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-neem',0)"></button><button class="prod-img-dot" onclick="goSlide('img-neem',1)"></button></div>
+        </div>
+        <div class="prod-icon" style="display:none;">🐄</div>
+        <div class="prod-info">
+          <h4>Neem Cake Fertilizer</h4>
+          <p>Dual-action — feeds soil nitrogen while repelling soil-borne pests. Ideal for vegetables & fruits.</p>
+          <div class="prod-meta"><span>📦 25 kg bag</span><span>🌱 Vegetables, Fruits</span></div>
+        </div>
+        <div class="prod-footer">
+          <div class="prod-price">₹ 320 <span>/bag</span></div>
+          <div style="display:flex;gap:6px;">
+            <button class="prod-btn" onclick="addToEnquiry('Neem Cake Fertilizer – ₹320/bag')">+ Enquire</button>
+            <button class="prod-btn prod-buy" onclick="quickBuy('Neem Cake Fertilizer','₹320/bag')">📧 Buy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-cat="organic">
+        <div class="prod-badge organic">Organic</div>
+        <div class="prod-img-wrap" id="img-biofert">
+          <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=500&q=85" alt="Rhizobium bio fertilizer pack" class="slide-visible"/>
+          <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=500&q=85" alt="Soybean legume crop roots" class="slide-hidden"/>
+          <button class="prod-img-arrow prev" onclick="slideImg('img-biofert',-1)">‹</button>
+          <button class="prod-img-arrow next" onclick="slideImg('img-biofert',1)">›</button>
+          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-biofert',0)"></button><button class="prod-img-dot" onclick="goSlide('img-biofert',1)"></button></div>
+        </div>
+        <div class="prod-icon" style="display:none;">🦠</div>
+        <div class="prod-info">
+          <h4>Bio-Fertilizer (Rhizobium)</h4>
+          <p>Live bacterial culture that fixes atmospheric nitrogen directly in legume roots. Reduces chemical usage by 30%.</p>
+          <div class="prod-meta"><span>📦 1 kg pack</span><span>🌱 Soybean, Pulses</span></div>
+        </div>
+        <div class="prod-footer">
+          <div class="prod-price">₹ 120 <span>/pack</span></div>
+          <div style="display:flex;gap:6px;">
+            <button class="prod-btn" onclick="addToEnquiry('Bio-Fertilizer Rhizobium – ₹120/pack')">+ Enquire</button>
+            <button class="prod-btn prod-buy" onclick="quickBuy('Bio-Fertilizer (Rhizobium)','₹120/pack')">📧 Buy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-cat="organic">
+        <div class="prod-badge organic">Organic</div>
+        <div class="prod-img-wrap" id="img-seaweed">
+          <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=500&q=85" alt="Seaweed liquid extract bottle" class="slide-visible"/>
+          <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&q=85" alt="Crop foliar spray seaweed" class="slide-hidden"/>
+          <button class="prod-img-arrow prev" onclick="slideImg('img-seaweed',-1)">‹</button>
+          <button class="prod-img-arrow next" onclick="slideImg('img-seaweed',1)">›</button>
+          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-seaweed',0)"></button><button class="prod-img-dot" onclick="goSlide('img-seaweed',1)"></button></div>
+        </div>
+        <div class="prod-icon" style="display:none;">🌊</div>
+        <div class="prod-info">
+          <h4>Seaweed Extract (Liquid)</h4>
+          <p>Rich in natural growth hormones and micronutrients. Improves seed germination and stress tolerance.</p>
+          <div class="prod-meta"><span>📦 1 litre bottle</span><span>🌱 All Crops</span></div>
+        </div>
+        <div class="prod-footer">
+          <div class="prod-price">₹ 280 <span>/litre</span></div>
+          <div style="display:flex;gap:6px;">
+            <button class="prod-btn" onclick="addToEnquiry('Seaweed Extract – ₹280/litre')">+ Enquire</button>
+            <button class="prod-btn prod-buy" onclick="quickBuy('Seaweed Extract (Liquid)','₹280/litre')">📧 Buy</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- INORGANIC FERTILIZERS -->
+      <div class="prod-card" data-cat="inorganic">
+        <div class="prod-badge inorganic">Inorganic</div>
+        <div class="prod-img-wrap" id="img-urea">
+          <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=500&q=85" alt="Urea 46% fertilizer white granules bag" class="slide-visible"/>
+          <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=500&q=85" alt="Urea applied wheat field green" class="slide-hidden"/>
+          <button class="prod-img-arrow prev" onclick="slideImg('img-urea',-1)">‹</button>
+          <button class="prod-img-arrow next" onclick="slideImg('img-urea',1)">›</button>
+          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-urea',0)"></button><button class="prod-img-dot" onclick="goSlide('img-urea',1)"></button></div>
+        </div>
+        <div class="prod-icon" style="display:none;">🧪</div>
+        <div class="prod-info">
+          <h4>Urea (46% Nitrogen)</h4>
+          <p>India's most widely used nitrogen fertilizer. Fast-acting, high-concentration formula for rapid green growth.</p>
+          <div class="prod-meta"><span>📦 50 kg bag</span><span>🌱 Wheat, Rice, Maize</span></div>
+        </div>
+        <div class="prod-footer">
+          <div class="prod-price">₹ 266 <span>/bag</span></div>
+          <div style="display:flex;gap:6px;">
+            <button class="prod-btn" onclick="addToEnquiry('Urea 46% – ₹266/bag')">+ Enquire</button>
+            <button class="prod-btn prod-buy" onclick="quickBuy('Urea (46% Nitrogen)','₹266/bag')">📧 Buy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-cat="inorganic">
+        <div class="prod-badge inorganic">Inorganic</div>
+        <div class="prod-img-wrap" id="img-dap">
+          <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=500&q=85" alt="DAP di-ammonium phosphate blue granules" class="slide-visible"/>
+          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&q=85" alt="DAP basal application field crop" class="slide-hidden"/>
+          <button class="prod-img-arrow prev" onclick="slideImg('img-dap',-1)">‹</button>
+          <button class="prod-img-arrow next" onclick="slideImg('img-dap',1)">›</button>
+          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-dap',0)"></button><button class="prod-img-dot" onclick="goSlide('img-dap',1)"></button></div>
+        </div>
+        <div class="prod-icon" style="display:none;">🔬</div>
+        <div class="prod-info">
+          <h4>DAP (Di-Ammonium Phosphate)</h4>
+          <p>18% Nitrogen + 46% Phosphorus. Excellent basal dose for strong root development and early plant establishment.</p>
+          <div class="prod-meta"><span>📦 50 kg bag</span><span>🌱 All Field Crops</span></div>
+        </div>
+        <div class="prod-footer">
+          <div class="prod-price">₹ 1,350 <span>/bag</span></div>
+          <div style="display:flex;gap:6px;">
+            <button class="prod-btn" onclick="addToEnquiry('DAP Fertilizer – ₹1350/bag')">+ Enquire</button>
+            <button class="prod-btn prod-buy" onclick="quickBuy('DAP (Di-Ammonium Phosphate)','₹1,350/bag')">📧 Buy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-cat="inorganic">
+        <div class="prod-badge inorganic">Inorganic</div>
+        <div class="prod-img-wrap" id="img-npk">
+          <img src="https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?w=500&q=85" alt="NPK 20-20-20 water soluble fertilizer pack" class="slide-visible"/>
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=85" alt="Fertigation drip NPK vegetable crop" class="slide-hidden"/>
+          <button class="prod-img-arrow prev" onclick="slideImg('img-npk',-1)">‹</button>
+          <button class="prod-img-arrow next" onclick="slideImg('img-npk',1)">›</button>
+          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-npk',0)"></button><button class="prod-img-dot" onclick="goSlide('img-npk',1)"></button></div>
+        </div>
+        <div class="prod-icon" style="display:none;">⚗️</div>
+        <div class="prod-info">
+          <h4>NPK 20-20-20 (Water Soluble)</h4>
+          <p>Balanced equal-ratio NPK for fertigation and foliar spray. Ideal for high-value crops requiring precise nutrition.</p>
+          <div class="prod-meta"><span>📦 25 kg bag</span><span>🌱 Vegetables, Cotton</span></div>
+        </div>
+        <div class="prod-footer">
+          <div class="prod-price">₹ 1,100 <span>/bag</span></div>
+          <div style="display:flex;gap:6px;">
+            <button class="prod-btn" onclick="addToEnquiry('NPK 20-20-20 – ₹1100/bag')">+ Enquire</button>
+            <button class="prod-btn prod-buy" onclick="quickBuy('NPK 20-20-20 Water Soluble','₹1,100/bag')">📧 Buy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-cat="inorganic">
+        <div class="prod-badge inorganic">Inorganic</div>
+        <div class="prod-img-wrap" id="img-micro">
+          <img src="https://images.unsplash.com/photo-1615811361523-6bd03d7748e7?w=500&q=85" alt="Micronutrient mix zinc iron manganese pack" class="slide-visible"/>
+          <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=500&q=85" alt="Healthy golden wheat micronutrient treated" class="slide-hidden"/>
+          <button class="prod-img-arrow prev" onclick="slideImg('img-micro',-1)">‹</button>
+          <button class="prod-img-arrow next" onclick="slideImg('img-micro',1)">›</button>
+          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-micro',0)"></button><button class="prod-img-dot" onclick="goSlide('img-micro',1)"></button></div>
+        </div>
+        <div class="prod-icon" style="display:none;">✨</div>
+        <div class="prod-info">
+          <h4>Micronutrient Mix (Zn, Fe, Mn, B)</h4>
+          <p>Complete micronutrient blend that corrects hidden deficiencies in soil. Prevents yellowing, improves grain fill.</p>
+          <div class="prod-meta"><span>📦 5 kg pack</span><span>🌱 All Crops</span></div>
+        </div>
+        <div class="prod-footer">
+          <div class="prod-price">₹ 650 <span>/pack</span></div>
+          <div style="display:flex;gap:6px;">
+            <button class="prod-btn" onclick="addToEnquiry('Micronutrient Mix – ₹650/pack')">+ Enquire</button>
+            <button class="prod-btn prod-buy" onclick="quickBuy('Micronutrient Mix (Zn, Fe, Mn, B)','₹650/pack')">📧 Buy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-cat="inorganic">
+        <div class="prod-badge inorganic">Inorganic</div>
+        <div class="prod-img-wrap" id="img-mop">
+          <img src="https://images.unsplash.com/photo-1628352081506-83c43123a6b9?w=500&q=85" alt="MOP muriate of potash red granules bag" class="slide-visible"/>
+          <img src="https://images.unsplash.com/photo-1518977956812-cd3dbadaaf31?w=500&q=85" alt="Sugarcane potato MOP treated field" class="slide-hidden"/>
+          <button class="prod-img-arrow prev" onclick="slideImg('img-mop',-1)">‹</button>
+          <button class="prod-img-arrow next" onclick="slideImg('img-mop',1)">›</button>
+          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-mop',0)"></button><button class="prod-img-dot" onclick="goSlide('img-mop',1)"></button></div>
+        </div>
+        <div class="prod-icon" style="display:none;">🪨</div>
+        <div class="prod-info">
+          <h4>MOP (Muriate of Potash)</h4>
+          <p>60% Potassium Oxide. Strengthens cell walls, improves drought resistance and quality of grains and fruits.</p>
+          <div class="prod-meta"><span>📦 50 kg bag</span><span>🌱 Sugarcane, Potato</span></div>
+        </div>
+        <div class="prod-footer">
+          <div class="prod-price">₹ 1,700 <span>/bag</span></div>
+          <div style="display:flex;gap:6px;">
+            <button class="prod-btn" onclick="addToEnquiry('MOP Potash – ₹1700/bag')">+ Enquire</button>
+            <button class="prod-btn prod-buy" onclick="quickBuy('MOP (Muriate of Potash)','₹1,700/bag')">📧 Buy</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PESTICIDES -->
+      <div class="prod-card" data-cat="pesticide">
+        <div class="prod-badge pesticide">Pesticide</div>
+        <div class="prod-img-wrap" id="img-chlor">
+          <img src="https://images.unsplash.com/photo-1631193816258-28b44b21e78f?w=500&q=85" alt="Chlorpyrifos 20% EC insecticide bottle amber" class="slide-visible"/>
+          <img src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?w=500&q=85" alt="Insecticide sprayer field application" class="slide-hidden"/>
+          <button class="prod-img-arrow prev" onclick="slideImg('img-chlor',-1)">‹</button>
+          <button class="prod-img-arrow next" onclick="slideImg('img-chlor',1)">›</button>
+          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-chlor',0)"></button><button class="prod-img-dot" onclick="goSlide('img-chlor',1)"></button></div>
+        </div>
+        <div class="prod-icon" style="display:none;">🐛</div>
+        <div class="prod-info">
+          <h4>Chlorpyrifos 20% EC (Insecticide)</h4>
+          <p>Broad-spectrum insecticide effective against stem borers, white grubs, and termites in major field crops.</p>
+          <div class="prod-meta"><span>📦 1 litre bottle</span><span>🌱 Rice, Wheat, Cotton</span></div>
+        </div>
+        <div class="prod-footer">
+          <div class="prod-price">₹ 480 <span>/litre</span></div>
+          <div style="display:flex;gap:6px;">
+            <button class="prod-btn" onclick="addToEnquiry('Chlorpyrifos 20% EC – ₹480/litre')">+ Enquire</button>
+            <button class="prod-btn prod-buy" onclick="quickBuy('Chlorpyrifos 20% EC Insecticide','₹480/litre')">📧 Buy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-cat="pesticide">
+        <div class="prod-badge pesticide">Pesticide</div>
+        <div class="prod-img-wrap" id="img-mancozeb">
+          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&q=85" alt="Mancozeb 75% WP fungicide powder pack" class="slide-visible"/>
+          <img src="https://images.unsplash.com/photo-1518977956812-cd3dbadaaf31?w=500&q=85" alt="Potato tomato late blight fungicide protection" class="slide-hidden"/>
+          <button class="prod-img-arrow prev" onclick="slideImg('img-mancozeb',-1)">‹</button>
+          <button class="prod-img-arrow next" onclick="slideImg('img-mancozeb',1)">›</button>
+          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-mancozeb',0)"></button><button class="prod-img-dot" onclick="goSlide('img-mancozeb',1)"></button></div>
+        </div>
+        <div class="prod-icon" style="display:none;">🍄</div>
+        <div class="prod-info">
+          <h4>Mancozeb 75% WP (Fungicide)</h4>
+          <p>Contact fungicide with protective action against late blight, leaf spot, and downy mildew diseases.</p>
+          <div class="prod-meta"><span>📦 500 g pack</span><span>🌱 Potato, Tomato, Grapes</span></div>
+        </div>
+        <div class="prod-footer">
+          <div class="prod-price">₹ 220 <span>/pack</span></div>
+          <div style="display:flex;gap:6px;">
+            <button class="prod-btn" onclick="addToEnquiry('Mancozeb 75% WP – ₹220/pack')">+ Enquire</button>
+            <button class="prod-btn prod-buy" onclick="quickBuy('Mancozeb 75% WP Fungicide','₹220/pack')">📧 Buy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-cat="pesticide">
+        <div class="prod-badge pesticide">Pesticide</div>
+        <div class="prod-img-wrap" id="img-glyph">
+          <img src="https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?w=500&q=85" alt="Glyphosate 41% herbicide liquid bottle" class="slide-visible"/>
+          <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=500&q=85" alt="Weed control orchard non-crop area" class="slide-hidden"/>
+          <button class="prod-img-arrow prev" onclick="slideImg('img-glyph',-1)">‹</button>
+          <button class="prod-img-arrow next" onclick="slideImg('img-glyph',1)">›</button>
+          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-glyph',0)"></button><button class="prod-img-dot" onclick="goSlide('img-glyph',1)"></button></div>
+        </div>
+        <div class="prod-icon" style="display:none;">🪲</div>
+        <div class="prod-info">
+          <h4>Glyphosate 41% SL (Herbicide)</h4>
+          <p>Non-selective post-emergent herbicide for total weed control in non-crop areas and plantation crops.</p>
+          <div class="prod-meta"><span>📦 1 litre bottle</span><span>🌱 Orchards, Wastelands</span></div>
+        </div>
+        <div class="prod-footer">
+          <div class="prod-price">₹ 360 <span>/litre</span></div>
+          <div style="display:flex;gap:6px;">
+            <button class="prod-btn" onclick="addToEnquiry('Glyphosate 41% SL – ₹360/litre')">+ Enquire</button>
+            <button class="prod-btn prod-buy" onclick="quickBuy('Glyphosate 41% SL Herbicide','₹360/litre')">📧 Buy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-cat="pesticide">
+        <div class="prod-badge pesticide">Pesticide</div>
+        <div class="prod-img-wrap" id="img-imida">
+          <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=500&q=85" alt="Imidacloprid 17.8% SL systemic insecticide bottle" class="slide-visible"/>
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=85" alt="Cotton vegetable sucking pest control spray" class="slide-hidden"/>
+          <button class="prod-img-arrow prev" onclick="slideImg('img-imida',-1)">‹</button>
+          <button class="prod-img-arrow next" onclick="slideImg('img-imida',1)">›</button>
+          <div class="prod-img-dots"><button class="prod-img-dot active" onclick="goSlide('img-imida',0)"></button><button class="prod-img-dot" onclick="goSlide('img-imida',1)"></button></div>
+        </div>
+        <div class="prod-icon" style="display:none;">🦟</div>
+        <div class="prod-info">
+          <h4>Imidacloprid 17.8% SL</h4>
+          <p>Systemic insecticide with excellent soil and foliar activity against sucking pests like aphids, whitefly, thrips.</p>
+          <div class="prod-meta"><span>📦 250 ml bottle</span><span>🌱 Cotton, Vegetables, Rice</span></div>
+        </div>
+        <div class="prod-footer">
+          <div class="prod-price">₹ 390 <span>/bottle</span></div>
+          <div style="display:flex;gap:6px;">
+            <button class="prod-btn" onclick="addToEnquiry('Imidacloprid 17.8% – ₹390/bottle')">+ Enquire</button>
+            <button class="prod-btn prod-buy" onclick="quickBuy('Imidacloprid 17.8% SL','₹390/bottle')">📧 Buy</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /prod-grid -->
+
+    <!-- ENQUIRY BASKET -->
+    <div class="enquiry-basket" id="enquiryBasket" style="display:none;">
+      <div class="basket-header">
+        <span>🛒 Enquiry List</span>
+        <button onclick="clearBasket()" style="background:none;border:none;color:var(--text-mid);cursor:pointer;font-size:12px;">Clear all</button>
+      </div>
+      <ul class="basket-list" id="basketList"></ul>
+      <a href="#contact" class="btn-primary" style="width:100%;justify-content:center;margin-top:14px;font-size:14px;" onclick="sendBasketToGmail()">📧 Send All to Gmail & Order Now</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── TESTIMONIAL ─── -->
+<section class="testimonial">
+  <div class="section-wrap">
+    <div class="testimonial-inner">
+      <div class="section-eyebrow">Farmer Stories</div>
+      <div class="stars">★★★★★</div>
+      <blockquote class="testimonial-quote">
+        "I switched to Adarsh Agro's organic fertilizer two seasons ago. My wheat yield went up by nearly 35% and the soil is healthier than it's ever been. Their team helped me choose exactly what my land needed."
+      </blockquote>
+      <div class="testimonial-author">
+        <div class="author-avatar">👨‍🌾</div>
+        <div class="author-info">
+          <div class="name">Ramesh Kumar Patel</div>
+          <div class="location">📍 Madhya Pradesh — Wheat & Soybean Farmer, 12 acres</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT / CTA ─── -->
+<section class="contact" id="contact">
+  <div class="contact-grid">
+    <div class="contact-left">
+      <div class="section-eyebrow" style="color:var(--leaf-green)">Get In Touch</div>
+      <h2 class="section-title">Ready to Grow Your Best Season Yet?</h2>
+      <p class="section-sub">Fill in the form and our agri specialist will reach out within 24 hours with the right products for your farm.</p>
+      <div class="contact-details">
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div>+91 98765 43210 &nbsp;|&nbsp; +91 87654 32109</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">✉️</div>
+          <div><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c4a6b6a5aeb6a5aeb7adaaa3acb7abaaa3a5b6a5f7f484a3a9a5ada8eaa7aba9">[email&#160;protected]</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div>Main Market Road, Kisan Nagar, Rajasthan</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🕒</div>
+          <div>Mon – Sat: 8 AM – 7 PM &nbsp;|&nbsp; Sun: 9 AM – 2 PM</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h3>Order / Enquiry Form</h3>
+      <p class="form-sub">Fill the form — your order will be sent directly to our Gmail inbox instantly. 📧</p>
+      <form id="orderForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" id="f-name" placeholder="Ramesh Kumar" required/>
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" id="f-phone" placeholder="+91 98765 43210" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Village / Town *</label>
+          <input type="text" id="f-village" placeholder="e.g. Kisan Nagar, Rajasthan" required/>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Crop Type</label>
+            <select id="f-crop">
+              <option value="">Select your crop...</option>
+              <option>Wheat</option>
+              <option>Rice / Paddy</option>
+              <option>Cotton</option>
+              <option>Sugarcane</option>
+              <option>Vegetables</option>
+              <option>Maize / Corn</option>
+              <option>Soybean</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Farm Size (Acres)</label>
+            <input type="text" id="f-farm" placeholder="e.g. 5 acres"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Products Required *</label>
+          <textarea id="f-products" rows="3" placeholder="e.g. 2 bags Urea, 1 bag DAP, 1 bottle Chlorpyrifos..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label>Additional Message</label>
+          <textarea id="f-msg" placeholder="Any questions about soil type, dosage, or delivery..."></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="submit-btn">
+          📧 Send Order to Gmail Now
+        </button>
+        <p style="font-size:11px;color:var(--text-mid);text-align:center;margin-top:10px;">
+          ✅ Your order opens Gmail compose — just click Send. We reply within 2 hours.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ORDER LIST ─── -->
+<section id="order-list" style="background:var(--cream);">
+  <div class="section-wrap" style="padding-bottom:100px;">
+    <div class="section-eyebrow">Order Tracker</div>
+    <h2 class="section-title">My Order List</h2>
+    <p class="section-sub">Add products to your cart below, review your order, then send it directly to our Gmail in one click.</p>
+
+    <!-- CART BUILDER -->
+    <div class="ol-builder">
+      <div class="ol-builder-row">
+        <div class="ol-select-wrap">
+          <label class="ol-label">Select Product</label>
+          <select id="ol-product">
+            <option value="">-- Choose a product --</option>
+            <optgroup label="🌿 Organic Fertilizers">
+              <option data-price="450" data-unit="bag">Organic Compost (Vermicompost) – ₹450/bag</option>
+              <option data-price="320" data-unit="bag">Neem Cake Fertilizer – ₹320/bag</option>
+              <option data-price="120" data-unit="pack">Bio-Fertilizer Rhizobium – ₹120/pack</option>
+              <option data-price="280" data-unit="litre">Seaweed Extract – ₹280/litre</option>
+            </optgroup>
+            <optgroup label="⚗️ Inorganic Fertilizers">
+              <option data-price="266" data-unit="bag">Urea 46% Nitrogen – ₹266/bag</option>
+              <option data-price="1350" data-unit="bag">DAP Di-Ammonium Phosphate – ₹1,350/bag</option>
+              <option data-price="1100" data-unit="bag">NPK 20-20-20 Water Soluble – ₹1,100/bag</option>
+              <option data-price="650" data-unit="pack">Micronutrient Mix (Zn,Fe,Mn,B) – ₹650/pack</option>
+              <option data-price="1700" data-unit="bag">MOP Muriate of Potash – ₹1,700/bag</option>
+            </optgroup>
+            <optgroup label="🛡️ Pesticides">
+              <option data-price="480" data-unit="litre">Chlorpyrifos 20% EC Insecticide – ₹480/litre</option>
+              <option data-price="220" data-unit="pack">Mancozeb 75% WP Fungicide – ₹220/pack</option>
+              <option data-price="360" data-unit="litre">Glyphosate 41% SL Herbicide – ₹360/litre</option>
+              <option data-price="390" data-unit="bottle">Imidacloprid 17.8% SL – ₹390/bottle</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="ol-qty-wrap">
+          <label class="ol-label">Quantity</label>
+          <div class="ol-qty-row">
+            <button type="button" onclick="changeQty(-1)">−</button>
+            <input type="number" id="ol-qty" value="1" min="1" max="999"/>
+            <button type="button" onclick="changeQty(1)">+</button>
+          </div>
+        </div>
+        <button class="ol-add-btn" onclick="addOrderItem()">＋ Add to Order</button>
+      </div>
+    </div>
+
+    <!-- ORDER TABLE -->
+    <div class="ol-table-wrap" id="ol-empty" style="display:block;">
+      <div class="ol-empty-state">
+        <div class="ol-empty-icon">🛒</div>
+        <p>Your order list is empty.<br/>Select a product above and click <strong>Add to Order</strong>.</p>
+      </div>
+    </div>
+
+    <div class="ol-table-wrap" id="ol-filled" style="display:none;">
+      <table class="ol-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Product</th>
+            <th>Unit Price</th>
+            <th>Qty</th>
+            <th>Subtotal</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="ol-tbody"></tbody>
+        <tfoot>
+          <tr class="ol-total-row">
+            <td colspan="4" style="text-align:right;font-weight:600;">Total Amount</td>
+            <td id="ol-total" style="font-weight:700;color:var(--deep-forest);font-family:'Playfair Display',serif;font-size:18px;">₹0</td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <!-- Farmer info mini form -->
+      <div class="ol-farmer-info">
+        <h4>Your Details <span style="font-size:12px;font-weight:400;color:var(--text-mid);">(required to send order)</span></h4>
+        <div class="ol-info-row">
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" id="ol-name" placeholder="Ramesh Kumar" required/>
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" id="ol-phone" placeholder="+91 98765 43210" required/>
+          </div>
+          <div class="form-group">
+            <label>Village / Town</label>
+            <input type="text" id="ol-village" placeholder="e.g. Kisan Nagar, Rajasthan"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="ol-actions">
+        <button class="ol-clear-btn" onclick="clearOrder()">🗑 Clear All</button>
+        <button class="ol-send-btn" onclick="sendOrderToGmail()">📧 Send Order to Gmail</button>
+        <button class="ol-pay-btn" onclick="initiatePayment()">📱 UPI Se Pay Karein</button>
+        <button class="ol-print-btn" onclick="printOrder()">🖨 Print Order</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── PAYMENT SUCCESS MODAL ─── -->
+<!-- ─── UPI PAYMENT MODAL ─── -->
+<div id="pay-modal-overlay">
+  <div id="pay-modal">
+    <button class="pay-modal-close" onclick="closePayModal(false)">✕</button>
+
+    <!-- QR + UPI state -->
+    <div id="pay-qr-state">
+      <div class="pay-modal-title">📱 UPI Se Payment Karein</div>
+      <div class="pay-modal-amount" id="modal-amount">₹0</div>
+      <p class="pay-modal-sub">Niche QR scan karein ya UPI ID pe directly pay karein</p>
+
+      <div class="upi-qr-box">
+        <img id="upi-qr-img" src="" alt="UPI QR Code"/>
+      </div>
+
+      <div class="upi-id-box">
+        📲 adarshagro@upi
+        <button class="upi-copy-btn" onclick="copyUpiId()" title="Copy UPI ID">📋</button>
+      </div>
+
+      <div class="upi-apps">
+        <div class="upi-app-badge">🟢 Google Pay</div>
+        <div class="upi-app-badge">🔵 PhonePe</div>
+        <div class="upi-app-badge">🔵 Paytm</div>
+        <div class="upi-app-badge">🟠 BHIM</div>
+      </div>
+
+      <div class="upi-paid-section">
+        <div class="upi-paid-label">✅ Payment ho gayi? UPI Transaction ID daalo:</div>
+        <div class="upi-paid-row">
+          <input type="text" id="upi-txn-id" class="upi-txn-input" placeholder="e.g. 425678901234"/>
+          <button class="upi-confirm-btn" onclick="confirmUpiPayment()">Confirm ✓</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success state -->
+    <div id="pay-success-state">
+      <div class="pay-success-icon">🎉</div>
+      <div class="pay-modal-title">Payment Confirm Ho Gayi!</div>
+      <p class="pay-modal-sub">Aapka order place ho gaya hai. Order ID save kar lein — tracking ke liye use hogi.</p>
+      <div class="pay-modal-order-id">
+        Aapka Order ID
+        <strong id="modal-order-id">—</strong>
+      </div>
+      <div class="pay-modal-btns">
+        <button class="pay-modal-btn primary" onclick="closePayModal(true)">📧 Confirmation Email Bhejo</button>
+        <button class="pay-modal-btn secondary" onclick="closePayModal(false)">✕ Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── ORDER TRACKING ─── -->
+<section id="tracking">
+  <div class="section-wrap">
+    <div class="section-eyebrow">Order Tracking</div>
+    <h2 class="section-title">Apna Order Track Karein</h2>
+    <p class="section-sub">Payment ke baad jo Order ID mila tha woh niche daalo — apne order ki poori status dekhein.</p>
+
+    <div class="tracking-search">
+      <input type="text" id="track-input" placeholder="Order ID daalo (e.g. AAC-2025-00042)" onkeydown="if(event.key==='Enter')trackOrder()"/>
+      <button onclick="trackOrder()">🔍 Track Now</button>
+    </div>
+
+    <div id="tracking-result">
+      <div class="track-not-found" id="track-not-found">
+        ❌ Yeh Order ID nahi mila. Sahi ID check karein ya humse call karein: 📞 +91 98765 43210
+      </div>
+      <div class="track-card" id="track-card">
+        <div class="track-card-header">
+          <div>
+            <div style="font-size:12px;color:var(--text-mid);margin-bottom:4px;">Order ID</div>
+            <div class="track-order-id" id="track-display-id">—</div>
+          </div>
+          <div class="track-status-pill" id="track-pill">—</div>
+        </div>
+
+        <div class="track-steps" id="track-steps"></div>
+
+        <div class="track-info-row">
+          <div class="track-info-item">
+            <label>Customer</label>
+            <span id="track-customer">—</span>
+          </div>
+          <div class="track-info-item">
+            <label>Products</label>
+            <span id="track-products">—</span>
+          </div>
+          <div class="track-info-item">
+            <label>Amount Paid</label>
+            <span id="track-amount">—</span>
+          </div>
+          <div class="track-info-item">
+            <label>Order Date</label>
+            <span id="track-date">—</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Adarsh <span>Agro</span> Chemicals</div>
+      <div class="footer-tagline">Growing India, one farm at a time 🌱</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#benefits">Benefits</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#order-list">Order List</a></li>
+      <li><a href="#tracking">Track Order</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-copy">
+      © 2025 Adarsh Agro Chemicals<br/>
+      All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- ─── CHATBOT TOGGLE BUTTON ─── -->
+<button id="chatbot-toggle" onclick="toggleChatbot()" title="Chat with us">
+  🌿
+  <div id="chatbot-badge">1</div>
+</button>
+
+<!-- ─── CHATBOT BOX ─── -->
+<div id="chatbot-box">
+  <div class="cb-header">
+    <div class="cb-avatar">🌾</div>
+    <div class="cb-header-info">
+      <div class="cb-name">Adarsh Agro Assistant</div>
+      <div class="cb-status"><div class="cb-status-dot"></div> Online – Ready to help</div>
+    </div>
+    <!-- Click-to-Call button -->
+    <button id="cb-call-btn" onclick="callShop()" title="Shop pe call karein">
+      <div class="cb-call-pulse"></div>
+      📞 Call Now
+    </button>
+    <button class="cb-close" onclick="toggleChatbot()">✕</button>
+  </div>
+
+  <div class="cb-messages" id="cb-messages"></div>
+
+  <div class="cb-quick-btns" id="cb-quick-btns">
+    <button class="cb-quick-btn" onclick="sendQuick('Products ki list batao')">📋 Products List</button>
+    <button class="cb-quick-btn" onclick="sendQuick('Urea ke baare mein batao')">🧪 Urea Info</button>
+    <button class="cb-quick-btn" onclick="sendQuick('Order karna hai')">🛒 Order Karna Hai</button>
+    <button class="cb-quick-btn" onclick="sendQuick('Kaunsa fertilizer best hai wheat ke liye?')">🌾 Wheat Tips</button>
+  </div>
+
+  <div class="cb-input-row">
+    <input type="text" id="cb-input" placeholder="Koi bhi sawaal poochhen..." onkeydown="if(event.key==='Enter')sendChatMsg()"/>
+    <button id="cb-send" onclick="sendChatMsg()">➤</button>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const OWNER_EMAIL = 'brajrajsinghsongara30@gmail.com';
+  const ANTHROPIC_API_KEY = 'YOUR_API_KEY_HERE';
+  const UPI_ID = 'adarshagro@upi';
+  const SHOP_NAME = 'Adarsh Agro Chemicals';
+
+  // ── Order storage (localStorage) ──
+  function saveOrder(order) {
+    const orders = JSON.parse(localStorage.getItem('aac_orders') || '{}');
+    orders[order.orderId] = order;
+    localStorage.setItem('aac_orders', JSON.stringify(orders));
+  }
+
+  function getOrder(orderId) {
+    const orders = JSON.parse(localStorage.getItem('aac_orders') || '{}');
+    return orders[orderId.toUpperCase()] || null;
+  }
+
+  function generateOrderId() {
+    const num = String(Date.now()).slice(-5);
+    return 'AAC-' + new Date().getFullYear() + '-' + num;
+  }
+
+  // ── Product filter tabs ──
+  function filterProducts(cat, btn) {
+    document.querySelectorAll('.prod-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.prod-card').forEach(card => {
+      const show = cat === 'all' || card.dataset.cat === cat;
+      card.style.display = show ? '' : 'none';
+      if (show) {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(16px)';
+        requestAnimationFrame(() => {
+          card.style.transition = 'opacity .4s ease, transform .4s ease';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        });
+      }
+    });
+  }
+
+  // ── Quick Buy per product card → Gmail ──
+  function quickBuy(productName, price) {
+    const subject = encodeURIComponent('New Order: ' + productName + ' | Adarsh Agro Chemicals');
+    const body = encodeURIComponent(
+      'NEW PRODUCT ORDER\n' +
+      '================================\n' +
+      'Product  : ' + productName + '\n' +
+      'Price    : ' + price + '\n' +
+      '================================\n\n' +
+      'Customer Details (please fill):\n' +
+      'Name     : \n' +
+      'Phone    : \n' +
+      'Village  : \n' +
+      'Quantity : \n\n' +
+      'Message  :\n\n' +
+      '--------------------------------\n' +
+      'Sent from Adarsh Agro Chemicals website'
+    );
+    window.open('https://mail.google.com/mail/?view=cm&to=' + OWNER_EMAIL + '&su=' + subject + '&body=' + body, '_blank');
+  }
+
+  // ── Enquiry basket ──
+  let basket = [];
+
+  function addToEnquiry(productName) {
+    if (basket.includes(productName)) return;
+    basket.push(productName);
+    renderBasket();
+    const btn = event.target;
+    btn.textContent = '✓ Added';
+    btn.classList.add('added');
+    setTimeout(() => {
+      btn.textContent = '+ Enquire';
+      btn.classList.remove('added');
+    }, 1800);
+  }
+
+  function renderBasket() {
+    const el = document.getElementById('enquiryBasket');
+    const list = document.getElementById('basketList');
+    el.style.display = basket.length ? '' : 'none';
+    list.innerHTML = basket.map(p => '<li>' + p + '</li>').join('');
+  }
+
+  function clearBasket() { basket = []; renderBasket(); }
+
+  function sendBasketToForm() {
+    const ta = document.getElementById('f-products');
+    if (ta && basket.length) {
+      ta.value = basket.map(p => '• ' + p).join('\n');
+    }
+  }
+
+  function sendBasketToGmail() {
+    if (!basket.length) return;
+    const subject = encodeURIComponent('Multi-Product Order | Adarsh Agro Chemicals');
+    const body = encodeURIComponent(
+      'MULTI-PRODUCT ORDER\n' +
+      'Adarsh Agro Chemicals\n' +
+      '================================\n\n' +
+      'PRODUCTS SELECTED\n' +
+      '----------------\n' +
+      basket.map(p => '• ' + p).join('\n') + '\n\n' +
+      'CUSTOMER DETAILS (please fill before sending)\n' +
+      '----------------\n' +
+      'Name     : \n' +
+      'Phone    : \n' +
+      'Village  : \n' +
+      'Crop     : \n' +
+      'Quantity : \n\n' +
+      'Message  :\n\n' +
+      '================================\n' +
+      'Sent via Adarsh Agro Chemicals website'
+    );
+    window.open('https://mail.google.com/mail/?view=cm&to=' + OWNER_EMAIL + '&su=' + subject + '&body=' + body, '_blank');
+    sendBasketToForm();
+  }
+
+  // ── Main order form → Gmail compose ──
+  function handleSubmit(e) {
+    e.preventDefault();
+    const name     = document.getElementById('f-name').value.trim();
+    const phone    = document.getElementById('f-phone').value.trim();
+    const village  = document.getElementById('f-village').value.trim();
+    const crop     = document.getElementById('f-crop').value || 'Not specified';
+    const farm     = document.getElementById('f-farm').value.trim() || 'Not specified';
+    const products = document.getElementById('f-products').value.trim();
+    const msg      = document.getElementById('f-msg').value.trim() || 'None';
+    const now      = new Date().toLocaleString('en-IN', {timeZone: 'Asia/Kolkata'});
+
+    const subject = encodeURIComponent('New Order from ' + name + ' | Adarsh Agro Chemicals');
+    const body = encodeURIComponent(
+      'NEW CUSTOMER ORDER\n' +
+      'Adarsh Agro Chemicals\n' +
+      '================================\n\n' +
+      'CUSTOMER DETAILS\n' +
+      '----------------\n' +
+      'Name       : ' + name + '\n' +
+      'Phone      : ' + phone + '\n' +
+      'Village    : ' + village + '\n' +
+      'Crop Type  : ' + crop + '\n' +
+      'Farm Size  : ' + farm + '\n\n' +
+      'PRODUCTS REQUIRED\n' +
+      '----------------\n' +
+      products + '\n\n' +
+      'MESSAGE\n' +
+      '----------------\n' +
+      msg + '\n\n' +
+      'Order Time : ' + now + '\n' +
+      '================================\n' +
+      'Sent via Adarsh Agro Chemicals website.\n' +
+      'Call the farmer back on: ' + phone
+    );
+
+    const gmailURL = 'https://mail.google.com/mail/?view=cm&to=' + OWNER_EMAIL + '&su=' + subject + '&body=' + body;
+    window.open(gmailURL, '_blank');
+
+    const btn = document.getElementById('submit-btn');
+    btn.innerHTML = '✅ Gmail Opened! Click Send in Gmail.';
+    btn.style.background = '#52B788';
+    btn.style.color = '#fff';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.innerHTML = '📧 Send Order to Gmail Now';
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.disabled = false;
+      document.getElementById('orderForm').reset();
+    }, 6000);
+  }
+
+  // ── ORDER LIST ──
+  let orderItems = [];
+  let orderIdCounter = 1;
+
+  function changeQty(delta) {
+    const input = document.getElementById('ol-qty');
+    const val = Math.max(1, Math.min(999, parseInt(input.value || 1) + delta));
+    input.value = val;
+  }
+
+  function getCatBadge(name) {
+    if (name.includes('Organic') || name.includes('Neem') || name.includes('Bio') || name.includes('Seaweed'))
+      return '<span class="ol-cat-badge" style="background:#d4edda;color:#1B4332;">Organic</span>';
+    if (name.includes('Chlorpyrifos') || name.includes('Mancozeb') || name.includes('Glyphosate') || name.includes('Imidacloprid'))
+      return '<span class="ol-cat-badge" style="background:#fde8cc;color:#7a3800;">Pesticide</span>';
+    return '<span class="ol-cat-badge" style="background:#d0e8f5;color:#0c3d5c;">Inorganic</span>';
+  }
+
+  function addOrderItem() {
+    const sel = document.getElementById('ol-product');
+    const qty = parseInt(document.getElementById('ol-qty').value) || 1;
+    const opt = sel.options[sel.selectedIndex];
+    if (!sel.value) { alert('Please select a product first.'); return; }
+    const price = parseInt(opt.getAttribute('data-price'));
+    const unit  = opt.getAttribute('data-unit');
+    const name  = sel.value;
+    // Check duplicate — just update qty
+    const existing = orderItems.find(i => i.name === name);
+    if (existing) {
+      existing.qty += qty;
+      existing.subtotal = existing.qty * existing.price;
+    } else {
+      orderItems.push({ id: orderIdCounter++, name, price, unit, qty, subtotal: price * qty });
+    }
+    renderOrderTable();
+    sel.value = '';
+    document.getElementById('ol-qty').value = 1;
+  }
+
+  function removeOrderItem(id) {
+    orderItems = orderItems.filter(i => i.id !== id);
+    renderOrderTable();
+  }
+
+  function clearOrder() {
+    if (!orderItems.length) return;
+    if (confirm('Clear all items from your order list?')) {
+      orderItems = [];
+      renderOrderTable();
+    }
+  }
+
+  function renderOrderTable() {
+    const empty  = document.getElementById('ol-empty');
+    const filled = document.getElementById('ol-filled');
+    const tbody  = document.getElementById('ol-tbody');
+    const totalEl = document.getElementById('ol-total');
+
+    if (!orderItems.length) {
+      empty.style.display = 'block';
+      filled.style.display = 'none';
+      return;
+    }
+    empty.style.display = 'none';
+    filled.style.display = 'block';
+
+    let total = 0;
+    tbody.innerHTML = orderItems.map((item, idx) => {
+      total += item.subtotal;
+      return '<tr>' +
+        '<td style="color:var(--text-mid);font-size:13px;">' + (idx + 1) + '</td>' +
+        '<td><span class="ol-product-name">' + item.name + '</span>' + getCatBadge(item.name) + '</td>' +
+        '<td>₹' + item.price.toLocaleString('en-IN') + '<span style="font-size:11px;color:var(--text-mid);">/' + item.unit + '</span></td>' +
+        '<td><strong style="font-family:\'Playfair Display\',serif;font-size:15px;">' + item.qty + '</strong></td>' +
+        '<td style="font-weight:600;color:var(--farm-green);">₹' + item.subtotal.toLocaleString('en-IN') + '</td>' +
+        '<td><button class="ol-del-btn" onclick="removeOrderItem(' + item.id + ')">✕ Remove</button></td>' +
+        '</tr>';
+    }).join('');
+
+    totalEl.textContent = '₹' + total.toLocaleString('en-IN');
+  }
+
+  function sendOrderToGmail() {
+    if (!orderItems.length) { alert('Please add at least one product to your order.'); return; }
+    const name    = document.getElementById('ol-name').value.trim() || 'Not provided';
+    const phone   = document.getElementById('ol-phone').value.trim() || 'Not provided';
+    const village = document.getElementById('ol-village').value.trim() || 'Not provided';
+    if (name === 'Not provided' || phone === 'Not provided') {
+      alert('Please enter your Name and Phone Number before sending.'); return;
+    }
+    const total = orderItems.reduce((s, i) => s + i.subtotal, 0);
+    const now   = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+    const itemLines = orderItems.map((item, i) =>
+      (i + 1) + '. ' + item.name + '\n' +
+      '   Qty: ' + item.qty + ' ' + item.unit + '  |  Price: ₹' + item.price + '/' + item.unit +
+      '  |  Subtotal: ₹' + item.subtotal.toLocaleString('en-IN')
+    ).join('\n');
+
+    const subject = encodeURIComponent('Order List from ' + name + ' | Adarsh Agro Chemicals');
+    const body = encodeURIComponent(
+      'ORDER LIST\n' +
+      'Adarsh Agro Chemicals\n' +
+      '=================================\n\n' +
+      'CUSTOMER DETAILS\n' +
+      '-----------------\n' +
+      'Name    : ' + name + '\n' +
+      'Phone   : ' + phone + '\n' +
+      'Village : ' + village + '\n\n' +
+      'ORDERED PRODUCTS\n' +
+      '-----------------\n' +
+      itemLines + '\n\n' +
+      '=================================\n' +
+      'TOTAL AMOUNT : ₹' + total.toLocaleString('en-IN') + '\n' +
+      '=================================\n\n' +
+      'Order Time : ' + now + '\n' +
+      'Sent via Adarsh Agro Chemicals website.\n' +
+      'Please call farmer at: ' + phone
+    );
+    window.open('https://mail.google.com/mail/?view=cm&to=' + OWNER_EMAIL + '&su=' + subject + '&body=' + body, '_blank');
+  }
+
+  function printOrder() {
+    if (!orderItems.length) { alert('No items in your order list to print.'); return; }
+    window.print();
+  }
+
+  // ══════════════════════════════════════════
+  // ── UPI PAYMENT ──
+  // ══════════════════════════════════════════
+  let currentOrderForPayment = null;
+
+  function initiatePayment() {
+    if (!orderItems.length) { alert('Pehle koi product add karein order list mein.'); return; }
+    const name    = document.getElementById('ol-name').value.trim();
+    const phone   = document.getElementById('ol-phone').value.trim();
+    const village = document.getElementById('ol-village').value.trim() || '';
+    if (!name || !phone) { alert('Pehle apna Naam aur Phone number bharen.'); return; }
+
+    const total          = orderItems.reduce((s, i) => s + i.subtotal, 0);
+    const orderId        = generateOrderId();
+    const now            = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+    const productSummary = orderItems.map(i => i.qty + 'x ' + i.name).join(', ');
+
+    currentOrderForPayment = {
+      orderId, customer: name, phone, village,
+      products: productSummary,
+      items: orderItems.map(i => ({...i})),
+      total, date: now, status: 'placed',
+      statusHistory: [{ status: 'placed', label: 'Order Placed', time: now, done: true }]
+    };
+
+    // Build UPI deep-link QR using Google Charts API (free, no key needed)
+    const upiStr  = 'upi://pay?pa=' + UPI_ID + '&pn=' + encodeURIComponent(SHOP_NAME) + '&am=' + total + '&cu=INR&tn=' + encodeURIComponent('Order ' + orderId);
+    const qrUrl   = 'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' + encodeURIComponent(upiStr);
+
+    document.getElementById('upi-qr-img').src    = qrUrl;
+    document.getElementById('modal-amount').textContent = '₹' + total.toLocaleString('en-IN');
+    document.getElementById('upi-txn-id').value  = '';
+    document.getElementById('pay-qr-state').classList.remove('hide');
+    document.getElementById('pay-success-state').classList.remove('show');
+    document.getElementById('pay-modal-overlay').classList.add('open');
+  }
+
+  function copyUpiId() {
+    navigator.clipboard.writeText(UPI_ID).then(() => {
+      const btn = document.querySelector('.upi-copy-btn');
+      btn.textContent = '✅';
+      setTimeout(() => btn.textContent = '📋', 1800);
+    });
+  }
+
+  function confirmUpiPayment() {
+    const txnId = document.getElementById('upi-txn-id').value.trim();
+    if (!txnId) { alert('Payment ke baad UPI Transaction ID daalna zaroori hai.'); return; }
+    if (txnId.length < 6) { alert('Valid Transaction ID daalen (kam se kam 6 characters).'); return; }
+
+    const order = { ...currentOrderForPayment, upiTxnId: txnId };
+    saveOrder(order);
+
+    // Show success
+    document.getElementById('pay-qr-state').classList.add('hide');
+    document.getElementById('pay-success-state').classList.add('show');
+    document.getElementById('modal-order-id').textContent = order.orderId;
+
+    // Email to shop
+    const subject = encodeURIComponent('💰 UPI Payment Received: ' + order.orderId + ' | ' + order.customer);
+    const body = encodeURIComponent(
+      'UPI PAYMENT ORDER — Adarsh Agro Chemicals\n' +
+      '================================================\n\n' +
+      'Order ID     : ' + order.orderId + '\n' +
+      'UPI Txn ID   : ' + txnId + '\n' +
+      'UPI ID       : ' + UPI_ID + '\n' +
+      'Amount       : ₹' + order.total.toLocaleString('en-IN') + '\n' +
+      'Order Time   : ' + order.date + '\n\n' +
+      'CUSTOMER\n--------\n' +
+      'Name    : ' + order.customer + '\n' +
+      'Phone   : ' + order.phone + '\n' +
+      'Village : ' + (order.village || 'N/A') + '\n\n' +
+      'PRODUCTS\n--------\n' +
+      order.items.map((i,n) => (n+1)+'. '+i.name+' × '+i.qty+' = ₹'+i.subtotal.toLocaleString('en-IN')).join('\n') + '\n\n' +
+      'TOTAL   : ₹' + order.total.toLocaleString('en-IN') + '\n' +
+      '================================================\n' +
+      '✅ UPI Payment received. Please verify & dispatch.\n' +
+      'Call customer: ' + order.phone
+    );
+    window.open('https://mail.google.com/mail/?view=cm&to=' + OWNER_EMAIL + '&su=' + subject + '&body=' + body, '_blank');
+  }
+
+  function closePayModal(sendEmail) {
+    const orderId = document.getElementById('modal-order-id').textContent;
+    if (sendEmail && orderId !== '—') {
+      const order = getOrder(orderId);
+      if (order) {
+        const subject = encodeURIComponent('✅ Order Confirmed – ' + orderId + ' | Adarsh Agro Chemicals');
+        const body = encodeURIComponent(
+          'Dear ' + order.customer + ',\n\n' +
+          'Aapka UPI payment aur order confirm ho gaya! 🎉🌾\n\n' +
+          'ORDER CONFIRMATION\n' +
+          '================================================\n' +
+          'Order ID   : ' + order.orderId + '\n' +
+          'UPI Txn ID : ' + (order.upiTxnId || 'N/A') + '\n' +
+          'Amount     : ₹' + order.total.toLocaleString('en-IN') + '\n' +
+          'Date       : ' + order.date + '\n\n' +
+          'PRODUCTS\n' +
+          order.items.map((i,n) => (n+1)+'. '+i.name+' × '+i.qty).join('\n') + '\n\n' +
+          '================================================\n' +
+          'Order track karne ke liye website pe jaayein aur Order ID type karein:\n' +
+          order.orderId + '\n\n' +
+          'Koi sawal ho:\n' +
+          '📞 +91 98765 43210\n' +
+          '📍 Main Market Road, Kisan Nagar, Rajasthan\n\n' +
+          'Dhanyawad! 🙏\nTeam Adarsh Agro Chemicals'
+        );
+        window.open('https://mail.google.com/mail/?view=cm&su=' + subject + '&body=' + body, '_blank');
+      }
+    }
+    document.getElementById('pay-modal-overlay').classList.remove('open');
+    orderItems = [];
+    renderOrderTable();
+    currentOrderForPayment = null;
+  }
+
+  // ══════════════════════════════════════════
+  // ── ORDER TRACKING ──
+  // ══════════════════════════════════════════
+  const STATUS_STEPS = [
+    { key: 'placed',    label: 'Order Placed',        icon: '📋', desc: 'Aapka order hamare paas aa gaya hai.' },
+    { key: 'packed',    label: 'Order Packed',         icon: '📦', desc: 'Aapka order pack kar diya gaya hai.' },
+    { key: 'shipped',   label: 'Out for Delivery',     icon: '🚚', desc: 'Order aapke gaon ki taraf nikal gaya hai.' },
+    { key: 'delivered', label: 'Delivered ✓',          icon: '✅', desc: 'Order deliver ho gaya. Shukriya!' }
+  ];
+
+  const STATUS_PILL_CLASS = { placed:'placed', packed:'packed', shipped:'shipped', delivered:'delivered' };
+
+  function trackOrder() {
+    const raw = document.getElementById('track-input').value.trim().toUpperCase();
+    const notFound = document.getElementById('track-not-found');
+    const card = document.getElementById('track-card');
+    notFound.classList.remove('visible');
+    card.classList.remove('visible');
+    if (!raw) return;
+
+    const order = getOrder(raw);
+    if (!order) {
+      notFound.classList.add('visible');
+      return;
+    }
+
+    // Populate card
+    document.getElementById('track-display-id').textContent = order.orderId;
+    document.getElementById('track-customer').textContent   = order.customer;
+    document.getElementById('track-products').textContent   = order.products;
+    document.getElementById('track-amount').textContent     = '₹' + order.total.toLocaleString('en-IN');
+    document.getElementById('track-date').textContent       = order.date;
+
+    // Status pill
+    const pill = document.getElementById('track-pill');
+    const currentStatus = order.status || 'placed';
+    const currentStep   = STATUS_STEPS.find(s => s.key === currentStatus);
+    pill.textContent  = currentStep ? currentStep.icon + ' ' + currentStep.label : currentStatus;
+    pill.className    = 'track-status-pill ' + (STATUS_PILL_CLASS[currentStatus] || 'placed');
+
+    // Steps timeline
+    const stepsEl = document.getElementById('track-steps');
+    const currentIdx = STATUS_STEPS.findIndex(s => s.key === currentStatus);
+    stepsEl.innerHTML = STATUS_STEPS.map((step, idx) => {
+      let cls = 'pending';
+      if (idx < currentIdx)  cls = 'done';
+      if (idx === currentIdx) cls = 'active';
+      const timeEntry = (order.statusHistory || []).find(h => h.status === step.key);
+      return `<div class="track-step ${cls}">
+        <div class="track-step-dot"></div>
+        <div class="track-step-title">${step.icon} ${step.label}</div>
+        <div class="track-step-time">${timeEntry ? timeEntry.time : (cls === 'pending' ? 'Pending...' : '')}</div>
+      </div>`;
+    }).join('');
+
+    card.classList.add('visible');
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.benefit-card, .step, .hcard, .prod-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity .6s ease, transform .6s ease';
+    observer.observe(el);
+  });
+
+  // ── IMAGE SLIDER ──
+  function slideImg(wrapId, dir) {
+    const wrap = document.getElementById(wrapId);
+    const imgs = wrap.querySelectorAll('img');
+    const dots = wrap.querySelectorAll('.prod-img-dot');
+    let cur = Array.from(imgs).findIndex(i => i.classList.contains('slide-visible'));
+    imgs[cur].classList.replace('slide-visible','slide-hidden');
+    dots[cur].classList.remove('active');
+    cur = (cur + dir + imgs.length) % imgs.length;
+    imgs[cur].classList.replace('slide-hidden','slide-visible');
+    dots[cur].classList.add('active');
+  }
+
+  function goSlide(wrapId, idx) {
+    const wrap = document.getElementById(wrapId);
+    const imgs = wrap.querySelectorAll('img');
+    const dots = wrap.querySelectorAll('.prod-img-dot');
+    imgs.forEach((img,i) => {
+      img.classList.toggle('slide-visible', i===idx);
+      img.classList.toggle('slide-hidden', i!==idx);
+    });
+    dots.forEach((d,i) => d.classList.toggle('active', i===idx));
+  }
+
+  // Auto-slide every 4 seconds
+  const sliderIds = ['img-vermicompost','img-neem','img-biofert','img-seaweed','img-urea','img-dap','img-npk','img-micro','img-mop','img-chlor','img-mancozeb','img-glyph','img-imida'];
+  sliderIds.forEach(id => {
+    setInterval(() => { if(document.getElementById(id)) slideImg(id, 1); }, 4000 + Math.random()*2000);
+  });
+
+  // ── CHATBOT ──
+  let chatOpen = false;
+  let cbHistory = [];
+  let awaitingOrderDetails = false;
+  let pendingOrderProduct = '';
+
+  const PRODUCT_CATALOG = `
+Adarsh Agro Chemicals – Product Catalog:
+
+ORGANIC FERTILIZERS:
+1. Organic Compost (Vermicompost) – ₹450/50kg bag – Enriches soil, improves water retention. Best for all crops.
+2. Neem Cake Fertilizer – ₹320/25kg bag – Dual-action: feeds nitrogen + repels soil pests. Best for vegetables & fruits.
+3. Bio-Fertilizer (Rhizobium) – ₹120/1kg pack – Fixes atmospheric nitrogen in legume roots. Reduces chemical use by 30%. Best for soybean, pulses.
+4. Seaweed Extract (Liquid) – ₹280/1 litre – Rich in growth hormones & micronutrients. Improves germination & stress tolerance. All crops.
+
+INORGANIC FERTILIZERS:
+5. Urea (46% Nitrogen) – ₹266/50kg bag – India's most-used N fertilizer. Fast-acting, rapid green growth. Wheat, rice, maize.
+6. DAP (Di-Ammonium Phosphate) – ₹1,350/50kg bag – 18%N + 46%P. Strong root development. All field crops.
+7. NPK 20-20-20 Water Soluble – ₹1,100/25kg bag – Balanced NPK for fertigation/foliar spray. Vegetables, cotton.
+8. Micronutrient Mix (Zn, Fe, Mn, B) – ₹650/5kg pack – Corrects deficiencies, prevents yellowing, improves grain fill. All crops.
+9. MOP (Muriate of Potash) – ₹1,700/50kg bag – 60% K₂O. Strengthens cell walls, drought resistance. Sugarcane, potato.
+
+PESTICIDES:
+10. Chlorpyrifos 20% EC (Insecticide) – ₹480/litre – Broad-spectrum against stem borers, white grubs, termites. Rice, wheat, cotton.
+11. Mancozeb 75% WP (Fungicide) – ₹220/500g pack – Contact fungicide against late blight, leaf spot, downy mildew. Potato, tomato, grapes.
+12. Glyphosate 41% SL (Herbicide) – ₹360/litre – Non-selective weed killer for non-crop areas, orchards.
+13. Imidacloprid 17.8% SL – ₹390/250ml – Systemic insecticide against aphids, whitefly, thrips. Cotton, vegetables, rice.
+
+Shop email: brajrajsinghsongara30@gmail.com
+Phone: +91 98765 43210
+Location: Main Market Road, Kisan Nagar, Rajasthan
+Hours: Mon–Sat 8AM–7PM, Sun 9AM–2PM
+  `;
+
+  // ── Mobile Menu ──
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const ham  = document.getElementById('hamburger');
+    const isOpen = menu.classList.contains('open');
+    if (isOpen) {
+      menu.classList.remove('open');
+      ham.classList.remove('open');
+    } else {
+      menu.classList.add('open');
+      ham.classList.add('open');
+    }
+  }
+
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  }
+
+  // Close menu when clicking outside
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('mobile-menu');
+    const ham  = document.getElementById('hamburger');
+    if (menu.classList.contains('open') && !menu.contains(e.target) && !ham.contains(e.target)) {
+      closeMobileMenu();
+    }
+  });
+
+  function toggleChatbot() {
+    chatOpen = !chatOpen;
+    document.getElementById('chatbot-box').classList.toggle('open', chatOpen);
+    document.getElementById('chatbot-badge').style.display = chatOpen ? 'none' : 'flex';
+    if (chatOpen && cbHistory.length === 0) {
+      setTimeout(() => addBotMsg('🙏 Namaste! Main Adarsh Agro Chemicals ka AI assistant hun.\n\nMain aapki help kar sakta hun:\n• 🌿 Products ki jankari\n• 💰 Prices check karna\n• 🌾 Fasal ke liye best product suggest karna\n• 📧 Order email karna\n\nAap Hindi ya English mein poochh sakte hain! Kya chahiye aapko?'), 300);
+    }
+  }
+
+  // ── Click-to-Call ──
+  function callShop() {
+    window.location.href = 'tel:+919876543210';
+  }
+
+
+  function addBotMsg(text, html) {
+    const msgs = document.getElementById('cb-messages');
+    const div = document.createElement('div');
+    div.className = 'cb-msg bot';
+    let content;
+    if (html) {
+      content = html;
+    } else {
+      // If text contains HTML tags (from localFallbackReply), render as-is
+      // Otherwise escape and convert newlines
+      const hasHtml = /<[a-z][\s\S]*>/i.test(text);
+      if (hasHtml) {
+        content = text.trim();
+      } else {
+        content = escHtml(text).replace(/\n{3,}/g, '\n\n').replace(/\n/g, '<br>');
+      }
+    }
+    // Remove leading/trailing <br> tags
+    content = content.replace(/^(<br\s*\/?>)+|(<br\s*\/?>)+$/gi, '').trim();
+    div.innerHTML = `<div class="cb-msg-avatar">🌾</div><div class="cb-msg-bubble">${content}</div>`;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function addUserMsg(text) {
+    const msgs = document.getElementById('cb-messages');
+    const div = document.createElement('div');
+    div.className = 'cb-msg user';
+    div.innerHTML = `<div class="cb-msg-bubble">${escHtml(text)}</div><div class="cb-msg-avatar" style="background:var(--leaf-green);">👤</div>`;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function showTyping() {
+    const msgs = document.getElementById('cb-messages');
+    const div = document.createElement('div');
+    div.className = 'cb-msg bot'; div.id = 'cb-typing-row';
+    div.innerHTML = `<div class="cb-msg-avatar">🌾</div><div class="cb-typing"><span></span><span></span><span></span></div>`;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function removeTyping() {
+    const el = document.getElementById('cb-typing-row');
+    if (el) el.remove();
+  }
+
+  function escHtml(t) { return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function sendQuick(text) {
+    document.getElementById('cb-input').value = text;
+    sendChatMsg();
+  }
+
+  function sendChatMsg() {
+    const inp = document.getElementById('cb-input');
+    const text = inp.value.trim();
+    if (!text) return;
+    inp.value = '';
+    addUserMsg(text);
+
+    const orderKeywords = ['order','khareedna','khareed','buy','book','lena','chahiye','order karna','purchase','mangwana'];
+    const isOrder = orderKeywords.some(k => text.toLowerCase().includes(k));
+
+    if (awaitingOrderDetails) { handleOrderDetails(text); return; }
+
+    if (isOrder) {
+      awaitingOrderDetails = true;
+      pendingOrderProduct = text;
+      showTyping();
+      setTimeout(() => { removeTyping(); showOrderForm(); }, 800);
+      return;
+    }
+
+    cbHistory.push({ role: 'user', content: text });
+    showTyping();
+
+    if (!ANTHROPIC_API_KEY || ANTHROPIC_API_KEY === 'YOUR_API_KEY_HERE') {
+      removeTyping();
+      // Fallback: keyword-based local responses when no API key
+      const reply = localFallbackReply(text);
+      cbHistory.push({ role: 'assistant', content: reply });
+      addBotMsg(reply);
+      return;
+    }
+
+    fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: `Tum Adarsh Agro Chemicals ke friendly AI assistant ho. Sirf agri products ke baare mein baat karo. Niche product catalog hai, usi se jawab do. Hindi-Hinglish mein jawab do (mix kar sakte ho). Short aur helpful raho. Emojis use karo. Agar user order karna chahta hai to unhe bolo "order karna hai" likhne ko.\n\n${PRODUCT_CATALOG}`,
+        messages: cbHistory.slice(-10)
+      })
+    })
+    .then(r => r.json())
+    .then(data => {
+      removeTyping();
+      const reply = (data.content && data.content[0] && data.content[0].text) ? data.content[0].text.trim() : localFallbackReply(text);
+      cbHistory.push({ role: 'assistant', content: reply });
+      addBotMsg(reply);
+    })
+    .catch(() => {
+      removeTyping();
+      addBotMsg(localFallbackReply(text));
+    });
+  }
+
+  function showOrderForm() {
+    const msgs = document.getElementById('cb-messages');
+    const div = document.createElement('div');
+    div.className = 'cb-msg bot';
+    // Clear any previous product text from input box
+    const cleanProduct = pendingOrderProduct.replace(/order|khareed|buy|book|lena|chahiye|karna|purchase|mangwana/gi,'').trim();
+    div.innerHTML = `
+      <div class="cb-msg-avatar">🌾</div>
+      <div class="cb-msg-bubble" style="max-width:95%;padding:0;background:none;border:none;">
+        <div style="margin-bottom:8px;font-size:13.5px;">📝 <strong>Order Details bharein:</strong></div>
+        <div class="cb-order-form" id="cb-order-form-wrap">
+          <input type="text"  id="cb-o-name"    placeholder="Aapka naam *" />
+          <input type="tel"   id="cb-o-phone"   placeholder="Phone number * (e.g. 9876543210)" />
+          <input type="text"  id="cb-o-village" placeholder="Gaon / Shahar (optional)" />
+          <input type="text"  id="cb-o-product" placeholder="Product aur quantity *" value="${cleanProduct}" />
+          <input type="email" id="cb-o-email"   placeholder="Aapka Gmail (confirmation ke liye)" />
+          <button class="cb-order-submit" onclick="submitChatbotOrder()">📧 Order Gmail pe Bhejo</button>
+        </div>
+      </div>`;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+    // Focus on name field
+    setTimeout(() => { const el = document.getElementById('cb-o-name'); if(el) el.focus(); }, 100);
+  }
+
+  function handleOrderDetails(text) {
+    // User typed something while awaiting order — just nudge them to use the form
+    awaitingOrderDetails = false;
+    addBotMsg('Upar diye form mein details bharein aur <strong>"Order Gmail pe Bhejo"</strong> button dabayein! 👆');
+  }
+
+  // ── Local fallback replies when no API key ──
+  function localFallbackReply(text) {
+    const t = text.toLowerCase();
+    if (t.includes('urea'))       return '🧪 <strong>Urea (46% Nitrogen)</strong><br>💰 Price: ₹266/50kg bag<br>🌾 Crops: Wheat, Rice, Maize<br>✅ Fast-acting nitrogen fertilizer for rapid green growth.<br><br>Order ke liye "order karna hai" likhein!';
+    if (t.includes('dap'))        return '🔬 <strong>DAP (Di-Ammonium Phosphate)</strong><br>💰 Price: ₹1,350/50kg bag<br>🌾 Crops: All field crops<br>✅ 18%N + 46%P – best root development ke liye.<br><br>Order ke liye "order karna hai" likhein!';
+    if (t.includes('neem'))       return '🌿 <strong>Neem Cake Fertilizer</strong><br>💰 Price: ₹320/25kg bag<br>🌾 Crops: Vegetables, Fruits<br>✅ Dual-action: soil nitrogen + pest repellent.';
+    if (t.includes('npk'))        return '⚗️ <strong>NPK 20-20-20 Water Soluble</strong><br>💰 Price: ₹1,100/25kg bag<br>🌾 Crops: Vegetables, Cotton<br>✅ Balanced formula for fertigation/foliar spray.';
+    if (t.includes('chlor'))      return '🐛 <strong>Chlorpyrifos 20% EC</strong><br>💰 Price: ₹480/litre<br>🌾 Crops: Rice, Wheat, Cotton<br>✅ Kills stem borers, white grubs & termites.';
+    if (t.includes('mancozeb'))   return '🍄 <strong>Mancozeb 75% WP Fungicide</strong><br>💰 Price: ₹220/500g pack<br>🌾 Crops: Potato, Tomato, Grapes<br>✅ Blight aur leaf spot se protection.';
+    if (t.includes('glypho'))     return '🪲 <strong>Glyphosate 41% SL</strong><br>💰 Price: ₹360/litre<br>✅ Sabse effective weed killer – orchard & non-crop areas.';
+    if (t.includes('imida'))      return '🦟 <strong>Imidacloprid 17.8% SL</strong><br>💰 Price: ₹390/250ml<br>🌾 Crops: Cotton, Vegetables, Rice<br>✅ Aphids, whitefly, thrips ke liye best.';
+    if (t.includes('seaweed'))    return '🌊 <strong>Seaweed Extract (Liquid)</strong><br>💰 Price: ₹280/litre<br>✅ Growth hormones + micronutrients – germination improve karta hai.';
+    if (t.includes('vermi') || t.includes('compost')) return '🌿 <strong>Organic Compost (Vermicompost)</strong><br>💰 Price: ₹450/50kg bag<br>✅ Soil health, water retention & microbial activity badhata hai.';
+    if (t.includes('wheat') || t.includes('gehu'))    return '🌾 <strong>Wheat ke liye best products:</strong><br>1️⃣ Urea 46% – ₹266/bag (nitrogen)<br>2️⃣ DAP – ₹1,350/bag (root growth)<br>3️⃣ Chlorpyrifos – ₹480/L (pest control)<br><br>Order ke liye "order karna hai" likhein!';
+    if (t.includes('rice') || t.includes('paddy') || t.includes('dhan')) return '🌾 <strong>Rice/Paddy ke liye:</strong><br>1️⃣ Urea 46% – ₹266/bag<br>2️⃣ Imidacloprid – ₹390/bottle (brown planthopper)<br>3️⃣ Mancozeb – ₹220/pack (blast disease)';
+    if (t.includes('price') || t.includes('rate') || t.includes('kitna')) return '💰 <strong>Hamare prices:</strong><br>🌿 Vermicompost – ₹450/bag<br>🌿 Neem Cake – ₹320/bag<br>⚗️ Urea – ₹266/bag<br>⚗️ DAP – ₹1,350/bag<br>⚗️ NPK – ₹1,100/bag<br>🛡️ Chlorpyrifos – ₹480/L<br>🛡️ Imidacloprid – ₹390/bottle<br><br>Bulk discount bhi available hai! 📞 +91 98765 43210';
+    if (t.includes('list') || t.includes('products') || t.includes('sab')) return '📋 <strong>Hamare Products:</strong><br><br>🌿 <u>Organic:</u> Vermicompost, Neem Cake, Bio-Fertilizer, Seaweed Extract<br><br>⚗️ <u>Inorganic:</u> Urea, DAP, NPK 20-20-20, Micronutrient Mix, MOP<br><br>🛡️ <u>Pesticides:</u> Chlorpyrifos, Mancozeb, Glyphosate, Imidacloprid<br><br>Kisi bhi product ka naam likhein detail ke liye!';
+    if (t.includes('phone') || t.includes('call') || t.includes('contact')) return '📞 <strong>Hamare Contact:</strong><br>Phone: +91 98765 43210<br>📍 Main Market Road, Kisan Nagar, Rajasthan<br>🕒 Mon–Sat: 8AM–7PM | Sun: 9AM–2PM';
+    return '🙏 Namaste! Aap poochhein:<br>• Kisi product ki jankari<br>• Price check<br>• Fasal ke liye suggestion<br>• Ya "order karna hai" likhein<br><br>Main aapki help karunga! 🌾';
+  }
+
+  // ── Fake Order Detection ──
+  function detectFakeOrder(name, phone, product) {
+    const issues = [];
+
+    // 1. Name check – too short, all same chars, gibberish
+    const cleanName = name.trim();
+    if (cleanName.length < 3) issues.push('naam bahut chhota hai');
+    if (/^(.)\1+$/.test(cleanName)) issues.push('naam invalid lag raha hai (ek hi character repeat)');
+    if (/^[^a-zA-Z\u0900-\u097F\s]+$/.test(cleanName)) issues.push('naam mein sirf numbers/symbols hain');
+    if (/^(test|fake|abc|xyz|asdf|qwerty|admin|null|none|na|n\/a|abcd|aaaa|bbbb)/i.test(cleanName)) issues.push('naam fake lag raha hai');
+
+    // 2. Phone check
+    const digits = phone.replace(/\D/g, '');
+    if (digits.length < 10) issues.push('phone number 10 digits se kam hai');
+    if (digits.length > 13) issues.push('phone number bahut lamba hai');
+    if (/^(.)\1{9,}$/.test(digits)) issues.push('phone number invalid hai (ek hi digit repeat)');
+    if (/^(0{10}|1{10}|9{10}|1234567890|0123456789)/.test(digits)) issues.push('phone number fake pattern mein hai');
+    // Indian mobile: must start with 6,7,8,9
+    const mobileDigits = digits.slice(-10);
+    if (!/^[6-9]/.test(mobileDigits)) issues.push('phone India ka valid mobile number nahi lag raha');
+
+    // 3. Product check
+    if (!product || product.trim().length < 3) issues.push('product name bahut chhota hai');
+    if (/^(test|abc|xyz|asdf|nothing|kuch bhi)/i.test(product.trim())) issues.push('product name invalid hai');
+
+    // 4. Duplicate/spam check (rate limit: max 3 orders per session)
+    orderSubmitCount = (orderSubmitCount || 0) + 1;
+    if (orderSubmitCount > 3) issues.push('bahut zyada orders ek session mein submit ho rahe hain');
+
+    return issues;
+  }
+
+  let orderSubmitCount = 0;
+
+  function submitChatbotOrder() {
+    const name      = (document.getElementById('cb-o-name')?.value || '').trim();
+    const phone     = (document.getElementById('cb-o-phone')?.value || '').trim();
+    const village   = (document.getElementById('cb-o-village')?.value || '').trim() || 'Not provided';
+    const product   = (document.getElementById('cb-o-product')?.value || '').trim();
+    const custEmail = (document.getElementById('cb-o-email')?.value || '').trim();
+
+    if (!name || !phone || !product) {
+      alert('⚠️ Naam, Phone aur Product zaroori hai!'); return;
+    }
+
+    // ── FAKE ORDER DETECTION ──
+    const fakeIssues = detectFakeOrder(name, phone, product);
+    if (fakeIssues.length > 0) {
+      const formWrap = document.getElementById('cb-order-form-wrap');
+      if (formWrap) {
+        formWrap.innerHTML = `
+          <div style="color:#b91c1c;font-weight:600;padding:8px 4px;font-size:13px;">
+            ⚠️ Order submit nahi hua:<br>
+            <ul style="margin:6px 0 6px 16px;font-weight:400;">
+              ${fakeIssues.map(i => `<li>${i}</li>`).join('')}
+            </ul>
+            <span style="color:var(--text-mid);font-weight:400;font-size:12px;">Sahi details bharein aur dobara try karein.</span>
+          </div>`;
+      }
+      awaitingOrderDetails = true;
+      return;
+    }
+
+    const now = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+
+    // ── EMAIL TO SHOP OWNER ──
+    const ownerSubject = encodeURIComponent('🛒 New Chatbot Order: ' + name + ' | Adarsh Agro Chemicals');
+    const ownerBody = encodeURIComponent(
+      'NEW ORDER — Adarsh Agro Chemicals Website Chatbot\n' +
+      '================================================\n\n' +
+      'CUSTOMER DETAILS\n' +
+      '----------------\n' +
+      'Name      : ' + name + '\n' +
+      'Phone     : ' + phone + '\n' +
+      'Village   : ' + village + '\n' +
+      'Gmail     : ' + (custEmail || 'Not provided') + '\n\n' +
+      'PRODUCT REQUIRED\n' +
+      '----------------\n' +
+      product + '\n\n' +
+      'Order Time : ' + now + '\n' +
+      '================================================\n' +
+      '✅ Order verified – no spam flags detected.\n' +
+      'Please call farmer at: ' + phone
+    );
+    window.open('https://mail.google.com/mail/?view=cm&to=' + OWNER_EMAIL + '&su=' + ownerSubject + '&body=' + ownerBody, '_blank');
+
+    // ── EMAIL TO CUSTOMER ──
+    if (custEmail && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(custEmail)) {
+      setTimeout(() => {
+        const custSubject = encodeURIComponent('✅ Order Confirmed – Adarsh Agro Chemicals');
+        const custBody = encodeURIComponent(
+          'Dear ' + name + ',\n\n' +
+          'Aapka order Adarsh Agro Chemicals ko mil gaya hai! 🌾\n\n' +
+          'ORDER SUMMARY\n' +
+          '================================================\n' +
+          'Product   : ' + product + '\n' +
+          'Name      : ' + name + '\n' +
+          'Phone     : ' + phone + '\n' +
+          'Village   : ' + village + '\n' +
+          'Order Time: ' + now + '\n' +
+          '================================================\n\n' +
+          'Hum aapko jald hi call karenge: ' + phone + '\n\n' +
+          'Koi bhi sawal ho toh contact karein:\n' +
+          '📞 +91 98765 43210\n' +
+          '📍 Main Market Road, Kisan Nagar, Rajasthan\n' +
+          '🕒 Mon–Sat: 8AM–7PM\n\n' +
+          'Dhanyawad! Aapki fasal ke liye shubhkaamnayein 🙏🌱\n' +
+          'Team Adarsh Agro Chemicals'
+        );
+        window.open('https://mail.google.com/mail/?view=cm&to=' + encodeURIComponent(custEmail) + '&su=' + custSubject + '&body=' + custBody, '_blank');
+      }, 1200);
+    }
+
+    // ── SUCCESS UI ──
+    const formWrap = document.getElementById('cb-order-form-wrap');
+    if (formWrap) {
+      formWrap.innerHTML = `
+        <div style="color:var(--farm-green);font-weight:600;padding:8px 0;font-size:13px;">
+          ✅ Gmail windows khul gayi hain!<br>
+          <span style="font-weight:400;color:var(--text-mid);font-size:12px;">
+            Dono Gmail tabs mein <strong>"Send"</strong> dabayein:<br>
+            1️⃣ Shop ko order bhejo<br>
+            ${custEmail ? '2️⃣ Aapke Gmail pe confirmation aayegi' : ''}
+          </span>
+        </div>`;
+    }
+
+    cbHistory.push({ role: 'user', content: 'Order placed: ' + product });
+    setTimeout(() => {
+      addBotMsg('🎉 Shukriya ' + name + ' ji!\n\nAapka order Gmail mein taiyaar hai — bas <strong>"Send"</strong> dabayein.\n\nHum aapko call karenge 📞 ' + phone + '\n\nKoi aur sawaal ho toh zaroor poochhein! 🌾');
+      awaitingOrderDetails = false;
+    }, 600);
+  }
+  // ══════════════════════════════════════════
+  // ── PWA INSTALL ──
+  // ══════════════════════════════════════════
+  let deferredPrompt = null;
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isInStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
+  // Register service worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    });
+  }
+
+  // Android/Chrome: catch install prompt
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    showPWABanner();
+  });
+
+  // iOS: show banner after 3 sec if not installed
+  if (isIOS && !isInStandalone) {
+    setTimeout(showPWABanner, 3000);
+  }
+
+  function showPWABanner() {
+    if (isInStandalone) return;
+    if (localStorage.getItem('pwa_dismissed') === '1') return;
+    const banner = document.getElementById('pwa-banner');
+    banner.classList.add('show');
+    document.body.classList.add('pwa-banner-visible');
+    // Update mob menu button text
+    const mobBtn = document.getElementById('mob-install-btn');
+    if (mobBtn) mobBtn.style.display = 'flex';
+  }
+
+  function installPWA() {
+    if (isIOS) {
+      // Show iOS guide
+      document.getElementById('ios-guide').classList.add('show');
+      dismissPWA();
+      return;
+    }
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choice) => {
+        if (choice.outcome === 'accepted') {
+          dismissPWA();
+          addBotMsg('🎉 App install ho gayi! Ab aap seedha home screen se Adarsh Agro kholein. 🌿');
+          if (chatOpen === false) toggleChatbot();
+        }
+        deferredPrompt = null;
+      });
+    } else {
+      // Fallback for browsers without prompt
+      document.getElementById('ios-guide').classList.add('show');
+      document.getElementById('ios-guide').querySelector('.ios-guide-title').innerHTML = '📲 App Install Karein';
+      dismissPWA();
+    }
+  }
+
+  function dismissPWA() {
+    document.getElementById('pwa-banner').classList.remove('show');
+    document.body.classList.remove('pwa-banner-visible');
+    localStorage.setItem('pwa_dismissed', '1');
+  }
+
+  // App installed event
+  window.addEventListener('appinstalled', () => {
+    dismissPWA();
+    deferredPrompt = null;
+  });
+</script>
+</body>
+</html>
