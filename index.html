@@ -2215,6 +2215,8 @@
     .track-info-row { grid-template-columns: 1fr; }
     .pay-modal { padding: 28px 20px; }
   }
+
+  @media (max-width: 900px) {
     .hero-inner { grid-template-columns: 1fr; }
     .hero-visual { display: none; }
     .benefits-grid { grid-template-columns: 1fr; }
@@ -3819,17 +3821,30 @@ Hours: Mon–Sat 8AM–7PM, Sun 9AM–2PM
   document.addEventListener('click', function(e) {
     const menu = document.getElementById('mobile-menu');
     const ham  = document.getElementById('hamburger');
-    if (menu.classList.contains('open') && !menu.contains(e.target) && !ham.contains(e.target)) {
+    if (!menu || !ham) return;
+    if (menu.classList.contains('open') &&
+        !menu.contains(e.target) &&
+        !ham.contains(e.target)) {
       closeMobileMenu();
     }
   });
 
+  // Close mobile menu on scroll
+  window.addEventListener('scroll', function() {
+    const menu = document.getElementById('mobile-menu');
+    if (menu && menu.classList.contains('open')) {
+      closeMobileMenu();
+    }
+  }, { passive: true });
+
   function toggleChatbot() {
     chatOpen = !chatOpen;
-    document.getElementById('chatbot-box').classList.toggle('open', chatOpen);
-    document.getElementById('chatbot-badge').style.display = chatOpen ? 'none' : 'flex';
+    const box   = document.getElementById('chatbot-box');
+    const badge = document.getElementById('chatbot-badge');
+    if (box)   box.classList.toggle('open', chatOpen);
+    if (badge) badge.style.display = chatOpen ? 'none' : 'flex';
     if (chatOpen && cbHistory.length === 0) {
-      setTimeout(() => addBotMsg('🙏 Namaste! Main Adarsh Agro Chemicals ka AI assistant hun.\n\nMain aapki help kar sakta hun:\n• 🌿 Products ki jankari\n• 💰 Prices check karna\n• 🌾 Fasal ke liye best product suggest karna\n• 📧 Order email karna\n\nAap Hindi ya English mein poochh sakte hain! Kya chahiye aapko?'), 300);
+      setTimeout(() => addBotMsg('🙏 Namaste! Main Adarsh Agro Chemicals ka AI assistant hun.\n\nMain aapki help kar sakta hun:\n• 🌿 Products ki jankari\n• 💰 Prices check karna\n• 🌾 Fasal ke liye best product suggest karna\n• 🛒 Order place karna\n\nAap Hindi ya English mein poochh sakte hain! Kya chahiye aapko?'), 300);
     }
   }
 
@@ -4098,7 +4113,6 @@ Hours: Mon–Sat 8AM–7PM, Sun 9AM–2PM
             Hum aapko jald call karenge 📞 ${phone}
           </span>
         </div>`;
-    }
     }
 
     cbHistory.push({ role: 'user', content: 'Order placed: ' + product });
