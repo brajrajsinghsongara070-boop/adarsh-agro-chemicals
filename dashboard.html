@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dashboard — Adarsh Agro Chemicals</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g1:#1B4332;--g2:#2D6A4F;--g3:#52B788;--g4:#95D5B2;
+  --gold:#C9A84C;--gold2:#8B6914;
+  --cream:#F8F6F0;--sand:#E8DDD0;
+  --bg:#0D1B14;--card:#132019;--card2:#1a2a1f;
+  --border:rgba(82,183,136,0.13);
+  --text:rgba(255,255,255,0.85);--muted:rgba(255,255,255,0.4);
+  --red:#ef4444;--orange:#f97316;--blue:#60a5fa;--purple:#a78bfa;
+}
+
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
+
+/* ── LOGIN ── */
+#login-screen{
+  position:fixed;inset:0;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  z-index:1000;
+}
+.login-box{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:20px;padding:40px 36px;width:360px;text-align:center;
+}
+.login-logo{
+  width:64px;height:64px;background:var(--gold);border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:22px;font-weight:900;
+  color:var(--g1);margin:0 auto 20px;
+}
+.login-title{font-family:'Playfair Display',serif;font-size:22px;color:#fff;margin-bottom:4px}
+.login-sub{font-size:13px;color:var(--muted);margin-bottom:28px}
+.login-input{
+  width:100%;padding:13px 16px;background:rgba(255,255,255,0.05);
+  border:1px solid var(--border);border-radius:10px;color:#fff;
+  font-family:'DM Sans',sans-serif;font-size:15px;outline:none;
+  transition:border-color .2s;text-align:center;letter-spacing:.1em;
+}
+.login-input:focus{border-color:var(--g3)}
+.login-btn{
+  width:100%;margin-top:14px;padding:14px;
+  background:linear-gradient(135deg,var(--g2),var(--g1));
+  color:#fff;border:none;border-radius:10px;
+  font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;
+  cursor:pointer;transition:opacity .2s;
+}
+.login-btn:hover{opacity:.88}
+.login-err{font-size:12px;color:var(--red);margin-top:10px;display:none}
+
+/* ── TOP BAR ── */
+#dash{display:none}
+.topbar{
+  background:var(--card);border-bottom:1px solid var(--border);
+  padding:0 28px;height:60px;display:flex;align-items:center;
+  justify-content:space-between;position:sticky;top:0;z-index:100;
+}
+.topbar-left{display:flex;align-items:center;gap:12px}
+.tb-logo{
+  width:36px;height:36px;background:var(--gold);border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:13px;font-weight:900;color:var(--g1);
+}
+.tb-name{font-size:14px;font-weight:700;color:#fff}
+.tb-role{font-size:11px;color:var(--muted)}
+.topbar-right{display:flex;align-items:center;gap:14px}
+.live-pill{
+  display:flex;align-items:center;gap:6px;
+  background:rgba(82,183,136,0.1);border:1px solid rgba(82,183,136,0.25);
+  color:var(--g3);font-size:11px;font-weight:600;
+  padding:5px 12px;border-radius:20px;
+}
+.live-dot{width:6px;height:6px;background:var(--g3);border-radius:50%;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.tb-time{font-size:12px;color:var(--muted)}
+.logout-btn{
+  background:none;border:1px solid var(--border);color:var(--muted);
+  font-size:12px;padding:6px 13px;border-radius:8px;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:.2s;
+}
+.logout-btn:hover{border-color:var(--red);color:var(--red)}
+
+/* ── LAYOUT ── */
+.body{padding:24px 28px;display:flex;flex-direction:column;gap:20px}
+
+/* ── KPI ROW ── */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kpi{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:18px 20px;position:relative;overflow:hidden;
+}
+.kpi::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  border-radius:14px 14px 0 0;
+}
+.kpi.g::after{background:linear-gradient(90deg,var(--g3),var(--g2))}
+.kpi.au::after{background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.kpi.bl::after{background:linear-gradient(90deg,#60a5fa,#3b82f6)}
+.kpi.rd::after{background:linear-gradient(90deg,var(--red),#b91c1c)}
+.kpi-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px}
+.kpi-num{font-size:28px;font-weight:700;color:#fff;line-height:1;font-family:'Playfair Display',serif}
+.kpi-trend{font-size:11px;margin-top:6px}
+.kpi-trend.up{color:var(--g3)}.kpi-trend.dn{color:var(--red)}.kpi-trend.nt{color:var(--muted)}
+
+/* ── CARDS ── */
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px}
+.card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.card-title{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:600}
+.card-badge{font-size:10px;background:rgba(201,168,76,0.12);color:var(--gold);padding:3px 10px;border-radius:20px;font-weight:500}
+
+/* ── CHARTS ── */
+.r2{display:grid;grid-template-columns:7fr 4fr;gap:14px}
+.r3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.r2b{display:grid;grid-template-columns:3fr 2fr;gap:14px}
+.chart-box{position:relative;width:100%}
+
+/* ── STOCK BARS ── */
+.s-item{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.s-item:last-child{margin-bottom:0}
+.s-name{font-size:11px;color:var(--muted);flex:0 0 110px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.s-track{flex:1;background:rgba(255,255,255,0.05);border-radius:4px;height:7px}
+.s-fill{height:7px;border-radius:4px;transition:width .6s ease}
+.s-qty{font-size:11px;min-width:44px;text-align:right}
+
+/* ── AGE BARS ── */
+.a-item{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.a-label{font-size:11px;color:var(--muted);flex:0 0 44px}
+.a-track{flex:1;background:rgba(255,255,255,0.05);border-radius:4px;height:9px}
+.a-fill{height:9px;border-radius:4px;background:var(--g3)}
+.a-pct{font-size:11px;color:var(--muted);min-width:32px;text-align:right}
+
+/* ── AREA LIST ── */
+.area-item{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.area-item:last-child{border-bottom:none}
+.area-left{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text)}
+.area-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.area-right{display:flex;align-items:center;gap:8px}
+.area-amt{font-size:12px;font-weight:600;color:#fff}
+.area-bar-wrap{width:60px;background:rgba(255,255,255,0.06);border-radius:3px;height:5px}
+.area-bar{height:5px;border-radius:3px;background:var(--g3)}
+
+/* ── ORDERS TABLE ── */
+.orders-table{width:100%;border-collapse:collapse;font-size:12px}
+.orders-table th{
+  text-align:left;padding:0 10px 10px;
+  color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.07em;font-weight:600;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.orders-table td{
+  padding:10px;border-bottom:1px solid rgba(255,255,255,0.03);
+  color:rgba(255,255,255,0.75);vertical-align:middle;
+}
+.orders-table tr:last-child td{border-bottom:none}
+.orders-table tr:hover td{background:rgba(82,183,136,0.04)}
+.pill{font-size:10px;padding:3px 9px;border-radius:20px;font-weight:600;white-space:nowrap}
+.pill.delivered{background:rgba(82,183,136,0.15);color:var(--g3)}
+.pill.packed{background:rgba(201,168,76,0.15);color:var(--gold)}
+.pill.shipped{background:rgba(249,115,22,0.15);color:#fb923c}
+.pill.placed{background:rgba(96,165,250,0.15);color:var(--blue)}
+
+/* ── PROFIT SUMMARY ── */
+.p-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.p-row:last-child{border-bottom:none}
+.p-label{font-size:12px;color:var(--muted)}
+.p-val{font-size:13px;font-weight:600;color:#fff}
+.profit-big{font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--g3);line-height:1;margin-bottom:4px}
+
+/* ── FILTER TABS ── */
+.tabs{display:flex;gap:6px;margin-bottom:16px}
+.tab{
+  font-size:11px;padding:5px 13px;border-radius:20px;
+  border:1px solid rgba(255,255,255,0.1);
+  background:transparent;color:var(--muted);
+  cursor:pointer;font-family:'DM Sans',sans-serif;transition:.15s;
+}
+.tab.on{background:var(--g3);color:#fff;border-color:var(--g3)}
+
+/* ── EMPTY STATE ── */
+.empty{text-align:center;padding:30px;color:var(--muted);font-size:13px}
+.empty-icon{font-size:32px;margin-bottom:10px;opacity:.4}
+
+/* ── ADD STOCK FORM ── */
+.stock-form{display:flex;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+.stock-form input,.stock-form select{
+  flex:1;background:rgba(255,255,255,0.05);border:1px solid var(--border);
+  color:#fff;border-radius:8px;padding:8px 12px;
+  font-family:'DM Sans',sans-serif;font-size:12px;outline:none;
+}
+.stock-form input:focus,.stock-form select:focus{border-color:var(--g3)}
+.stock-form button{
+  background:var(--g2);color:#fff;border:none;border-radius:8px;
+  padding:8px 16px;font-size:12px;font-weight:600;cursor:pointer;
+  font-family:'DM Sans',sans-serif;white-space:nowrap;
+}
+
+@media(max-width:900px){
+  .kpi-row{grid-template-columns:1fr 1fr}
+  .r2,.r3,.r2b{grid-template-columns:1fr}
+  .body{padding:16px}
+  .topbar{padding:0 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">AAC</div>
+    <div class="login-title">Owner Dashboard</div>
+    <div class="login-sub">Adarsh Agro Chemicals — Private Access</div>
+    <input type="password" id="pw-input" class="login-input" placeholder="Password" onkeydown="if(event.key==='Enter')tryLogin()"/>
+    <button class="login-btn" onclick="tryLogin()">Enter Dashboard</button>
+    <div class="login-err" id="login-err">Wrong password. Try again.</div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dash">
+  <div class="topbar">
+    <div class="topbar-left">
+      <div class="tb-logo">AAC</div>
+      <div>
+        <div class="tb-name">Adarsh Agro Chemicals</div>
+        <div class="tb-role">Owner Dashboard</div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="live-pill"><div class="live-dot"></div>Live Data</div>
+      <div class="tb-time" id="clock"></div>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- KPI -->
+    <div class="kpi-row">
+      <div class="kpi g">
+        <div class="kpi-lbl">Total Revenue</div>
+        <div class="kpi-num" id="kpi-revenue">₹0</div>
+        <div class="kpi-trend up" id="kpi-rev-sub">Loading...</div>
+      </div>
+      <div class="kpi au">
+        <div class="kpi-lbl">Total Orders</div>
+        <div class="kpi-num" id="kpi-orders">0</div>
+        <div class="kpi-trend nt" id="kpi-ord-sub">Loading...</div>
+      </div>
+      <div class="kpi bl">
+        <div class="kpi-lbl">Avg Order Value</div>
+        <div class="kpi-num" id="kpi-avg">₹0</div>
+        <div class="kpi-trend nt" id="kpi-avg-sub">Per order</div>
+      </div>
+      <div class="kpi rd">
+        <div class="kpi-lbl">Low Stock Items</div>
+        <div class="kpi-num" id="kpi-stock">0</div>
+        <div class="kpi-trend dn" id="kpi-stock-sub">Check stock</div>
+      </div>
+    </div>
+
+    <!-- SALES CHART + CATEGORY -->
+    <div class="r2">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Sales by Month</div>
+          <div class="card-badge" id="chart-range-label">All Orders</div>
+        </div>
+        <div class="tabs">
+          <button class="tab on" onclick="setRange('all',this)">All</button>
+          <button class="tab" onclick="setRange('6m',this)">6M</button>
+          <button class="tab" onclick="setRange('3m',this)">3M</button>
+          <button class="tab" onclick="setRange('1m',this)">1M</button>
+        </div>
+        <div class="chart-box" style="height:210px">
+          <canvas id="salesChart" role="img" aria-label="Monthly sales bar chart">Monthly sales trend</canvas>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Status Split</div>
+          <div class="card-badge" id="donut-total">0 orders</div>
+        </div>
+        <div class="chart-box" style="height:150px">
+          <canvas id="statusChart" role="img" aria-label="Order status donut chart">Order status breakdown</canvas>
+        </div>
+        <div id="status-legend" style="display:flex;flex-direction:column;gap:5px;margin-top:12px;font-size:11px;color:var(--muted)"></div>
+      </div>
+    </div>
+
+    <!-- AGE + AREA + STOCK -->
+    <div class="r3">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Customer Age Groups</div>
+          <div class="card-badge" id="age-note">From orders</div>
+        </div>
+        <div id="age-bars">
+          <div class="empty"><div class="empty-icon">👤</div>No age data yet.<br>Add age when saving orders.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Top Areas / Cities</div>
+        </div>
+        <div id="area-list">
+          <div class="empty"><div class="empty-icon">📍</div>No area data yet.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Stock Levels</div>
+          <div class="card-badge" id="stock-badge">Update below</div>
+        </div>
+        <div id="stock-list">
+          <div class="empty"><div class="empty-icon">📦</div>Loading stock...</div>
+        </div>
+        <div class="stock-form">
+          <select id="stock-product">
+            <option value="">Select product</option>
+            <option>Urea 46%</option><option>DAP</option><option>NPK 20-20-20</option>
+            <option>MOP</option><option>Micronutrient Mix</option>
+            <option>Vermicompost</option><option>Neem Cake</option>
+            <option>Bio-Fertilizer</option><option>Seaweed Extract</option>
+            <option>Chlorpyrifos</option><option>Mancozeb</option>
+            <option>Glyphosate</option><option>Imidacloprid</option>
+          </select>
+          <input type="number" id="stock-qty" placeholder="Qty" min="0" style="max-width:70px"/>
+          <input type="text" id="stock-unit" placeholder="Unit" style="max-width:55px" value="bags"/>
+          <button onclick="updateStock()">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ORDERS TABLE + PROFIT -->
+    <div class="r2b">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Recent Orders</div>
+          <div class="card-badge" id="orders-count">0 total</div>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="orders-table">
+            <thead>
+              <tr>
+                <th>Order ID</th><th>Customer</th><th>Village</th>
+                <th>Product</th><th>Amount</th><th>Date</th><th>Status</th><th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="orders-tbody">
+              <tr><td colspan="8"><div class="empty"><div class="empty-icon">📋</div>No orders yet.</div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Profit Estimate</div>
+          <div class="card-badge">30% margin</div>
+        </div>
+        <div class="profit-big" id="profit-big">₹0</div>
+        <div style="font-size:11px;color:var(--g3);margin-bottom:18px">Estimated net profit (30% margin)</div>
+        <div class="p-row"><div class="p-label">Total Revenue</div><div class="p-val" id="p-revenue">₹0</div></div>
+        <div class="p-row"><div class="p-label">Est. Cost (70%)</div><div class="p-val" id="p-cost">₹0</div></div>
+        <div class="p-row"><div class="p-label">Est. Profit (30%)</div><div class="p-val" id="p-profit" style="color:var(--g3)">₹0</div></div>
+        <div class="p-row"><div class="p-label">Total Orders</div><div class="p-val" id="p-orders">0</div></div>
+        <div class="p-row"><div class="p-label">Delivered</div><div class="p-val" id="p-delivered">0</div></div>
+        <div class="p-row"><div class="p-label">Pending</div><div class="p-val" id="p-pending">0</div></div>
+        <div style="margin-top:14px;background:rgba(255,255,255,0.04);border-radius:8px;height:8px;overflow:hidden">
+          <div id="profit-bar" style="height:8px;background:linear-gradient(90deg,var(--g3),var(--g2));border-radius:8px;width:0%;transition:width .8s ease"></div>
+        </div>
+        <div style="font-size:10px;color:var(--muted);margin-top:5px">Estimated profit margin: 30%</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const DASH_PW = 'agro@2025';
+
+function tryLogin(){
+  const v = document.getElementById('pw-input').value;
+  if(v === DASH_PW){
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('dash').style.display='block';
+    sessionStorage.setItem('aac_auth','1');
+    initDash();
+  } else {
+    document.getElementById('login-err').style.display='block';
+    document.getElementById('pw-input').value='';
+  }
+}
+
+function logout(){
+  sessionStorage.removeItem('aac_auth');
+  location.reload();
+}
+
+if(sessionStorage.getItem('aac_auth')==='1'){
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('dash').style.display='block';
+}
+
+// Clock
+setInterval(()=>{
+  document.getElementById('clock').textContent=new Date().toLocaleString('en-IN',{timeZone:'Asia/Kolkata',weekday:'short',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});
+},1000);
+
+// ── STOCK ──
+const DEFAULT_STOCK = {
+  'Urea 46%':{qty:25,unit:'bags'},'DAP':{qty:20,unit:'bags'},
+  'NPK 20-20-20':{qty:30,unit:'bags'},'MOP':{qty:15,unit:'bags'},
+  'Micronutrient Mix':{qty:18,unit:'packs'},'Vermicompost':{qty:40,unit:'bags'},
+  'Neem Cake':{qty:22,unit:'bags'},'Bio-Fertilizer':{qty:50,unit:'packs'},
+  'Seaweed Extract':{qty:25,unit:'ltrs'},'Chlorpyrifos':{qty:20,unit:'ltrs'},
+  'Mancozeb':{qty:35,unit:'packs'},'Glyphosate':{qty:18,unit:'ltrs'},
+  'Imidacloprid':{qty:28,unit:'btls'}
+};
+
+function getStock(){
+  return JSON.parse(localStorage.getItem('aac_stock') || JSON.stringify(DEFAULT_STOCK));
+}
+
+function updateStock(){
+  const p = document.getElementById('stock-product').value;
+  const q = parseInt(document.getElementById('stock-qty').value);
+  const u = document.getElementById('stock-unit').value || 'bags';
+  if(!p || isNaN(q)) return;
+  const s = getStock();
+  s[p] = {qty:q, unit:u};
+  localStorage.setItem('aac_stock', JSON.stringify(s));
+  renderStock();
+  document.getElementById('stock-product').value='';
+  document.getElementById('stock-qty').value='';
+}
+
+function renderStock(){
+  const s = getStock();
+  const LOW = 15;
+  let lowCount = 0;
+  const entries = Object.entries(s).sort((a,b)=>a[1].qty-b[1].qty);
+  const max = Math.max(...entries.map(e=>e[1].qty), 1);
+
+  document.getElementById('stock-list').innerHTML = entries.map(([name,{qty,unit}])=>{
+    const pct = Math.round((qty/max)*100);
+    const col = qty<=10?'var(--red)':qty<=LOW?'var(--orange)':'var(--g3)';
+    if(qty<=LOW) lowCount++;
+    return `<div class="s-item">
+      <div class="s-name" title="${name}">${name}</div>
+      <div class="s-track"><div class="s-fill" style="width:${pct}%;background:${col}"></div></div>
+      <div class="s-qty" style="color:${col}">${qty} ${unit}</div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('kpi-stock').textContent = lowCount;
+  document.getElementById('kpi-stock-sub').textContent = lowCount>0 ? lowCount+' need restocking' : 'All stock OK';
+  document.getElementById('stock-badge').textContent = entries.length+' products';
+}
+
+// ── ORDERS ──
+function getOrders(){
+  const raw = JSON.parse(localStorage.getItem('aac_orders') || '{}');
+  return Object.values(raw).sort((a,b)=>new Date(b.date)-new Date(a.date));
+}
+
+function setStatus(orderId, status){
+  const raw = JSON.parse(localStorage.getItem('aac_orders') || '{}');
+  if(raw[orderId]){
+    raw[orderId].status = status;
+    const now = new Date().toLocaleString('en-IN',{timeZone:'Asia/Kolkata'});
+    raw[orderId].statusHistory = raw[orderId].statusHistory || [];
+    raw[orderId].statusHistory.push({status, label:status, time:now, done:true});
+    localStorage.setItem('aac_orders', JSON.stringify(raw));
+    initDash();
+  }
+}
+
+let salesChart=null, statusChart=null;
+let currentRange='all';
+
+function setRange(r, btn){
+  currentRange=r;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  btn.classList.add('on');
+  const labels={all:'All Orders','6m':'Last 6 Months','3m':'Last 3 Months','1m':'This Month'};
+  document.getElementById('chart-range-label').textContent=labels[r];
+  renderCharts(getOrders());
+}
+
+function filterByRange(orders){
+  if(currentRange==='all') return orders;
+  const now=new Date(), months={'6m':6,'3m':3,'1m':1}[currentRange]||6;
+  const cutoff=new Date(); cutoff.setMonth(now.getMonth()-months);
+  return orders.filter(o=>new Date(o.date)>=cutoff);
+}
+
+function renderCharts(allOrders){
+  const orders = filterByRange(allOrders);
+
+  // Monthly sales bar chart
+  const monthly={};
+  orders.forEach(o=>{
+    const d=new Date(o.date);
+    if(isNaN(d)) return;
+    const key=d.toLocaleDateString('en-IN',{month:'short',year:'2-digit'});
+    monthly[key]=(monthly[key]||0)+(o.total||0);
+  });
+  const mLabels=Object.keys(monthly).slice(-12);
+  const mData=mLabels.map(k=>monthly[k]);
+
+  if(salesChart) salesChart.destroy();
+  salesChart=new Chart(document.getElementById('salesChart'),{
+    type:'bar',
+    data:{
+      labels:mLabels.length?mLabels:['No data'],
+      datasets:[{
+        label:'Revenue',
+        data:mLabels.length?mData:[0],
+        backgroundColor:'rgba(82,183,136,0.5)',
+        borderColor:'#52B788',
+        borderWidth:1,
+        borderRadius:6
+      }]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:v=>'₹'+Math.round(v.raw).toLocaleString('en-IN')}}},
+      scales:{
+        x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'rgba(255,255,255,0.4)',font:{size:10}}},
+        y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'rgba(255,255,255,0.4)',font:{size:10},callback:v=>v>=1000?'₹'+Math.round(v/1000)+'k':'₹'+v}}
+      }
+    }
+  });
+
+  // Status donut
+  const statusCount={placed:0,packed:0,shipped:0,delivered:0};
+  orders.forEach(o=>{ const s=o.status||'placed'; if(statusCount[s]!==undefined) statusCount[s]++; else statusCount.placed++; });
+  const sLabels=['Placed','Packed','Shipped','Delivered'];
+  const sData=[statusCount.placed,statusCount.packed,statusCount.shipped,statusCount.delivered];
+  const sColors=['#60a5fa','#C9A84C','#fb923c','#52B788'];
+
+  if(statusChart) statusChart.destroy();
+  statusChart=new Chart(document.getElementById('statusChart'),{
+    type:'doughnut',
+    data:{labels:sLabels,datasets:[{data:sData,backgroundColor:sColors,borderWidth:0,hoverOffset:5}]},
+    options:{
+      responsive:true,maintainAspectRatio:false,cutout:'68%',
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:v=>v.label+': '+v.raw}}}
+    }
+  });
+
+  document.getElementById('donut-total').textContent=orders.length+' orders';
+  document.getElementById('status-legend').innerHTML=sLabels.map((l,i)=>
+    `<div style="display:flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:2px;background:${sColors[i]};display:inline-block"></span>${l}: ${sData[i]}</div>`
+  ).join('');
+}
+
+function renderKPIs(orders){
+  const total=orders.reduce((s,o)=>s+(o.total||0),0);
+  const avg=orders.length?Math.round(total/orders.length):0;
+  document.getElementById('kpi-revenue').textContent='₹'+total.toLocaleString('en-IN');
+  document.getElementById('kpi-orders').textContent=orders.length;
+  document.getElementById('kpi-avg').textContent='₹'+avg.toLocaleString('en-IN');
+  document.getElementById('kpi-rev-sub').textContent=total>0?'Total from '+orders.length+' orders':'No orders yet';
+  document.getElementById('kpi-ord-sub').textContent=orders.length>0?'Latest: '+orders[0]?.orderId:'No orders yet';
+  document.getElementById('kpi-avg-sub').textContent='Per order average';
+
+  // Profit
+  const profit=Math.round(total*0.30);
+  const cost=Math.round(total*0.70);
+  document.getElementById('profit-big').textContent='₹'+profit.toLocaleString('en-IN');
+  document.getElementById('p-revenue').textContent='₹'+total.toLocaleString('en-IN');
+  document.getElementById('p-cost').textContent='₹'+cost.toLocaleString('en-IN');
+  document.getElementById('p-profit').textContent='₹'+profit.toLocaleString('en-IN');
+  document.getElementById('p-orders').textContent=orders.length;
+  document.getElementById('p-delivered').textContent=orders.filter(o=>o.status==='delivered').length;
+  document.getElementById('p-pending').textContent=orders.filter(o=>o.status!=='delivered').length;
+  document.getElementById('profit-bar').style.width='30%';
+}
+
+function renderAreas(orders){
+  const areas={};
+  orders.forEach(o=>{ if(o.village&&o.village!=='Not provided'&&o.village.length>1){ areas[o.village]=(areas[o.village]||0)+(o.total||0); }});
+  const sorted=Object.entries(areas).sort((a,b)=>b[1]-a[1]).slice(0,6);
+  const max=sorted[0]?.[1]||1;
+  const colors=['#52B788','#C9A84C','#60a5fa','#a78bfa','#f97316','#64748b'];
+  if(!sorted.length){
+    document.getElementById('area-list').innerHTML='<div class="empty"><div class="empty-icon">📍</div>No village data yet.<br>Make sure orders include village name.</div>';
+    return;
+  }
+  document.getElementById('area-list').innerHTML=sorted.map(([name,amt],i)=>`
+    <div class="area-item">
+      <div class="area-left"><div class="area-dot" style="background:${colors[i]}"></div>${name}</div>
+      <div class="area-right">
+        <div class="area-bar-wrap"><div class="area-bar" style="width:${Math.round((amt/max)*100)}%;background:${colors[i]}"></div></div>
+        <div class="area-amt">₹${amt.toLocaleString('en-IN')}</div>
+      </div>
+    </div>`).join('');
+}
+
+function renderAge(orders){
+  // Age groups based on customer age field (if available) — else show placeholder
+  const groups={'18-25':0,'26-35':0,'36-45':0,'46-55':0,'55+':0};
+  let hasAge=false;
+  orders.forEach(o=>{
+    if(o.age){
+      hasAge=true;
+      const a=parseInt(o.age);
+      if(a<=25) groups['18-25']++;
+      else if(a<=35) groups['26-35']++;
+      else if(a<=45) groups['36-45']++;
+      else if(a<=55) groups['46-55']++;
+      else groups['55+']++;
+    }
+  });
+
+  if(!hasAge){
+    // Show estimated distribution for Rajasthan farmers
+    groups['18-25']=12;groups['26-35']=28;groups['36-45']=35;groups['46-55']=18;groups['55+']=7;
+    document.getElementById('age-note').textContent='Estimated (demo)';
+  } else {
+    document.getElementById('age-note').textContent='Real data';
+  }
+
+  const total=Object.values(groups).reduce((a,b)=>a+b,1);
+  const colors={'18-25':'#60a5fa','26-35':'#52B788','36-45':'#C9A84C','46-55':'#f97316','55+':'#ef4444'};
+  document.getElementById('age-bars').innerHTML=Object.entries(groups).map(([label,val])=>{
+    const pct=Math.round((val/total)*100);
+    return `<div class="a-item">
+      <div class="a-label">${label}</div>
+      <div class="a-track"><div class="a-fill" style="width:${pct}%;background:${colors[label]}"></div></div>
+      <div class="a-pct">${pct}%</div>
+    </div>`;
+  }).join('');
+}
+
+function renderOrders(orders){
+  document.getElementById('orders-count').textContent=orders.length+' total';
+  const tbody=document.getElementById('orders-tbody');
+  if(!orders.length){
+    tbody.innerHTML='<tr><td colspan="8"><div class="empty"><div class="empty-icon">📋</div>No orders yet. Orders from your website will appear here.</div></td></tr>';
+    return;
+  }
+  tbody.innerHTML=orders.slice(0,30).map(o=>{
+    const s=o.status||'placed';
+    const amt=o.total?'₹'+o.total.toLocaleString('en-IN'):'—';
+    const date=o.date?o.date.split(',')[0]:'—';
+    const prod=(o.products||'').slice(0,30)+(o.products?.length>30?'...':'');
+    return `<tr>
+      <td style="font-size:10px;color:var(--muted)">${o.orderId||'—'}</td>
+      <td style="font-weight:500;color:#fff">${o.customer||'—'}</td>
+      <td>${o.village||'—'}</td>
+      <td title="${o.products||''}">${prod||'—'}</td>
+      <td style="font-weight:600;color:#fff">${amt}</td>
+      <td style="color:var(--muted)">${date}</td>
+      <td><span class="pill ${s}">${s.charAt(0).toUpperCase()+s.slice(1)}</span></td>
+      <td>
+        <select onchange="setStatus('${o.orderId}',this.value)" style="background:rgba(255,255,255,0.05);border:1px solid var(--border);color:rgba(255,255,255,0.6);border-radius:6px;padding:4px 6px;font-size:10px;cursor:pointer;outline:none;">
+          <option value="">Update</option>
+          <option value="placed">Placed</option>
+          <option value="packed">Packed</option>
+          <option value="shipped">Shipped</option>
+          <option value="delivered">Delivered</option>
+        </select>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function initDash(){
+  const orders=getOrders();
+  renderKPIs(orders);
+  renderCharts(orders);
+  renderAreas(orders);
+  renderAge(orders);
+  renderOrders(orders);
+  renderStock();
+}
+
+// Auto-refresh every 30 seconds
+if(sessionStorage.getItem('aac_auth')==='1') { initDash(); setInterval(initDash,30000); }
+
+document.getElementById('pw-input')?.addEventListener('keydown', e=>{ if(e.key==='Enter') tryLogin(); });
+</script>
+</body>
+</html>
