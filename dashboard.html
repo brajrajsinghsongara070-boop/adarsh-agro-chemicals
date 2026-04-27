@@ -1092,10 +1092,101 @@ function initDash(){
   renderMktGrid();
 }
 
-// Auto-refresh every 30 seconds
-if(sessionStorage.getItem('aac_auth')==='1') { initDash(); setInterval(initDash,30000); }
+// ── REAL-TIME SYNC ──
+// Jab website pe koi order aaye ya stock update ho — dashboard turant update hoga
 
-document.getElementById('pw-input')?.addEventListener('keydown', e=>{ if(e.key==='Enter') tryLogin(); });
+let lastOrderCount = 0;
+let refreshTimer = null;
+
+function smartRefresh(reason) {
+  // Debounce — 400ms ke baad refresh karo
+  clearTimeout(refreshTimer);
+  refreshTimer = setTimeout(() => {
+    const orders = getOrders();
+    const newCount = orders.length;
+
+    initDash();
+
+    // Agar naya order aaya to flash notification dikhao
+    if (newCount > lastOrderCount && lastOrderCount > 0) {
+      showNewOrderAlert(orders[0]);
+    }
+    lastOrderCount = newCount;
+  }, 400);
+}
+
+// localStorage change event — same browser ke doosre tabs se bhi catch hota hai
+window.addEventListener('storage', (e) => {
+  if (e.key === 'aac_orders' || e.key === 'aac_stock') {
+    smartRefresh('storage-event');
+  }
+});
+
+// Same tab ke liye — website aur dashboard same tab mein nahi hote
+// isliye polling bhi rakhte hain (5 second — fast but not heavy)
+if (sessionStorage.getItem('aac_auth') === '1') {
+  initDash();
+  lastOrderCount = getOrders().length;
+  setInterval(() => smartRefresh('poll'), 5000);
+}
+
+// ── NEW ORDER FLASH ALERT ──
+function showNewOrderAlert(order) {
+  let alert = document.getElementById('new-order-alert');
+  if (!alert) {
+    alert = document.createElement('div');
+    alert.id = 'new-order-alert';
+    alert.style.cssText = [
+      'position:fixed', 'top:72px', 'right:24px',
+      'background:linear-gradient(135deg,#1B4332,#2D6A4F)',
+      'border:1px solid rgba(82,183,136,0.4)',
+      'border-radius:14px', 'padding:16px 20px',
+      'z-index:9999', 'min-width:280px',
+      'box-shadow:0 12px 40px rgba(0,0,0,0.4)',
+      'display:flex', 'align-items:flex-start', 'gap:12px',
+      'animation:slideIn .4s ease',
+      'font-family:DM Sans,sans-serif'
+    ].join(';');
+    document.body.appendChild(alert);
+
+    // Add animation keyframes once
+    if (!document.getElementById('alert-style')) {
+      const s = document.createElement('style');
+      s.id = 'alert-style';
+      s.textContent = `
+        @keyframes slideIn { from{transform:translateX(120%);opacity:0} to{transform:translateX(0);opacity:1} }
+        @keyframes slideOut { from{transform:translateX(0);opacity:1} to{transform:translateX(120%);opacity:0} }
+      `;
+      document.head.appendChild(s);
+    }
+  }
+
+  alert.innerHTML = `
+    <div style="font-size:28px;line-height:1">🛒</div>
+    <div style="flex:1">
+      <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:3px">Naya Order Aaya!</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.6)">
+        <strong style="color:#52B788">${order.customer || 'Customer'}</strong>
+        ${order.total ? ' — ₹' + order.total.toLocaleString('en-IN') : ''}
+      </div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:3px">${order.orderId || ''}</div>
+    </div>
+    <button onclick="this.parentElement.style.display='none'"
+      style="background:none;border:none;color:rgba(255,255,255,0.4);font-size:18px;cursor:pointer;padding:0;line-height:1">✕</button>
+  `;
+
+  alert.style.display = 'flex';
+  alert.style.animation = 'slideIn .4s ease';
+
+  // Auto dismiss after 6 seconds
+  clearTimeout(alert._dismiss);
+  alert._dismiss = setTimeout(() => {
+    alert.style.animation = 'slideOut .4s ease forwards';
+    setTimeout(() => { alert.style.display = 'none'; }, 400);
+  }, 6000);
+}
+
+document.getElementById('pw-input')?.addEventListener('keydown', e => { if (e.key === 'Enter') tryLogin(); });
 </script>
 </body>
 </html>
