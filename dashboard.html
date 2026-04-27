@@ -206,6 +206,111 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   .body{padding:16px}
   .topbar{padding:0 16px}
 }
+
+/* ── EXTRA CHARTS ROW ── */
+.r3b{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+
+/* ── MARKET PRODUCTS SECTION ── */
+.mkt-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px}
+.mkt-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff}
+.mkt-sub{font-size:12px;color:var(--muted);margin-top:2px}
+.mkt-add-btn{
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--g1);border:none;border-radius:8px;
+  padding:10px 18px;font-size:13px;font-weight:700;
+  cursor:pointer;font-family:'DM Sans',sans-serif;
+  display:flex;align-items:center;gap:6px;transition:opacity .2s;
+}
+.mkt-add-btn:hover{opacity:.85}
+
+/* Market news cards grid */
+.mkt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:900px){.mkt-grid{grid-template-columns:1fr}}
+
+.mkt-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:16px;position:relative;
+  transition:border-color .2s;
+}
+.mkt-card:hover{border-color:rgba(82,183,136,0.3)}
+.mkt-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:10px}
+.mkt-tag{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:20px}
+.mkt-tag.new{background:rgba(82,183,136,0.15);color:var(--g3)}
+.mkt-tag.trending{background:rgba(201,168,76,0.15);color:var(--gold)}
+.mkt-tag.price{background:rgba(96,165,250,0.15);color:var(--blue)}
+.mkt-tag.alert{background:rgba(239,68,68,0.15);color:var(--red)}
+.mkt-card-name{font-size:14px;font-weight:700;color:#fff;margin-bottom:4px;line-height:1.3}
+.mkt-card-company{font-size:11px;color:var(--muted)}
+.mkt-card-desc{font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;margin-bottom:10px}
+.mkt-card-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.mkt-card-price{font-size:14px;font-weight:700;color:var(--gold)}
+.mkt-card-actions{display:flex;gap:6px}
+.mkt-btn{
+  font-size:11px;padding:5px 11px;border-radius:6px;cursor:pointer;
+  font-family:'DM Sans',sans-serif;font-weight:600;transition:.15s;border:none;
+}
+.mkt-btn.add{background:rgba(82,183,136,0.15);color:var(--g3)}
+.mkt-btn.add:hover{background:var(--g3);color:#fff}
+.mkt-btn.del{background:rgba(239,68,68,0.1);color:var(--red)}
+.mkt-btn.del:hover{background:var(--red);color:#fff}
+.mkt-date{font-size:10px;color:var(--muted);margin-top:8px}
+
+/* Add product form modal */
+#mkt-modal-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.7);
+  z-index:2000;display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .25s;
+}
+#mkt-modal-overlay.open{opacity:1;pointer-events:all}
+#mkt-modal{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:20px;padding:28px;width:480px;max-width:94vw;
+  max-height:90vh;overflow-y:auto;
+  transform:scale(0.9);transition:transform .25s;
+}
+#mkt-modal-overlay.open #mkt-modal{transform:scale(1)}
+.mkt-modal-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:18px}
+.mkt-form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.mkt-form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:10px}
+.mkt-form-group label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.mkt-form-group input,.mkt-form-group select,.mkt-form-group textarea{
+  background:rgba(255,255,255,0.05);border:1px solid var(--border);
+  color:#fff;border-radius:8px;padding:10px 13px;
+  font-family:'DM Sans',sans-serif;font-size:13px;outline:none;
+  transition:border-color .2s;
+}
+.mkt-form-group input:focus,.mkt-form-group select:focus,.mkt-form-group textarea:focus{border-color:var(--g3)}
+.mkt-form-group textarea{resize:vertical;min-height:70px}
+.mkt-form-group select option{background:#1a2a1f}
+.mkt-submit{
+  width:100%;padding:13px;background:linear-gradient(135deg,var(--g2),var(--g1));
+  color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;
+  cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:8px;transition:opacity .2s;
+}
+.mkt-submit:hover{opacity:.88}
+.mkt-cancel{
+  width:100%;padding:11px;background:transparent;
+  color:var(--muted);border:1px solid var(--border);border-radius:10px;
+  font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:8px;
+}
+.mkt-modal-close{float:right;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;margin-top:-4px}
+
+/* Mini line chart */
+.sparkline{display:flex;align-items:flex-end;gap:2px;height:36px}
+.spark-bar{flex:1;border-radius:2px 2px 0 0;background:rgba(82,183,136,0.4);transition:height .3s}
+
+/* Weekly orders mini chart */
+.week-chart{display:flex;align-items:flex-end;gap:3px;height:48px;margin-top:8px}
+.wk-bar{flex:1;border-radius:3px 3px 0 0;background:rgba(201,168,76,0.4);min-height:4px}
+.wk-label{font-size:9px;color:var(--muted);text-align:center;margin-top:4px}
+.wk-wrap{flex:1;display:flex;flex-direction:column;align-items:center}
+
+/* Top products mini bar */
+.top-prod-item{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.top-prod-name{font-size:11px;color:rgba(255,255,255,0.6);flex:0 0 90px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top-prod-bar{flex:1;height:6px;background:rgba(255,255,255,0.06);border-radius:3px}
+.top-prod-fill{height:6px;border-radius:3px;background:linear-gradient(90deg,var(--g3),var(--g2))}
+.top-prod-val{font-size:11px;color:var(--muted);min-width:32px;text-align:right}
 </style>
 </head>
 <body>
@@ -379,6 +484,121 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
           <div id="profit-bar" style="height:8px;background:linear-gradient(90deg,var(--g3),var(--g2));border-radius:8px;width:0%;transition:width .8s ease"></div>
         </div>
         <div style="font-size:10px;color:var(--muted);margin-top:5px">Estimated profit margin: 30%</div>
+      </div>
+    </div>
+
+    <!-- ── EXTRA CHARTS ROW ── -->
+    <div class="r3b">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Orders This Week</div>
+          <div class="card-badge" id="week-total">0 orders</div>
+        </div>
+        <div style="height:80px" id="week-chart-wrap">
+          <canvas id="weekChart" role="img" aria-label="Weekly orders bar chart">Weekly orders</canvas>
+        </div>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.05);font-size:11px;color:var(--muted)">
+          Best day: <span id="best-day" style="color:var(--gold);font-weight:600">—</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Top Products Ordered</div>
+          <div class="card-badge" id="top-prod-badge">By frequency</div>
+        </div>
+        <div id="top-products-list">
+          <div class="empty"><div class="empty-icon">📦</div>No order data yet.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Revenue Trend (14 Days)</div>
+        </div>
+        <div style="height:80px">
+          <canvas id="lineChart" role="img" aria-label="Daily revenue trend">Daily revenue</canvas>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.05)">
+          <div><div style="font-size:10px;color:var(--muted);margin-bottom:2px">Today</div><div style="font-size:15px;font-weight:700;color:var(--g3)" id="today-rev">₹0</div></div>
+          <div><div style="font-size:10px;color:var(--muted);margin-bottom:2px">This Week</div><div style="font-size:15px;font-weight:700;color:var(--gold)" id="week-rev">₹0</div></div>
+          <div><div style="font-size:10px;color:var(--muted);margin-bottom:2px">This Month</div><div style="font-size:15px;font-weight:700;color:#fff" id="month-rev">₹0</div></div>
+          <div><div style="font-size:10px;color:var(--muted);margin-bottom:2px">Total</div><div style="font-size:15px;font-weight:700;color:#fff" id="total-rev">₹0</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MARKET PRODUCTS SECTION ── -->
+    <div class="card">
+      <div class="mkt-header">
+        <div>
+          <div class="mkt-title">🌾 Agriculture Market — Naye Products</div>
+          <div class="mkt-sub">Market mein aaye naye products dekhein + website pe add karo</div>
+        </div>
+        <button class="mkt-add-btn" onclick="openMktModal()">➕ Product Add Karo</button>
+      </div>
+      <div class="mkt-grid" id="mkt-grid"></div>
+    </div>
+
+    <!-- Modal -->
+    <div id="mkt-modal-overlay" onclick="if(event.target===this)closeMktModal()">
+      <div id="mkt-modal">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+          <div class="mkt-modal-title">➕ Naya Product Add Karo</div>
+          <button class="mkt-modal-close" onclick="closeMktModal()">✕</button>
+        </div>
+        <div class="mkt-form-row">
+          <div class="mkt-form-group">
+            <label>Product Name *</label>
+            <input id="mkt-name" placeholder="e.g. Acephate 75% SP"/>
+          </div>
+          <div class="mkt-form-group">
+            <label>Company / Brand</label>
+            <input id="mkt-company" placeholder="e.g. Bayer, Syngenta"/>
+          </div>
+        </div>
+        <div class="mkt-form-row">
+          <div class="mkt-form-group">
+            <label>Category</label>
+            <select id="mkt-category">
+              <option>Insecticide</option><option>Fungicide</option>
+              <option>Herbicide</option><option>Fertilizer</option>
+              <option>Bio-Pesticide</option><option>PGR</option><option>Other</option>
+            </select>
+          </div>
+          <div class="mkt-form-group">
+            <label>Tag</label>
+            <select id="mkt-tag">
+              <option value="new">🆕 New Launch</option>
+              <option value="trending">🔥 Trending</option>
+              <option value="price">💰 Good Price</option>
+              <option value="alert">⚠️ Alert</option>
+            </select>
+          </div>
+        </div>
+        <div class="mkt-form-row">
+          <div class="mkt-form-group">
+            <label>Price / Rate</label>
+            <input id="mkt-price" placeholder="e.g. ₹480/litre"/>
+          </div>
+          <div class="mkt-form-group">
+            <label>Best For (Crop / Pest)</label>
+            <input id="mkt-bestfor" placeholder="e.g. Cotton, Aphids"/>
+          </div>
+        </div>
+        <div class="mkt-form-group">
+          <label>Description / Notes</label>
+          <textarea id="mkt-desc" placeholder="Product notes, use, benefit..."></textarea>
+        </div>
+        <div class="mkt-form-group">
+          <label>Website Pe Add Karna Hai?</label>
+          <select id="mkt-addweb">
+            <option value="no">Sirf note karo</option>
+            <option value="yes">Haan — website pe add karna hai</option>
+          </select>
+        </div>
+        <button class="mkt-submit" onclick="saveMktProduct()">✅ Save Product</button>
+        <button class="mkt-cancel" onclick="closeMktModal()">Cancel</button>
       </div>
     </div>
 
@@ -677,6 +897,188 @@ function renderOrders(orders){
   }).join('');
 }
 
+let lineChart=null, weekChart=null;
+
+function renderExtraCharts(orders){
+  const today = new Date(); today.setHours(0,0,0,0);
+  const days = Array.from({length:14},(_,i)=>{ const d=new Date(today); d.setDate(d.getDate()-(13-i)); return d; });
+  const dayLabels = days.map(d=>d.toLocaleDateString('en-IN',{day:'2-digit',month:'short'}));
+  const dayRevenue = days.map(d=>{
+    return orders.reduce((s,o)=>{
+      const od=new Date(o.date); od.setHours(0,0,0,0);
+      return od.getTime()===d.getTime()?s+(o.total||0):s;
+    },0);
+  });
+
+  if(lineChart) lineChart.destroy();
+  lineChart = new Chart(document.getElementById('lineChart'),{
+    type:'line',
+    data:{
+      labels:dayLabels,
+      datasets:[{
+        data:dayRevenue,
+        borderColor:'#52B788',borderWidth:2,
+        backgroundColor:'rgba(82,183,136,0.08)',
+        fill:true,tension:0.4,pointRadius:0,pointHoverRadius:4
+      }]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:v=>'₹'+Math.round(v.raw).toLocaleString('en-IN')}}},
+      scales:{x:{display:false},y:{display:false}}
+    }
+  });
+
+  // Revenue quick stats
+  const todayRev = dayRevenue[13];
+  const weekRev  = dayRevenue.slice(7).reduce((a,b)=>a+b,0);
+  const monthRev = orders.filter(o=>{ const d=new Date(o.date); return d.getMonth()===today.getMonth()&&d.getFullYear()===today.getFullYear(); }).reduce((s,o)=>s+(o.total||0),0);
+  const totalRev = orders.reduce((s,o)=>s+(o.total||0),0);
+  document.getElementById('today-rev').textContent='₹'+todayRev.toLocaleString('en-IN');
+  document.getElementById('week-rev').textContent='₹'+weekRev.toLocaleString('en-IN');
+  document.getElementById('month-rev').textContent='₹'+monthRev.toLocaleString('en-IN');
+  document.getElementById('total-rev').textContent='₹'+totalRev.toLocaleString('en-IN');
+
+  // Weekly orders chart (Mon–Sun)
+  const weekDays=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  const weekStart=new Date(today); weekStart.setDate(today.getDate()-today.getDay()+1);
+  const wkData=weekDays.map((_,i)=>{
+    const d=new Date(weekStart); d.setDate(weekStart.getDate()+i);
+    return orders.filter(o=>{ const od=new Date(o.date); od.setHours(0,0,0,0); return od.getTime()===d.getTime(); }).length;
+  });
+  const maxWk=Math.max(...wkData,1);
+  const bestIdx=wkData.indexOf(Math.max(...wkData));
+  document.getElementById('best-day').textContent=wkData[bestIdx]>0?weekDays[bestIdx]+' ('+wkData[bestIdx]+' orders)':'No orders yet';
+  document.getElementById('week-total').textContent=wkData.reduce((a,b)=>a+b,0)+' orders';
+
+  if(weekChart) weekChart.destroy();
+  weekChart=new Chart(document.getElementById('weekChart'),{
+    type:'bar',
+    data:{
+      labels:weekDays,
+      datasets:[{
+        data:wkData,
+        backgroundColor:wkData.map((_,i)=>i===bestIdx?'#C9A84C':'rgba(82,183,136,0.4)'),
+        borderRadius:4,borderSkipped:false
+      }]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:v=>v.raw+' orders'}}},
+      scales:{
+        x:{grid:{display:false},ticks:{color:'rgba(255,255,255,0.4)',font:{size:10}}},
+        y:{display:false}
+      }
+    }
+  });
+}
+
+function renderTopProducts(orders){
+  const counts={};
+  orders.forEach(o=>{
+    if(o.items&&o.items.length){
+      o.items.forEach(item=>{ counts[item.name]=(counts[item.name]||0)+item.qty; });
+    } else if(o.products){
+      // Parse product string
+      const lines=o.products.split('\n');
+      lines.forEach(l=>{ const m=l.match(/\d+\.\s+(.+?)\s+[×x]/); if(m) counts[m[1]]=(counts[m[1]]||0)+1; });
+    }
+  });
+  const sorted=Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,6);
+  if(!sorted.length){ document.getElementById('top-products-list').innerHTML='<div class="empty"><div class="empty-icon">📦</div>No data yet.</div>'; return; }
+  const max=sorted[0][1]||1;
+  document.getElementById('top-products-list').innerHTML=sorted.map(([name,qty])=>`
+    <div class="top-prod-item">
+      <div class="top-prod-name" title="${name}">${name}</div>
+      <div class="top-prod-bar"><div class="top-prod-fill" style="width:${Math.round((qty/max)*100)}%"></div></div>
+      <div class="top-prod-val">${qty}</div>
+    </div>`).join('');
+  document.getElementById('top-prod-badge').textContent=sorted.length+' products';
+}
+
+// ── MARKET PRODUCTS ──
+const MARKET_DEFAULT = [
+  {id:'mkt1',name:'Benevia 10% OD (Cyantraniliprole)',company:'Corteva Agriscience',category:'Insecticide',tag:'new',price:'₹1,200/100ml',bestfor:'Thrips, Whitefly, Vegetable crops',desc:'New generation insecticide — excellent for sucking pests, safe on beneficial insects.',addweb:'yes',date:'Apr 2025'},
+  {id:'mkt2',name:'Miravis Ace (Pydiflumetofen + Propiconazole)',company:'Syngenta',category:'Fungicide',tag:'trending',price:'₹850/250ml',bestfor:'Wheat, Paddy — Rust, Blight',desc:'Dual action fungicide — systemic + contact. Very effective on wheat rust this season.',addweb:'yes',date:'Mar 2025'},
+  {id:'mkt3',name:'Coragen 20% SC (Chlorantraniliprole)',company:'FMC',category:'Insecticide',tag:'price',price:'₹3,200/150ml',bestfor:'Rice, Maize — Stem Borer',desc:'Premium insecticide for stem borers. Long residual activity up to 20 days.',addweb:'no',date:'Apr 2025'},
+  {id:'mkt4',name:'Tatamida 70% WS (Imidacloprid)',company:'Tata Rallis',category:'Insecticide',tag:'price',price:'₹280/100g',bestfor:'Seed treatment — Sucking pests',desc:'Seed treatment formulation — protects crop from day 1. Good price vs competitors.',addweb:'yes',date:'Mar 2025'},
+  {id:'mkt5',name:'Amistar Top (Azoxystrobin + Difenoconazole)',company:'Syngenta',category:'Fungicide',tag:'trending',price:'₹700/200ml',bestfor:'Tomato, Potato, Grapes',desc:'Broad-spectrum fungicide in demand this kharif season. Good dealer margin.',addweb:'no',date:'Apr 2025'},
+  {id:'mkt6',name:'Markar 25% EC (Propiconazole)',company:'Dhanuka Agritech',category:'Fungicide',tag:'new',price:'₹390/500ml',bestfor:'Wheat, Paddy — Sheath blight',desc:'New economical option vs Tilt. Farmers giving positive feedback.',addweb:'yes',date:'Apr 2025'},
+];
+
+function getMktProducts(){
+  const saved=JSON.parse(localStorage.getItem('aac_mkt_products')||'null');
+  if(!saved){ localStorage.setItem('aac_mkt_products',JSON.stringify(MARKET_DEFAULT)); return MARKET_DEFAULT; }
+  return saved;
+}
+
+function saveMktProducts(list){ localStorage.setItem('aac_mkt_products',JSON.stringify(list)); }
+
+const TAG_LABELS={new:'🆕 New Launch',trending:'🔥 Trending',price:'💰 Good Price',alert:'⚠️ Alert'};
+
+function renderMktGrid(){
+  const list=getMktProducts();
+  if(!list.length){
+    document.getElementById('mkt-grid').innerHTML='<div class="empty" style="grid-column:1/-1"><div class="empty-icon">🌱</div>Koi product nahi. "Product Add Karo" button dabao!</div>';
+    return;
+  }
+  document.getElementById('mkt-grid').innerHTML=list.map(p=>`
+    <div class="mkt-card">
+      <div class="mkt-card-top">
+        <div>
+          <div class="mkt-card-name">${p.name}</div>
+          <div class="mkt-card-company">${p.company||'—'} · ${p.category||''}</div>
+        </div>
+        <span class="mkt-tag ${p.tag}">${TAG_LABELS[p.tag]||p.tag}</span>
+      </div>
+      <div class="mkt-card-desc">${p.desc||''}</div>
+      ${p.bestfor?`<div style="font-size:11px;color:var(--g3);margin-bottom:8px">🌾 ${p.bestfor}</div>`:''}
+      <div class="mkt-card-footer">
+        <div class="mkt-card-price">${p.price||'—'}</div>
+        <div class="mkt-card-actions">
+          ${p.addweb==='yes'?'<span style="font-size:10px;background:rgba(82,183,136,0.12);color:var(--g3);padding:3px 8px;border-radius:6px;">✅ Website pe</span>':''}
+          <button class="mkt-btn del" onclick="deleteMktProduct('${p.id}')">🗑</button>
+        </div>
+      </div>
+      <div class="mkt-date">Added: ${p.date||'—'}</div>
+    </div>`).join('');
+}
+
+function deleteMktProduct(id){
+  const list=getMktProducts().filter(p=>p.id!==id);
+  saveMktProducts(list); renderMktGrid();
+}
+
+function openMktModal(){
+  document.getElementById('mkt-modal-overlay').classList.add('open');
+  document.getElementById('mkt-name').focus();
+}
+function closeMktModal(){ document.getElementById('mkt-modal-overlay').classList.remove('open'); }
+
+function saveMktProduct(){
+  const name=document.getElementById('mkt-name').value.trim();
+  if(!name){alert('Product name zaroori hai!');return;}
+  const p={
+    id:'mkt'+Date.now(),
+    name,
+    company:document.getElementById('mkt-company').value.trim(),
+    category:document.getElementById('mkt-category').value,
+    tag:document.getElementById('mkt-tag').value,
+    price:document.getElementById('mkt-price').value.trim(),
+    bestfor:document.getElementById('mkt-bestfor').value.trim(),
+    desc:document.getElementById('mkt-desc').value.trim(),
+    addweb:document.getElementById('mkt-addweb').value,
+    date:new Date().toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})
+  };
+  const list=getMktProducts();
+  list.unshift(p);
+  saveMktProducts(list);
+  renderMktGrid();
+  closeMktModal();
+  // Clear form
+  ['mkt-name','mkt-company','mkt-price','mkt-bestfor','mkt-desc'].forEach(id=>document.getElementById(id).value='');
+}
+
 function initDash(){
   const orders=getOrders();
   renderKPIs(orders);
@@ -685,6 +1087,9 @@ function initDash(){
   renderAge(orders);
   renderOrders(orders);
   renderStock();
+  renderExtraCharts(orders);
+  renderTopProducts(orders);
+  renderMktGrid();
 }
 
 // Auto-refresh every 30 seconds
